@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".activities.WelcomeActivity">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_medium_2"
+        android:layout_marginStart="@dimen/margin_medium_2"
+        android:text="@string/lbl_welcome"
+        android:textStyle="bold"
+        android:fontFamily="@font/poppins_regular"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_regular_3x"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_login_to_continue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_small"
+        android:layout_marginStart="@dimen/margin_medium_2"
+        android:layout_below="@id/tv_welcome"
+        android:text="@string/lbl_login_to_continue"
+        android:fontFamily="@font/poppins_regular"
+        android:textColor="@color/color_grey"
+        android:textSize="@dimen/text_regular_2x"
+        />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayoutAuth"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_large"
+        android:layout_marginHorizontal="@dimen/margin_medium_2"
+        app:tabSelectedTextColor="@color/color_primary"
+        app:tabIndicatorColor="@color/color_primary"
+        android:layout_below="@id/tv_login_to_continue"
+        app:tabIndicatorHeight="@dimen/margin_small"
+        app:tabTextAppearance="@style/customTabAppearanceStyle">
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/lbl_login"
+            />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/lbl_sing_in"
+            />
+
+    </com.google.android.material.tabs.TabLayout>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/vpAuthContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_large"
+        android:layout_below="@id/tabLayoutAuth"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvForgetPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin_medium_2"
+        android:layout_marginTop="@dimen/margin_large"
+        android:layout_below="@id/vpAuthContainer"
+        android:layout_alignParentEnd="true"
+        android:fontFamily="@font/poppins_regular"
+        android:text="@string/lbl_forgot_password"
+        android:textColor="@color/color_grey"
+        android:textSize="@dimen/text_regular_2x" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginHorizontal="@dimen/margin_medium_2"
+        android:layout_marginBottom="@dimen/margin_medium_2"
+        android:orientation="vertical">
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_getting_start_button"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            app:icon="@drawable/ic_facebook"
+            app:iconTint="@null"
+            android:fontFamily="@font/poppins_regular"
+            android:text="Sign in with facebook"
+            android:textAllCaps="false"
+            android:textColor="@color/color_grey"
+            android:textSize="@dimen/text_regular_2x"
+            android:textStyle="bold"
+            app:cornerRadius="@dimen/margin_medium"
+            app:strokeColor="@color/color_grey"
+            />
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_getting_start_button"
+            android:layout_marginTop="@dimen/margin_medium"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            app:icon="@drawable/ic_google"
+            app:iconTint="@null"
+            android:fontFamily="@font/poppins_regular"
+            android:text="Sign in with google"
+            android:textAllCaps="false"
+            android:textColor="@color/color_grey"
+            android:textSize="@dimen/text_regular_2x"
+            android:textStyle="bold"
+            app:cornerRadius="@dimen/margin_medium"
+            app:strokeColor="@color/color_grey"
+            />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnConfirm"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_getting_start_button"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:fontFamily="@font/poppins_regular"
+            android:text="@string/lbl_confirm"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_regular_2x"
+            android:textStyle="bold"
+            app:cornerRadius="@dimen/margin_medium"
+            app:strokeColor="@color/white" />
+
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

@@ -1,0 +1,19 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.MovieTicketApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/color_primary</item>
+
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" >@color/color_primary</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="Theme.MovieTicketApp.TransparentStatusBar" parent="Theme.MovieTicketApp">
+
+        <item name="android:fitsSystemWindows">true</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+
+    </style>
+</resources>
