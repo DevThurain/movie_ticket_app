@@ -93,7 +93,7 @@
         <include
             android:layout_height="match_parent"
             android:layout_width="match_parent"
-            layout="@layout/view_drawer"/>
+            layout="@layout/drawer_home"/>
 
     </com.google.android.material.navigation.NavigationView>
 
