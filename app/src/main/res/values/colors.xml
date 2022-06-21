@@ -10,6 +10,8 @@
 
 
     <color name="color_primary">#623EEA</color>
+    <color name="color_amber">#F6DA45</color>
+    <color name="color_green">#12C08B</color>
     <color name="secondary_text_white">#CCFFFFFF</color>
     <color name="color_grey">#9CA8C2</color>
 </resources>

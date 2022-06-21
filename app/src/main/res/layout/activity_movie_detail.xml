@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.MovieDetailActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            app:collapsedTitleTextColor="@color/white"
+            app:contentScrim="@color/color_primary"
+            app:expandedTitleGravity="center|top"
+            app:expandedTitleTextColor="@android:color/transparent"
+            app:layout_scrollFlags="exitUntilCollapsed|scroll"
+            app:title="Enola Holmes">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                app:layout_collapseMode="parallax"
+                app:srcCompat="@drawable/placeholder_movie_detail" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_collapseMode="parallax">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="@dimen/margin_xlarge"
+                    android:layout_height="@dimen/margin_xlarge"
+                    android:layout_marginStart="@dimen/margin_medium_2"
+                    android:layout_marginTop="@dimen/margin_xxlarge"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/ic_baseline_chevron_left_24dp" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/background_play_button"
+                    android:padding="@dimen/margin_medium"
+                    android:src="@drawable/ic_baseline_play_arrow_24dp" />
+
+            </RelativeLayout>
+
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:layout_collapseParallaxMultiplier="@integer/material_motion_duration_short_2" />
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/margin_large_n"
+        android:background="@drawable/background_rounded_nested_scroll_view"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvMovieDetailName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_medium_2"
+                android:layout_marginTop="@dimen/margin_medium_2"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Enola Holmes"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_regular_3x"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvMovieDetailDuration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvMovieDetailName"
+                android:layout_marginStart="@dimen/margin_medium_2"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:fontFamily="@font/poppins_light"
+                android:text="1h 45m"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_regular" />
+
+            <androidx.appcompat.widget.AppCompatRatingBar
+                android:id="@+id/rbMovieDetail"
+                style="@style/Widget.AppCompat.RatingBar.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/tvMovieDetailDuration"
+                android:layout_marginStart="@dimen/margin_xlarge"
+                android:layout_toEndOf="@id/tvMovieDetailDuration"
+                android:numStars="5"
+                android:progressTint="@color/color_amber"
+                android:rating="3.5"
+                android:scaleX="1.5"
+                android:scaleY="1.5" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvIMDbScore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvMovieDetailName"
+                android:layout_alignTop="@id/tvMovieDetailDuration"
+                android:layout_marginStart="@dimen/margin_xlarge"
+                android:layout_toEndOf="@id/rbMovieDetail"
+                android:fontFamily="@font/poppins_light"
+                android:text="IMDb 8.8"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_regular" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipMystery"
+                style="@style/ShapeAppearanceOverlay.Material3.Chip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvMovieDetailDuration"
+                android:layout_marginStart="@dimen/margin_medium_2"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:backgroundTint="@color/white"
+                android:text="Mystery"
+                android:textAppearance="@style/MovieDetailChipAppearanceStyle"
+                android:textColor="@color/black"
+                app:chipEndPadding="@dimen/margin_medium"
+                app:chipMinHeight="@dimen/height_chip"
+                app:chipStartPadding="@dimen/margin_medium"
+                app:chipStrokeColor="@color/color_grey"
+                app:chipStrokeWidth="1dp" />
+
+            <com.google.android.material.chip.Chip
+                style="@style/ShapeAppearanceOverlay.Material3.Chip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvMovieDetailDuration"
+                android:layout_marginStart="@dimen/margin_medium_2"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:layout_toEndOf="@id/chipMystery"
+                android:backgroundTint="@color/white"
+                android:text="Adventure"
+                android:textAppearance="@style/MovieDetailChipAppearanceStyle"
+                app:chipEndPadding="@dimen/margin_medium"
+                app:chipMinHeight="@dimen/height_chip"
+                app:chipStartPadding="@dimen/margin_medium"
+                app:chipStrokeColor="@color/color_grey"
+                app:chipStrokeWidth="1dp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvPlotSummary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/chipMystery"
+                android:layout_marginStart="@dimen/margin_medium_2"
+                android:layout_marginTop="@dimen/margin_medium_2"
+                android:fontFamily="@font/poppins_regular"
+                android:text="@string/lbl_plot_summary"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_regular_2x"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvPlot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvPlotSummary"
+                android:layout_marginHorizontal="@dimen/margin_medium_2"
+                android:layout_marginTop="@dimen/margin_small"
+                android:fontFamily="@font/poppins_regular"
+                android:text="England, 1884 - a world on the brink of change. On the morning of her 16th birthday, Enola Holmes (Millie Bobby Brown) wakes to find that her mother (Helena Bonham Carter) has disappeared, leaving behind an odd assortment of gifts but no apparent clue as to where she's gone or why. After a free-spirited childhood, Enola suddenly finds herself under the care of her brothers Sherlock (Henry Cavill) and Mycroft (Sam Claflin), both set on sending her away to a finishing school for proper young ladies. Refusing to follow their wishes, Enola escapes to search for her mother in London. But when her journey finds her entangled in a mystery surrounding a young runaway Lord (Louis Partridge), Enola becomes a super-sleuth in her own right, outwitting her famous brother as she unravels a conspiracy that threatens to set back the course of history." />
+
+
+        </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <include layout="@layout/view_ticket_sheet" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -7,8 +7,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.HomeActivity"
-    tools:openDrawer="start">
+    tools:context=".activities.HomeActivity">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
@@ -38,8 +37,8 @@
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/ivProfile"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="@dimen/width_profile"
+                android:layout_height="@dimen/width_profile"
                 android:layout_below="@id/ivMenu"
                 android:layout_marginStart="@dimen/margin_medium_2"
                 android:layout_marginTop="@dimen/margin_medium"
@@ -94,7 +93,7 @@
         <include
             android:layout_height="match_parent"
             android:layout_width="match_parent"
-            layout="@layout/drawer_home"/>
+            layout="@layout/view_drawer"/>
 
     </com.google.android.material.navigation.NavigationView>
 

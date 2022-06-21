@@ -19,10 +19,19 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        mDrawerLayout.setStatusBarBackgroundColor(ContextCompat.getColor(this,R.color.white))
+        setupStatusBar()
+        setupListeners()
 
+
+    }
+
+    private fun setupListeners() {
         ivMenu.setOnClickListener {
             mDrawerLayout.openDrawer(Gravity.LEFT)
         }
+    }
+
+    private fun setupStatusBar() {
+        mDrawerLayout.setStatusBarBackgroundColor(ContextCompat.getColor(this,R.color.white))
     }
 }

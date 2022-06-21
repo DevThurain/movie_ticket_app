@@ -7,10 +7,10 @@
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/ivDrawerProfile"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="@dimen/width_profile"
+        android:layout_height="@dimen/width_profile"
         android:layout_marginStart="@dimen/margin_medium_2"
-        android:layout_marginTop="90dp"
+        android:layout_marginTop="@dimen/margin_drawer_top"
         android:scaleType="centerCrop"
         app:srcCompat="@drawable/placeholder_profile"
         app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
@@ -229,14 +229,6 @@
             />
 
     </LinearLayout>
-
-
-
-
-
-
-
-
 
 
 </RelativeLayout>

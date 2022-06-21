@@ -7,13 +7,24 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" >@color/color_primary</item>
         <!-- Customize your theme here. -->
+        <item name="android:autofilledHighlight">@android:color/transparent</item>
     </style>
 
-    <style name="Theme.MovieTicketApp.TransparentStatusBar" parent="Theme.MovieTicketApp">
-
+    <style name="Theme.MovieTicketApp.TransparentDarkStatusBar" parent="Theme.MovieTicketApp">
         <item name="android:fitsSystemWindows">true</item>
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
 
+    <style name="Theme.MovieTicketApp.TransparentLightStatusBar" parent="Theme.MovieTicketApp">
+        <item name="android:fitsSystemWindows">true</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+
+    <style name="customTabAppearanceStyle" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textStyle">bold</item>
     </style>
 </resources>

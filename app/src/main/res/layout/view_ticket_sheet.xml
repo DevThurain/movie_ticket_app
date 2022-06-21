@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="90dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:layout_behavior="@string/bottom_sheet_behavior"
+    app:behavior_hideable = "false"
+    app:behavior_peekHeight = "90dp"
+    android:elevation="0dp"
+    style="@style/GradientSheet">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnGetTicket"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_getting_start_button"
+        android:layout_centerInParent="true"
+        android:layout_marginHorizontal="@dimen/margin_medium_2"
+        android:fontFamily="@font/poppins_regular"
+        android:text="@string/lbl_get_your_ticket"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_regular_2x"
+        android:textStyle="bold"
+        app:cornerRadius="@dimen/margin_medium"
+        app:strokeColor="@color/white" />
+
+</RelativeLayout>

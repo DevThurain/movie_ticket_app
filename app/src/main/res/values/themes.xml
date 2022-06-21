@@ -10,9 +10,15 @@
         <item name="android:autofilledHighlight">@android:color/transparent</item>
     </style>
 
-    <style name="Theme.MovieTicketApp.TransparentStatusBar" parent="Theme.MovieTicketApp">
+    <style name="Theme.MovieTicketApp.TransparentDarkStatusBar" parent="Theme.MovieTicketApp">
         <item name="android:fitsSystemWindows">true</item>
         <item name="android:windowLightStatusBar">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+
+    <style name="Theme.MovieTicketApp.TransparentLightStatusBar" parent="Theme.MovieTicketApp">
+        <item name="android:fitsSystemWindows">true</item>
+        <item name="android:windowLightStatusBar">false</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
 
@@ -20,6 +26,12 @@
         <item name="android:fontFamily">@font/poppins_regular</item>
         <item name="android:textAllCaps">false</item>
         <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="MovieDetailChipAppearanceStyle" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">@font/poppins_light</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">@dimen/text_regular</item>
     </style>
 
 </resources>

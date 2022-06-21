@@ -34,5 +34,8 @@
     <dimen name="height_movie_image">200dp</dimen>
     <dimen name="height_getting_start_button">65dp</dimen>
     <dimen name="width_medium_icon">28dp</dimen>
+    <dimen name="width_profile">50dp</dimen>
+    <dimen name="margin_drawer_top">90dp</dimen>
+    <dimen name="height_chip">40dp</dimen>
 
 </resources>
