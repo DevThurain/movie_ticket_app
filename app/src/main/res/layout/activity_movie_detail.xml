@@ -34,6 +34,7 @@
                 app:layout_collapseMode="parallax">
 
                 <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivMovieDetailBack"
                     android:layout_width="@dimen/margin_xlarge"
                     android:layout_height="@dimen/margin_xlarge"
                     android:layout_marginStart="@dimen/margin_medium_2"
@@ -179,6 +180,37 @@
                 android:layout_marginTop="@dimen/margin_small"
                 android:fontFamily="@font/poppins_regular"
                 android:text="England, 1884 - a world on the brink of change. On the morning of her 16th birthday, Enola Holmes (Millie Bobby Brown) wakes to find that her mother (Helena Bonham Carter) has disappeared, leaving behind an odd assortment of gifts but no apparent clue as to where she's gone or why. After a free-spirited childhood, Enola suddenly finds herself under the care of her brothers Sherlock (Henry Cavill) and Mycroft (Sam Claflin), both set on sending her away to a finishing school for proper young ladies. Refusing to follow their wishes, Enola escapes to search for her mother in London. But when her journey finds her entangled in a mystery surrounding a young runaway Lord (Louis Partridge), Enola becomes a super-sleuth in her own right, outwitting her famous brother as she unravels a conspiracy that threatens to set back the course of history." />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvCastTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvPlot"
+                android:layout_marginStart="@dimen/margin_medium_2"
+                android:layout_marginTop="@dimen/margin_medium_2"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Cast"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_regular_2x"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvCastList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvCastTitle"
+                android:layout_marginTop="@dimen/margin_medium_2"
+                android:paddingEnd="@dimen/margin_medium_2"
+                android:clipToPadding="false"
+                tools:itemCount="5"
+                tools:listitem="@layout/view_holder_cast"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:orientation="horizontal"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_below="@id/rvCastList"
+                android:layout_height="@dimen/margin_bottom_movie_detail"/>
 
 
         </RelativeLayout>

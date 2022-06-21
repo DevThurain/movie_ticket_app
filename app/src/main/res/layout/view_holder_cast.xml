@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/margin_medium_2"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/ivCastProfile"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:srcCompat="@drawable/placeholder_cast"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvCastName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ivCastProfile"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:text="Millie Bobby Brown"
+        android:layout_alignStart="@id/ivCastProfile"
+        android:layout_alignEnd="@id/ivCastProfile"
+        android:textAlignment="center"
+        android:textSize="@dimen/text_smaller"
+        android:fontFamily="@font/poppins_regular"/>
+
+</RelativeLayout>
