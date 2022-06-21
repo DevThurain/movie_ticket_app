@@ -1,5 +1,6 @@
 package com.thurainx.movieticketapp.adaptors
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -11,7 +12,8 @@ import kotlinx.android.synthetic.main.view_holder_seat_row.view.*
 
 class SeatRowListAdapter(
     private val seatDataList: List<SeatData>,
-    private val delegate: SeatDelegate
+    private val delegate: SeatDelegate,
+    private val context: Context,
     ) : RecyclerView.Adapter<SeatRowListViewHolder>(){
 
     lateinit var seatListAdapter: SeatListAdapter
@@ -23,8 +25,12 @@ class SeatRowListAdapter(
     }
 
     override fun onBindViewHolder(holder: SeatRowListViewHolder, position: Int) {
-        seatListAdapter = SeatListAdapter(delegate,seatDataList[position])
+        seatListAdapter = SeatListAdapter(delegate,seatDataList[position],context)
         holder.itemView.rvSeatList.adapter = seatListAdapter
+
+        holder.itemView.tvSeatRowNo.text = seatDataList[position].name
+        holder.itemView.tvSeatRowBackNo.text = seatDataList[position].name
+
 
     }
 

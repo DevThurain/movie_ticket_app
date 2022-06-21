@@ -2,10 +2,18 @@
 <LinearLayout
     android:id="@+id/llSeat"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="20dp"
-    android:layout_height="20dp"
+    android:background="@drawable/background_untaken_seat"
+    android:layout_width="@dimen/width_seat"
+    android:layout_height="@dimen/width_seat"
     android:layout_marginStart="@dimen/margin_medium_2"
-    android:background="@color/color_amber"
-    >
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvSeatNumber"
+        android:textColor="@color/white"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
 
 </LinearLayout>

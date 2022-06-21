@@ -11,7 +11,6 @@
     </style>
 
     <style name="Theme.MovieTicketApp.TransparentDarkStatusBar" parent="Theme.MovieTicketApp">
-        <item name="android:fitsSystemWindows">true</item>
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
