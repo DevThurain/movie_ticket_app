@@ -6,14 +6,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.thurainx.movieticketapp.R
 
-class BuySnackActivity : AppCompatActivity() {
+class ChooseCinemaActivity : AppCompatActivity() {
     companion object{
         fun getIntent(context: Context) : Intent {
-            return Intent(context,BuySnackActivity::class.java)
+            return Intent(context,ChooseCinemaActivity::class.java)
         }
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_buy_snack)
+        setContentView(R.layout.activity_choose_cinema)
     }
 }

@@ -1,5 +1,7 @@
 package com.thurainx.movieticketapp.activities
 
+import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -14,6 +16,12 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class BuyTicketActivity : AppCompatActivity(), SeatDelegate {
     lateinit var mSeatRowListAdapter: SeatRowListAdapter
+
+    companion object{
+        fun getIntent(context: Context) : Intent {
+            return Intent(context,BuyTicketActivity::class.java)
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

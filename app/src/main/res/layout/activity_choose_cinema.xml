@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_primary"
+    tools:context=".activities.ChooseCinemaActivity">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivChooseCinemaBack"
+        android:layout_width="@dimen/margin_xlarge"
+        android:layout_height="@dimen/margin_xlarge"
+        android:layout_marginStart="@dimen/margin_medium_2"
+        android:layout_marginTop="@dimen/margin_large"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_baseline_chevron_left_24dp"
+        android:tint="@color/white" />
+
+    <LinearLayout
+        android:id="@+id/llDateTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ivChooseCinemaBack"
+        android:layout_marginHorizontal="@dimen/margin_medium_2"
+        android:layout_marginVertical="@dimen/margin_medium_2"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rbDate1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:button="@android:color/transparent"
+            android:fontFamily="@font/poppins_regular"
+            android:stateListAnimator="@drawable/background_date_text_size"
+            android:text="We\n8"
+            android:textAlignment="center"
+            android:textColor="@drawable/background_date_text_selector" />
+
+        <RadioButton
+            android:id="@+id/rbDate2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:button="@android:color/transparent"
+            android:fontFamily="@font/poppins_regular"
+            android:stateListAnimator="@drawable/background_date_text_size"
+            android:text="Th\n9"
+            android:textAlignment="center"
+            android:textColor="@drawable/background_date_text_selector" />
+
+        <RadioButton
+            android:id="@+id/rbDate3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:button="@android:color/transparent"
+            android:fontFamily="@font/poppins_regular"
+            android:stateListAnimator="@drawable/background_date_text_size"
+            android:text="Fr\n10"
+            android:textAlignment="center"
+            android:textColor="@drawable/background_date_text_selector" />
+
+        <RadioButton
+            android:id="@+id/rbDate4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:button="@android:color/transparent"
+            android:fontFamily="@font/poppins_regular"
+            android:stateListAnimator="@drawable/background_date_text_size"
+            android:text="Sa\n11"
+            android:textAlignment="center"
+            android:textColor="@drawable/background_date_text_selector" />
+
+        <RadioButton
+            android:id="@+id/rbDate5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:button="@android:color/transparent"
+            android:fontFamily="@font/poppins_regular"
+            android:stateListAnimator="@drawable/background_date_text_size"
+            android:text="Su\n12"
+            android:textAlignment="center"
+            android:textColor="@drawable/background_date_text_selector" />
+
+        <RadioButton
+            android:id="@+id/rbDate6"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:button="@android:color/transparent"
+            android:fontFamily="@font/poppins_regular"
+            android:stateListAnimator="@drawable/background_date_text_size"
+            android:text="Mo\n13"
+            android:textAlignment="center"
+            android:textColor="@drawable/background_date_text_selector" />
+
+        <RadioButton
+            android:id="@+id/rbDate7"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:button="@android:color/transparent"
+            android:fontFamily="@font/poppins_regular"
+            android:stateListAnimator="@drawable/background_date_text_size"
+            android:text="Tu\n14"
+            android:textAlignment="center"
+            android:textColor="@drawable/background_date_text_selector" />
+
+
+        <br.com.mauker.freeradiogroup.FreeRadioGroup
+            android:id="@+id/rgDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:checkedRadioButton="@id/rbDate3"
+            app:referenced_ids="rbDate1,rbDate2,rbDate3,rbDate4,rbDate5,rbDate6,rbDate7"
+            tools:ignore="MissingConstraints" />
+
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/llDateTime"
+        android:background="@drawable/background_rounded_nested_scroll_view">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/lblAvailableIn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_medium_2"
+            android:layout_marginTop="@dimen/margin_large"
+            android:fontFamily="@font/poppins_regular"
+            android:text="@string/lbl_available_in"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_regular_2x"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/llMovieType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/lblAvailableIn"
+            android:layout_marginHorizontal="@dimen/margin_medium_2"
+            android:layout_marginTop="@dimen/margin_medium_2">
+
+
+            <RadioButton
+                android:id="@+id/rbTwoD"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/background_radio_selector"
+                android:button="@android:color/transparent"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="center"
+                android:text="@string/lbl_2d"
+                android:textColor="@drawable/background_radio_text_selector" />
+
+            <View
+                android:layout_width="@dimen/margin_medium_2"
+                android:layout_height="@dimen/margin_small" />
+
+            <RadioButton
+                android:id="@+id/rbThreeD"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/background_radio_selector"
+                android:button="@android:color/transparent"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="center"
+                android:text="@string/lbl_3d"
+                android:textColor="@drawable/background_radio_text_selector" />
+
+            <View
+                android:layout_width="@dimen/margin_medium_2"
+                android:layout_height="@dimen/margin_small" />
+
+            <RadioButton
+                android:id="@+id/rbImax"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/background_radio_selector"
+                android:button="@android:color/transparent"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="center"
+                android:text="@string/lbl_imax"
+                android:textColor="@drawable/background_radio_text_selector" />
+
+
+            <br.com.mauker.freeradiogroup.FreeRadioGroup
+                android:id="@+id/radioGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:checkedRadioButton="@id/rbTwoD"
+                app:referenced_ids="rbTwoD,rbThreeD,rbImax"
+                tools:ignore="MissingConstraints" />
+
+
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/lblGoldenCity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/llMovieType"
+            android:layout_marginStart="@dimen/margin_medium_2"
+            android:layout_marginTop="@dimen/margin_large"
+            android:fontFamily="@font/poppins_regular"
+            android:text="CG : Golden City"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_regular_2x"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/llGoldenCityFirst"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/lblGoldenCity"
+            android:layout_marginHorizontal="@dimen/margin_medium_2"
+            android:layout_marginTop="@dimen/margin_medium_2">
+
+
+            <RadioButton
+                android:id="@+id/rbGCTime1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/background_radio_selector"
+                android:button="@android:color/transparent"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="center"
+                android:text="@string/lbl_9_30_am"
+                android:textColor="@drawable/background_radio_text_selector" />
+
+            <View
+                android:layout_width="@dimen/margin_medium_2"
+                android:layout_height="@dimen/margin_small" />
+
+            <RadioButton
+                android:id="@+id/rbGCTime2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/background_radio_selector"
+                android:button="@android:color/transparent"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="center"
+                android:text="@string/_11_45_am"
+                android:textColor="@drawable/background_radio_text_selector" />
+
+            <View
+                android:layout_width="@dimen/margin_medium_2"
+                android:layout_height="@dimen/margin_small" />
+
+            <RadioButton
+                android:id="@+id/rbGCTime3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/background_radio_selector"
+                android:button="@android:color/transparent"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="center"
+                android:text="@string/lbl_3_30_pm"
+                android:textColor="@drawable/background_radio_text_selector" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llGoldenCitySecond"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/llGoldenCityFirst"
+            android:layout_marginHorizontal="@dimen/margin_medium_2"
+            android:layout_marginTop="@dimen/margin_medium_2">
+
+
+            <RadioButton
+                android:id="@+id/rbGCTime4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/background_radio_selector"
+                android:button="@android:color/transparent"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="center"
+                android:text="@string/lbl_5_00_pm"
+                android:textColor="@drawable/background_radio_text_selector" />
+
+            <View
+                android:layout_width="@dimen/margin_medium_2"
+                android:layout_height="@dimen/margin_small" />
+
+            <RadioButton
+                android:id="@+id/rbGCTime5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/background_radio_selector"
+                android:button="@android:color/transparent"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="center"
+                android:text="@string/lbl_7_00_pm"
+                android:textColor="@drawable/background_radio_text_selector" />
+
+            <View
+                android:layout_width="@dimen/margin_medium_2"
+                android:layout_height="@dimen/margin_small" />
+
+            <RadioButton
+                android:id="@+id/rbGCTime6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/background_radio_selector"
+                android:button="@android:color/transparent"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="center"
+                android:text="@string/_9_30_pm"
+                android:textColor="@drawable/background_radio_text_selector" />
+
+
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/lblWestPoint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/llGoldenCitySecond"
+            android:layout_marginStart="@dimen/margin_medium_2"
+            android:layout_marginTop="@dimen/margin_large"
+            android:fontFamily="@font/poppins_regular"
+            android:text="CG : West Point"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_regular_2x"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/llWestPointFirst"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/lblWestPoint"
+            android:layout_marginHorizontal="@dimen/margin_medium_2"
+            android:layout_marginTop="@dimen/margin_medium_2">
+
+
+            <RadioButton
+                android:id="@+id/rbWPTime1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/background_radio_selector"
+                android:button="@android:color/transparent"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="center"
+                android:text="@string/lbl_9_30_am"
+                android:textColor="@drawable/background_radio_text_selector" />
+
+            <View
+                android:layout_width="@dimen/margin_medium_2"
+                android:layout_height="@dimen/margin_small" />
+
+            <RadioButton
+                android:id="@+id/rbWPTime2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/background_radio_selector"
+                android:button="@android:color/transparent"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="center"
+                android:text="@string/_11_45_am"
+                android:textColor="@drawable/background_radio_text_selector" />
+
+            <View
+                android:layout_width="@dimen/margin_medium_2"
+                android:layout_height="@dimen/margin_small" />
+
+            <RadioButton
+                android:id="@+id/rbWPTime3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/background_radio_selector"
+                android:button="@android:color/transparent"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="center"
+                android:text="@string/lbl_3_30_pm"
+                android:textColor="@drawable/background_radio_text_selector" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llWestPointSecond"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/llWestPointFirst"
+            android:layout_marginHorizontal="@dimen/margin_medium_2"
+            android:layout_marginTop="@dimen/margin_medium_2">
+
+
+            <RadioButton
+                android:id="@+id/rbWPTime4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/background_radio_selector"
+                android:button="@android:color/transparent"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="center"
+                android:text="@string/lbl_5_00_pm"
+                android:textColor="@drawable/background_radio_text_selector" />
+
+            <View
+                android:layout_width="@dimen/margin_medium_2"
+                android:layout_height="@dimen/margin_small" />
+
+            <RadioButton
+                android:id="@+id/rbWPTime5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/background_radio_selector"
+                android:button="@android:color/transparent"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="center"
+                android:text="@string/lbl_7_00_pm"
+                android:textColor="@drawable/background_radio_text_selector" />
+
+            <View
+                android:layout_width="@dimen/margin_medium_2"
+                android:layout_height="@dimen/margin_small" />
+
+            <RadioButton
+                android:id="@+id/rbWPTime6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/background_radio_selector"
+                android:button="@android:color/transparent"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="center"
+                android:text="@string/_9_30_pm"
+                android:textColor="@drawable/background_radio_text_selector" />
+
+
+        </LinearLayout>
+
+        <br.com.mauker.freeradiogroup.FreeRadioGroup
+            android:id="@+id/rgWestPoint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:checkedRadioButton="@id/rbGCTime1"
+            app:referenced_ids="rbGCTime1,rbGCTime2,rbGCTime3,rbGCTime4,rbGCTime5,rbGCTime6,rbWPTime1,rbWPTime2,rbWPTime3,rbWPTime4,rbWPTime5,rbWPTime6"
+            tools:ignore="MissingConstraints" />
+
+    </RelativeLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnChooseCinemaNext"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_getting_start_button"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginHorizontal="@dimen/margin_medium_3"
+        android:layout_marginBottom="@dimen/margin_medium"
+        android:fontFamily="@font/poppins_regular"
+        android:text="Next"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_regular_2x"
+        android:textStyle="bold"
+        app:cornerRadius="@dimen/margin_medium"
+        app:strokeColor="@color/white" />
+
+
+</RelativeLayout>

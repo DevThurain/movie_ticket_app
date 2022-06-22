@@ -6,9 +6,15 @@
         <entry key="..\:/Users/thura/AndroidStudioProjects/MovieTicketApp/app/src/main/res/drawable/background_add_seat.xml" value="0.1475" />
         <entry key="..\:/Users/thura/AndroidStudioProjects/MovieTicketApp/app/src/main/res/drawable/background_add_snack.xml" value="0.1475" />
         <entry key="..\:/Users/thura/AndroidStudioProjects/MovieTicketApp/app/src/main/res/drawable/background_calculate_snack.xml" value="0.1" />
+        <entry key="..\:/Users/thura/AndroidStudioProjects/MovieTicketApp/app/src/main/res/drawable/background_date_text_size.xml" value="0.1425" />
+        <entry key="..\:/Users/thura/AndroidStudioProjects/MovieTicketApp/app/src/main/res/drawable/background_date_text_size_selector.xml" value="0.1425" />
         <entry key="..\:/Users/thura/AndroidStudioProjects/MovieTicketApp/app/src/main/res/drawable/background_digit_snack.xml" value="0.1475" />
         <entry key="..\:/Users/thura/AndroidStudioProjects/MovieTicketApp/app/src/main/res/drawable/background_get_ticket_sheet.xml" value="0.1365" />
         <entry key="..\:/Users/thura/AndroidStudioProjects/MovieTicketApp/app/src/main/res/drawable/background_play_button.xml" value="0.162" />
+        <entry key="..\:/Users/thura/AndroidStudioProjects/MovieTicketApp/app/src/main/res/drawable/background_radio_regular.xml" value="0.135" />
+        <entry key="..\:/Users/thura/AndroidStudioProjects/MovieTicketApp/app/src/main/res/drawable/background_radio_selected.xml" value="0.135" />
+        <entry key="..\:/Users/thura/AndroidStudioProjects/MovieTicketApp/app/src/main/res/drawable/background_radio_selector.xml" value="0.135" />
+        <entry key="..\:/Users/thura/AndroidStudioProjects/MovieTicketApp/app/src/main/res/drawable/background_radio_text_selector.xml" value="0.1425" />
         <entry key="..\:/Users/thura/AndroidStudioProjects/MovieTicketApp/app/src/main/res/drawable/background_remove_snack.xml" value="0.1475" />
         <entry key="..\:/Users/thura/AndroidStudioProjects/MovieTicketApp/app/src/main/res/drawable/background_rounded_nested_scroll_view.xml" value="0.162" />
         <entry key="..\:/Users/thura/AndroidStudioProjects/MovieTicketApp/app/src/main/res/drawable/background_seat.xml" value="0.1475" />
@@ -21,6 +27,7 @@
         <entry key="..\:/Users/thura/AndroidStudioProjects/MovieTicketApp/app/src/main/res/font/font.xml" value="0.2299145299145299" />
         <entry key="..\:/Users/thura/AndroidStudioProjects/MovieTicketApp/app/src/main/res/layout/activity_buy_snack.xml" value="0.25" />
         <entry key="..\:/Users/thura/AndroidStudioProjects/MovieTicketApp/app/src/main/res/layout/activity_buy_ticket.xml" value="0.25" />
+        <entry key="..\:/Users/thura/AndroidStudioProjects/MovieTicketApp/app/src/main/res/layout/activity_choose_cinema.xml" value="0.1" />
         <entry key="..\:/Users/thura/AndroidStudioProjects/MovieTicketApp/app/src/main/res/layout/activity_get_started.xml" value="0.2259963768115942" />
         <entry key="..\:/Users/thura/AndroidStudioProjects/MovieTicketApp/app/src/main/res/layout/activity_home.xml" value="0.2259963768115942" />
         <entry key="..\:/Users/thura/AndroidStudioProjects/MovieTicketApp/app/src/main/res/layout/activity_main.xml" value="0.264" />

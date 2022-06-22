@@ -36,4 +36,14 @@
     <string name="lbl_e_wallet">E-Wallet</string>
     <string name="lbl_paypal">Paypal</string>
     <string name="lbl_internet_banking_atm_card">Internet banking (ATM Card)</string>
+    <string name="lbl_available_in">Available In</string>
+    <string name="lbl_2d">2D</string>
+    <string name="lbl_3d">3D</string>
+    <string name="lbl_imax">IMAX</string>
+    <string name="lbl_9_30_am">9:30 AM</string>
+    <string name="_11_45_am">11:45 AM</string>
+    <string name="lbl_3_30_pm">3:30 PM</string>
+    <string name="lbl_5_00_pm">5:00 PM</string>
+    <string name="lbl_7_00_pm">7:00 PM</string>
+    <string name="_9_30_pm">9:30 PM</string>
 </resources>
