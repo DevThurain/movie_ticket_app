@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<com.thurainx.movieticketapp.viewpods.ComboSetViewpod xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/llComboSetM"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/ivBuySnackBack">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvSnackTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_regular"
+            android:text="Combo Set M"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_regular_2x" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvSnackDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_regular"
+            android:text="Combo Set M 22oz. Coke (x1)\nand medium popcorn (x1)"
+            android:textColor="@color/color_grey"
+            android:textSize="@dimen/text_regular" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@id/llSnackCount"
+            android:layout_alignEnd="@id/llSnackCount"
+            android:layout_above="@id/llSnackCount"
+            android:text="15$"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppins_regular"
+            />
+
+        <LinearLayout
+            android:id="@+id/llSnackCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/background_snack_count"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivSnackRemove"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:padding="@dimen/margin_small"
+                app:srcCompat="@drawable/ic_baseline_remove_24dp"
+                app:tint="@color/black" />
+
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/color_grey" />
+
+            <LinearLayout
+                android:layout_width="30dp"
+                android:layout_height="30dp">
+
+                <TextView
+                    android:id="@+id/tvSnackTotal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="0" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/color_grey" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivSnackAdd"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:padding="@dimen/margin_small"
+                app:srcCompat="@drawable/ic_baseline_add_24dp"
+                app:tint="@color/black" />
+
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+
+</com.thurainx.movieticketapp.viewpods.ComboSetViewpod>
+
+

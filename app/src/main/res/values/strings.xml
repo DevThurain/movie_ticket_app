@@ -28,4 +28,12 @@
     <string name="lbl_your_selection">Your Selection</string>
     <string name="lbl_tickets">Tickets</string>
     <string name="lbl_seats">Seats</string>
+    <string name="lbl_enter_promo_code">Enter promo code</string>
+    <string name="lbl_dont_have_any_promo_code">Don\'t have any promo code ?</string>
+    <string name="lbl_payment_method">Payment Method</string>
+    <string name="lbl_credit_card">Credit Card</string>
+    <string name="lbl_visa_master_card_jcb">Visa, master card, JCB</string>
+    <string name="lbl_e_wallet">E-Wallet</string>
+    <string name="lbl_paypal">Paypal</string>
+    <string name="lbl_internet_banking_atm_card">Internet banking (ATM Card)</string>
 </resources>
