@@ -7,6 +7,11 @@
     <style name="ShapeAppearanceOverlay.App.CornerSizeMedium" parent="">
         <item name="cornerSize">@dimen/margin_medium_2</item>
     </style>
+    <style name="ShapeAppearanceOverlay.App.Receipt" parent="">
+        <item name="cornerSizeTopRight">@dimen/margin_medium_2</item>
+        <item name="cornerSizeTopLeft">@dimen/margin_medium_2</item>
+    </style>
+
 
     <style name="GradientSheet" parent="Widget.Design.BottomSheet.Modal">
         <item name="android:background">@drawable/background_get_ticket_sheet</item>

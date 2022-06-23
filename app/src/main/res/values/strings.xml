@@ -51,4 +51,11 @@
     <string name="lbl_card_holder">Card Holder</string>
     <string name="tv_cvc">CVC</string>
     <string name="lbl_expires">EXPIRES</string>
+    <string name="lbl_awesome">Awesome!</string>
+    <string name="lbl_booking_no">Booking No</string>
+    <string name="lbl_theater">Theater</string>
+    <string name="lbl_show_time_date">Show time - Date</string>
+    <string name="lbl_screen">Screen</string>
+    <string name="lbl_row">Row</string>
+    <string name="lbl_price">Price</string>
 </resources>

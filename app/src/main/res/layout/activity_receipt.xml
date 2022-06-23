@@ -1,9 +1,388 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F7F7F7"
     tools:context=".activities.ReceiptActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivReceiptClose"
+        android:layout_width="@dimen/margin_xlarge"
+        android:layout_height="@dimen/margin_xlarge"
+        android:layout_marginStart="@dimen/margin_medium_2"
+        android:layout_marginTop="@dimen/margin_large"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_baseline_close_24dp"
+        android:tint="@color/black" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/lblAwesome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ivReceiptClose"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:fontFamily="@font/poppins_regular"
+        android:text="@string/lbl_awesome"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_regular_3x" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/lblThisIsYourTicket"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lblAwesome"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:fontFamily="@font/poppins_regular"
+        android:text="This is your ticket"
+        android:textAlignment="center"
+        android:textColor="@color/color_grey"
+        android:textSize="@dimen/text_regular_2x" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/ivReceiptCover"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_below="@id/lblThisIsYourTicket"
+        android:layout_marginHorizontal="@dimen/margin_large"
+        android:layout_marginTop="@dimen/margin_medium_2"
+        android:scaleType="centerCrop"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.Receipt"
+        app:srcCompat="@drawable/placeholder_receipt" />
+
+    <LinearLayout
+        android:id="@+id/llMovieHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ivReceiptCover"
+        android:layout_marginHorizontal="@dimen/margin_large"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvReceiptMoiveName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_medium_2"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:fontFamily="@font/poppins_regular"
+            android:text="Enola Holmes"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_regular_2x" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvReceiptMoiveDuration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_medium_2"
+            android:fontFamily="@font/poppins_regular"
+            android:text="105m - IMAX"
+            android:textAlignment="center"
+            android:textColor="@color/color_grey"
+            android:textSize="@dimen/text_regular_2x" />
+
+
+    </LinearLayout>
+
+    <com.vipulasri.ticketview.TicketView
+        android:id="@+id/ticketViewFirst"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_xlarge"
+        android:layout_below="@id/llMovieHeader"
+        android:layout_centerInParent="true"
+        android:layout_marginHorizontal="@dimen/margin_large"
+        app:ticketDividerPadding="0dp"
+        app:ticketDividerType="dash"
+        app:ticketDividerDashLength="@dimen/margin_medium"
+        app:ticketDividerDashGap="@dimen/margin_medium"
+        app:ticketElevation="0dp"
+        app:ticketDividerColor="@color/color_grey"
+        app:ticketOrientation="horizontal"
+        app:ticketScallopPositionPercent="50"
+        app:ticketScallopRadius="10dp"
+        app:ticketShowBorder="false"
+        app:ticketShowDivider="true" />
+
+    <LinearLayout
+        android:id="@+id/llMovieDetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ticketViewFirst"
+        android:background="@color/white"
+        android:layout_marginHorizontal="@dimen/margin_large"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/llBookingNo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/lblBooking"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/margin_medium_2"
+                android:fontFamily="@font/poppins_regular"
+                android:text="@string/lbl_booking_no"
+                android:textAlignment="center"
+                android:textColor="@color/color_grey"
+                android:textSize="@dimen/text_regular_2x" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvBooking"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_medium_2"
+                android:fontFamily="@font/poppins_regular"
+                android:text="GC1265435456"
+                android:textAlignment="textEnd"
+                android:textColor="@color/color_dark_grey"
+                android:textSize="@dimen/text_regular_2x" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llShowTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_medium_2"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/lblShowTime"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/margin_medium_2"
+                android:fontFamily="@font/poppins_regular"
+                android:text="@string/lbl_show_time_date"
+                android:textAlignment="center"
+                android:textColor="@color/color_grey"
+                android:textSize="@dimen/text_regular_2x" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvShowTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_medium_2"
+                android:fontFamily="@font/poppins_regular"
+                android:text="7:00 PM - 10 May"
+                android:textAlignment="textEnd"
+                android:textColor="@color/color_dark_grey"
+                android:textSize="@dimen/text_regular_2x" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llTheater"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_medium_2"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/lblTheater"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/margin_medium_2"
+                android:fontFamily="@font/poppins_regular"
+                android:text="@string/lbl_theater"
+                android:textAlignment="center"
+                android:textColor="@color/color_grey"
+                android:textSize="@dimen/text_regular_2x" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvTheater"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_medium_2"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Galaxy Cinama - Golden City"
+                android:textAlignment="textEnd"
+                android:textColor="@color/color_dark_grey"
+                android:textSize="@dimen/text_regular_2x" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llScreen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_medium_2"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/lblScreen"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/margin_medium_2"
+                android:fontFamily="@font/poppins_regular"
+                android:text="@string/lbl_screen"
+                android:textAlignment="center"
+                android:textColor="@color/color_grey"
+                android:textSize="@dimen/text_regular_2x" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvScreen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_medium_2"
+                android:fontFamily="@font/poppins_regular"
+                android:text="2"
+                android:textAlignment="textEnd"
+                android:textColor="@color/color_dark_grey"
+                android:textSize="@dimen/text_regular_2x" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_medium_2"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/lblRow"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/margin_medium_2"
+                android:fontFamily="@font/poppins_regular"
+                android:text="@string/lbl_row"
+                android:textAlignment="center"
+                android:textColor="@color/color_grey"
+                android:textSize="@dimen/text_regular_2x" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvRow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_medium_2"
+                android:fontFamily="@font/poppins_regular"
+                android:text="D"
+                android:textAlignment="textEnd"
+                android:textColor="@color/color_dark_grey"
+                android:textSize="@dimen/text_regular_2x" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llSeat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_medium_2"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/lblSeat"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/margin_medium_2"
+                android:fontFamily="@font/poppins_regular"
+                android:text="@string/lbl_seats"
+                android:textAlignment="center"
+                android:textColor="@color/color_grey"
+                android:textSize="@dimen/text_regular_2x" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvSeat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_medium_2"
+                android:fontFamily="@font/poppins_regular"
+                android:text="5, 6"
+                android:textAlignment="textEnd"
+                android:textColor="@color/color_dark_grey"
+                android:textSize="@dimen/text_regular_2x" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_medium_2"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/lblPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/margin_medium_2"
+                android:fontFamily="@font/poppins_regular"
+                android:text="@string/lbl_price"
+                android:textAlignment="center"
+                android:textColor="@color/color_grey"
+                android:textSize="@dimen/text_regular_2x" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_medium_2"
+                android:fontFamily="@font/poppins_regular"
+                android:text="$40.00"
+                android:textAlignment="textEnd"
+                android:textColor="@color/color_dark_grey"
+                android:textSize="@dimen/text_regular_2x" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <com.vipulasri.ticketview.TicketView
+        android:id="@+id/ticketViewSecond"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_xlarge"
+        android:layout_below="@id/llMovieDetail"
+        android:layout_centerInParent="true"
+        android:layout_marginHorizontal="@dimen/margin_large"
+        app:ticketDividerPadding="0dp"
+        app:ticketDividerType="dash"
+        app:ticketDividerDashLength="@dimen/margin_medium"
+        app:ticketDividerDashGap="@dimen/margin_medium"
+        app:ticketElevation="0dp"
+        app:ticketDividerColor="@color/color_grey"
+        app:ticketOrientation="horizontal"
+        app:ticketScallopPositionPercent="50"
+        app:ticketScallopRadius="10dp"
+        app:ticketShowBorder="false"
+        app:ticketShowDivider="true" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ticketViewSecond"
+        android:layout_marginHorizontal="@dimen/margin_large"
+        android:paddingTop="@dimen/margin_medium"
+        android:paddingBottom="@dimen/margin_large"
+        android:gravity="center"
+        android:background="@drawable/background_qr">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivReceiptQr"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"/>
+
+
+    </LinearLayout>
+
+
+
+
+
+
+</RelativeLayout>
