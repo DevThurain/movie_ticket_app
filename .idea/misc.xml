@@ -6,6 +6,7 @@
         <entry key="..\:/Users/thura/AndroidStudioProjects/MovieTicketApp/app/src/main/res/drawable/background_add_seat.xml" value="0.1475" />
         <entry key="..\:/Users/thura/AndroidStudioProjects/MovieTicketApp/app/src/main/res/drawable/background_add_snack.xml" value="0.1475" />
         <entry key="..\:/Users/thura/AndroidStudioProjects/MovieTicketApp/app/src/main/res/drawable/background_calculate_snack.xml" value="0.1" />
+        <entry key="..\:/Users/thura/AndroidStudioProjects/MovieTicketApp/app/src/main/res/drawable/background_credit_card.xml" value="0.1425" />
         <entry key="..\:/Users/thura/AndroidStudioProjects/MovieTicketApp/app/src/main/res/drawable/background_date_text_size.xml" value="0.1425" />
         <entry key="..\:/Users/thura/AndroidStudioProjects/MovieTicketApp/app/src/main/res/drawable/background_date_text_size_selector.xml" value="0.1425" />
         <entry key="..\:/Users/thura/AndroidStudioProjects/MovieTicketApp/app/src/main/res/drawable/background_digit_snack.xml" value="0.1475" />
@@ -32,10 +33,12 @@
         <entry key="..\:/Users/thura/AndroidStudioProjects/MovieTicketApp/app/src/main/res/layout/activity_home.xml" value="0.2259963768115942" />
         <entry key="..\:/Users/thura/AndroidStudioProjects/MovieTicketApp/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/thura/AndroidStudioProjects/MovieTicketApp/app/src/main/res/layout/activity_movie_detail.xml" value="0.13852813852813853" />
+        <entry key="..\:/Users/thura/AndroidStudioProjects/MovieTicketApp/app/src/main/res/layout/activity_payment.xml" value="0.4" />
         <entry key="..\:/Users/thura/AndroidStudioProjects/MovieTicketApp/app/src/main/res/layout/activity_welcome.xml" value="0.2259963768115942" />
         <entry key="..\:/Users/thura/AndroidStudioProjects/MovieTicketApp/app/src/main/res/layout/drawer_home.xml" value="0.2259963768115942" />
         <entry key="..\:/Users/thura/AndroidStudioProjects/MovieTicketApp/app/src/main/res/layout/fragment_login.xml" value="0.2259963768115942" />
         <entry key="..\:/Users/thura/AndroidStudioProjects/MovieTicketApp/app/src/main/res/layout/fragment_sing_up.xml" value="0.2259963768115942" />
+        <entry key="..\:/Users/thura/AndroidStudioProjects/MovieTicketApp/app/src/main/res/layout/view_credit_card.xml" value="0.25" />
         <entry key="..\:/Users/thura/AndroidStudioProjects/MovieTicketApp/app/src/main/res/layout/view_holder_cast.xml" value="0.4" />
         <entry key="..\:/Users/thura/AndroidStudioProjects/MovieTicketApp/app/src/main/res/layout/view_holder_full_seat.xml" value="0.25" />
         <entry key="..\:/Users/thura/AndroidStudioProjects/MovieTicketApp/app/src/main/res/layout/view_holder_movie.xml" value="0.2259963768115942" />

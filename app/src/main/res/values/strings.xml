@@ -46,4 +46,8 @@
     <string name="lbl_5_00_pm">5:00 PM</string>
     <string name="lbl_7_00_pm">7:00 PM</string>
     <string name="_9_30_pm">9:30 PM</string>
+    <string name="lbl_payment_amount">Payment amount</string>
+    <string name="lbl_card_number">Card Number</string>
+    <string name="lbl_card_holder">Card Holder</string>
+    <string name="tv_cvc">CVC</string>
 </resources>

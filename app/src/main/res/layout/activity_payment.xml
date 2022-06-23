@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.PaymentActivity">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivPaymentBack"
+        android:layout_width="@dimen/margin_xlarge"
+        android:layout_height="@dimen/margin_xlarge"
+        android:layout_marginStart="@dimen/margin_medium_2"
+        android:layout_marginTop="@dimen/margin_large"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_baseline_chevron_left_24dp"
+        android:tint="@color/black"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/lblPaymentAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ivPaymentBack"
+        android:layout_marginStart="@dimen/margin_medium_2"
+        android:layout_marginTop="@dimen/margin_medium_2"
+        android:fontFamily="@font/poppins_regular"
+        android:text="@string/lbl_payment_amount"
+        android:textColor="@color/color_grey"
+        android:textSize="@dimen/text_regular"
+        android:textStyle="bold" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvPaymentAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lblPaymentAmount"
+        android:layout_marginStart="@dimen/margin_medium_2"
+        android:layout_marginTop="@dimen/margin_small"
+        android:fontFamily="@font/poppins_regular"
+        android:text="$ 926.25"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_heading_1x"
+        android:textStyle="bold" />
+
+
+    <alirezat775.lib.carouselview.CarouselView
+        android:id="@+id/carouselViewCreditCard"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_below="@id/tvPaymentAmount"
+        android:layout_marginTop="@dimen/margin_medium_2"
+        android:clipToPadding="false"
+        android:paddingHorizontal="@dimen/margin_medium_2" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvCardNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/carouselViewCreditCard"
+        android:layout_marginStart="@dimen/margin_medium_2"
+        android:layout_marginTop="@dimen/margin_card_medium_2"
+        android:fontFamily="@font/poppins_regular"
+        android:text="@string/lbl_card_number"
+        android:textColor="@color/color_grey"
+        android:textSize="@dimen/text_regular" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/inputLayoutCardNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvCardNumber"
+        android:layout_marginHorizontal="@dimen/margin_medium_2">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:paddingTop="@dimen/margin_card_medium_2"
+            android:fontFamily="@font/poppins_regular"
+            android:inputType="numberDecimal" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvCardHolder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/inputLayoutCardNumber"
+        android:layout_marginStart="@dimen/margin_medium_2"
+        android:layout_marginTop="@dimen/margin_card_medium_2"
+        android:fontFamily="@font/poppins_regular"
+        android:text="@string/lbl_card_holder"
+        android:textColor="@color/color_grey"
+        android:textSize="@dimen/text_regular" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/inputLayoutCardHolder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvCardHolder"
+        android:layout_marginHorizontal="@dimen/margin_medium_2"
+        android:backgroundTint="@color/white">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:paddingTop="@dimen/margin_card_medium_2"
+            android:fontFamily="@font/poppins_regular"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:id="@+id/llDateAndCVC"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/inputLayoutCardHolder"
+        android:layout_marginTop="@dimen/margin_card_medium_2"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_medium_2"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvExpirationDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Expiration Date"
+                android:textColor="@color/color_grey"
+                android:textSize="@dimen/text_regular" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputLayoutExpirationDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/white"
+                    android:fontFamily="@font/poppins_regular"
+                    android:inputType="text"
+                    android:paddingTop="@dimen/margin_card_medium_2" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_medium_2"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvCVC"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
+                android:text="@string/tv_cvc"
+                android:textColor="@color/color_grey"
+                android:textSize="@dimen/text_regular" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputLayoutCVC"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/white"
+                    android:fontFamily="@font/poppins_regular"
+                    android:inputType="text"
+                    android:paddingTop="@dimen/margin_card_medium_2" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivAddCircle"
+        android:layout_width="@dimen/margin_xlarge"
+        android:layout_height="@dimen/margin_xlarge"
+        android:layout_below="@id/llDateAndCVC"
+        android:layout_marginStart="@dimen/margin_medium_2"
+        android:layout_marginTop="@dimen/margin_medium_2"
+        app:srcCompat="@drawable/ic_baseline_add_circle_24_dp"
+        app:tint="@color/color_green" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvAddNewCard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_regular"
+        android:text="Add New Card"
+        android:gravity="center"
+        android:layout_toEndOf="@id/ivAddCircle"
+        android:layout_marginStart="@dimen/margin_medium"
+        android:layout_alignTop="@id/ivAddCircle"
+        android:layout_alignBottom="@id/ivAddCircle"
+        android:textColor="@color/color_green"
+        android:textSize="@dimen/text_regular" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnPaymentConfirm"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_getting_start_button"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginHorizontal="@dimen/margin_medium_3"
+        android:layout_marginBottom="@dimen/margin_medium"
+        android:fontFamily="@font/poppins_regular"
+        android:text="@string/lbl_confirm"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_regular_2x"
+        android:textStyle="bold"
+        app:cornerRadius="@dimen/margin_medium"
+        app:strokeColor="@color/white" />
+
+</RelativeLayout>
