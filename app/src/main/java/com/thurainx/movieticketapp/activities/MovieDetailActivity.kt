@@ -6,7 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.thurainx.movieticketapp.R
 import com.thurainx.movieticketapp.adaptors.CastListAdapter
+import kotlinx.android.synthetic.main.activity_buy_snack.*
 import kotlinx.android.synthetic.main.activity_movie_detail.*
+import kotlinx.android.synthetic.main.view_ticket_sheet.*
 
 class MovieDetailActivity : AppCompatActivity() {
     companion object{
@@ -20,6 +22,17 @@ class MovieDetailActivity : AppCompatActivity() {
         setContentView(R.layout.activity_movie_detail)
 
         setUpCastRecyclerView()
+        setUpListeners()
+    }
+
+    private fun setUpListeners() {
+        btnGetTicket.setOnClickListener {
+            val intent = ChooseCinemaActivity.getIntent(this)
+            startActivity(intent)
+        }
+        ivMovieDetailBack.setOnClickListener {
+            super.onBackPressed()
+        }
     }
 
     private fun setUpCastRecyclerView() {

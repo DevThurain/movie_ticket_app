@@ -13,36 +13,36 @@ import com.thurainx.movieticketapp.models.Dummy
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.view_holder_seat_row.*
 
-class MainActivity : AppCompatActivity(), SeatDelegate {
+class MainActivity : AppCompatActivity() {
     lateinit var mSeatRowListAdapter: SeatRowListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        setupSeatRowListRecyclerView()
+       // setupSeatRowListRecyclerView()
     }
 
-    private fun setupSeatRowListRecyclerView() {
-        mSeatRowListAdapter = SeatRowListAdapter(Dummy().dummySeatList, this,this)
-        rvSeatRowList.adapter = mSeatRowListAdapter
-    }
+//    private fun setupSeatRowListRecyclerView() {
+//        mSeatRowListAdapter = SeatRowListAdapter(Dummy().dummySeatList, this,this)
+//        rvSeatRowList.adapter = mSeatRowListAdapter
+//    }
 
 
-    override fun onTapAddSeat(view: View) {
-        view.setBackgroundColor(Color.BLUE)
-
-    }
-
-    override fun onTapRemoveSeat(view: View) {
-        view.setBackgroundColor(Color.RED)
-        Toast.makeText(this,"Remove Seat",Toast.LENGTH_SHORT).show()
-
-    }
-
-    override fun onTapUnAvailableSeat() {
-        Toast.makeText(this,"Unavailable Seat",Toast.LENGTH_SHORT).show()
-    }
+//    override fun onTapAddSeat(view: View) {
+//        view.setBackgroundColor(Color.BLUE)
+//
+//    }
+//
+//    override fun onTapRemoveSeat(view: View) {
+//        view.setBackgroundColor(Color.RED)
+//        Toast.makeText(this,"Remove Seat",Toast.LENGTH_SHORT).show()
+//
+//    }
+//
+//    override fun onTapUnAvailableSeat() {
+//        Toast.makeText(this,"Unavailable Seat",Toast.LENGTH_SHORT).show()
+//    }
 
 
 }

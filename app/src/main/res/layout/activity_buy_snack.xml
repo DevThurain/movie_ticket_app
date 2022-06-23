@@ -14,8 +14,7 @@
         android:layout_marginTop="@dimen/margin_large"
         android:background="@android:color/transparent"
         android:src="@drawable/ic_baseline_chevron_left_24dp"
-        android:tint="@color/black"
-        />
+        android:tint="@color/black" />
 
     <include
         android:id="@+id/vpComboSetM"
@@ -249,7 +248,7 @@
     </LinearLayout>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnBuyTicket"
+        android:id="@+id/btnPaySnack"
         android:layout_width="match_parent"
         android:layout_height="@dimen/height_getting_start_button"
         android:layout_alignParentBottom="true"

@@ -33,11 +33,10 @@ class SeatListAdapter(private val delegate: SeatDelegate,private val seatData: S
 
         holder.itemView.llSeat.setOnClickListener {
             if((it.background ).constantState  == ContextCompat.getDrawable(context,R.drawable.background_add_seat)?.constantState){
-                holder.itemView.tvSeatNumber.text = ""
-                delegate.onTapRemoveSeat(holder.itemView.llSeat)
+                delegate.onTapRemoveSeat(layout = it, holder.itemView.tvSeatNumber)
             }else if(!seatData.emptyList.contains(position) && !seatData.takenList.contains(position)){
-                holder.itemView.tvSeatNumber.text = (position.plus(1)).toString()
-                delegate.onTapAddSeat(holder.itemView.llSeat)
+                val number = (position.plus(1)).toString()
+                delegate.onTapAddSeat(layout = it, textView = holder.itemView.tvSeatNumber, number = number)
             } else if (seatData.takenList.contains(position)){
                 delegate.onTapUnAvailableSeat()
             }
