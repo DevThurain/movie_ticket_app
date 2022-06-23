@@ -15,11 +15,18 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
 
+    <style name="Theme.MovieTicketApp.TransparentDarkFitStatusBar" parent="Theme.MovieTicketApp">
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:fitsSystemWindows">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+
     <style name="Theme.MovieTicketApp.TransparentLightStatusBar" parent="Theme.MovieTicketApp">
         <item name="android:fitsSystemWindows">true</item>
         <item name="android:windowLightStatusBar">false</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
+
 
     <style name="customTabAppearanceStyle" parent="@android:style/TextAppearance.Small">
         <item name="android:fontFamily">@font/poppins_regular</item>

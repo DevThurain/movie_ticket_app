@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="300dp"
-    android:layout_height="190dp"
+    android:layout_width="@dimen/width_credit_card"
+    android:layout_height="@dimen/height_credit_card"
     android:background="@drawable/background_credit_card"
     >
 
@@ -95,7 +95,8 @@
             android:textColor="@color/white"
             android:layout_marginEnd="@dimen/margin_medium_2"
             android:fontFamily="@font/poppins_light"
-            android:text="CARD HOLDER"
+            android:text="@string/lbl_card_holder"
+            android:textAllCaps="true"
             />
 
         <TextView
@@ -128,7 +129,7 @@
             android:textColor="@color/white"
             android:textAlignment="textEnd"
             android:fontFamily="@font/poppins_light"
-            android:text="EXPIRES"
+            android:text="@string/lbl_expires"
             />
 
         <TextView

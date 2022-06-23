@@ -59,7 +59,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/carouselViewCreditCard"
         android:layout_marginStart="@dimen/margin_medium_2"
-        android:layout_marginTop="@dimen/margin_card_medium_2"
+        android:layout_marginTop="@dimen/margin_medium_2"
         android:fontFamily="@font/poppins_regular"
         android:text="@string/lbl_card_number"
         android:textColor="@color/color_grey"
@@ -87,7 +87,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/inputLayoutCardNumber"
         android:layout_marginStart="@dimen/margin_medium_2"
-        android:layout_marginTop="@dimen/margin_card_medium_2"
+        android:layout_marginTop="@dimen/margin_medium_2"
         android:fontFamily="@font/poppins_regular"
         android:text="@string/lbl_card_holder"
         android:textColor="@color/color_grey"
@@ -115,7 +115,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/inputLayoutCardHolder"
-        android:layout_marginTop="@dimen/margin_card_medium_2"
+        android:layout_marginTop="@dimen/margin_medium_2"
         android:orientation="horizontal">
 
         <LinearLayout

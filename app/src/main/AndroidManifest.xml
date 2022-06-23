@@ -18,11 +18,7 @@
             android:theme="@style/Theme.MovieTicketApp.TransparentDarkStatusBar"
             android:windowSoftInputMode="adjustPan"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".activities.ChooseCinemaActivity"
@@ -54,7 +50,7 @@
         <activity
             android:name=".activities.HomeActivity"
             android:exported="true"
-            android:theme="@style/Theme.MovieTicketApp.TransparentDarkStatusBar" />
+            android:theme="@style/Theme.MovieTicketApp.TransparentDarkFitStatusBar" />
         <activity
             android:name=".activities.WelcomeActivity"
             android:exported="false"
@@ -64,23 +60,18 @@
             android:name=".activities.GetStartedActivity"
             android:exported="true">
 
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
+             <intent-filter>
+             <action android:name="android.intent.action.MAIN" />
 
 
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
+             <category android:name="android.intent.category.LAUNCHER" />
+             </intent-filter>
         </activity>
         <activity
             android:name=".activities.MainActivity"
             android:exported="true">
 
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
 
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
         </activity>
     </application>
 

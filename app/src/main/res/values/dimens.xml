@@ -40,5 +40,7 @@
     <dimen name="height_ticket_sheet">90dp</dimen>
     <dimen name="margin_bottom_movie_detail">120dp</dimen>
     <dimen name="width_seat">22dp</dimen>
+    <dimen name="width_credit_card">300dp</dimen>
+    <dimen name="height_credit_card">190dp</dimen>
 
 </resources>

@@ -22,13 +22,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/tvEmail"
-        app:placeholderText="example@gmail.com"
+        app:hintEnabled="false"
         android:layout_marginHorizontal="@dimen/margin_medium_2">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/white"
+            android:hint="example@gmail.com"
+            android:paddingTop="@dimen/margin_card_medium_2"
             android:fontFamily="@font/poppins_regular"
             android:inputType="textEmailAddress" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -58,6 +60,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/white"
+            android:paddingTop="@dimen/margin_card_medium_2"
             android:fontFamily="@font/poppins_regular"
             android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
