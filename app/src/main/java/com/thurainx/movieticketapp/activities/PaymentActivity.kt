@@ -31,7 +31,8 @@ class PaymentActivity : AppCompatActivity() {
         }
 
         btnPaymentConfirm.setOnClickListener {
-
+            val intent = ReceiptActivity.getIntent(this)
+            startActivity(intent)
         }
     }
 

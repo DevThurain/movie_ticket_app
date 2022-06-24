@@ -42,5 +42,6 @@
     <dimen name="width_seat">22dp</dimen>
     <dimen name="width_credit_card">300dp</dimen>
     <dimen name="height_credit_card">190dp</dimen>
+    <dimen name="height_receipt_image">160dp</dimen>
 
 </resources>
