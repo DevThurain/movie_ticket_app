@@ -79,7 +79,7 @@
         android:id="@+id/lblGetItNow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Get it now"
+        android:text="@string/lbl_get_it_now"
         android:layout_below="@id/inputPromoCode"
         android:layout_marginTop="@dimen/margin_medium"
         android:fontFamily="@font/poppins_regular"

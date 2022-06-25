@@ -60,7 +60,7 @@
     </com.google.android.material.tabs.TabLayout>
 
     <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/vpAuthContainer"
+        android:id="@+id/viewPagerAuth"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_large"
@@ -73,7 +73,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/margin_medium_2"
         android:layout_marginTop="@dimen/margin_large"
-        android:layout_below="@id/vpAuthContainer"
+        android:layout_below="@id/viewPagerAuth"
         android:layout_alignParentEnd="true"
         android:fontFamily="@font/poppins_regular"
         android:text="@string/lbl_forgot_password"
@@ -95,7 +95,7 @@
             app:icon="@drawable/ic_facebook"
             app:iconTint="@null"
             android:fontFamily="@font/poppins_regular"
-            android:text="Sign in with facebook"
+            android:text="@string/lbl_sign_in_with_facebook"
             android:textAllCaps="false"
             android:textColor="@color/color_grey"
             android:textSize="@dimen/text_regular_2x"
@@ -112,7 +112,7 @@
             app:icon="@drawable/ic_google"
             app:iconTint="@null"
             android:fontFamily="@font/poppins_regular"
-            android:text="Sign in with google"
+            android:text="@string/lbl_sign_in_with_google"
             android:textAllCaps="false"
             android:textColor="@color/color_grey"
             android:textSize="@dimen/text_regular_2x"

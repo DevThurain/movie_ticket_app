@@ -56,8 +56,8 @@ class BuyTicketActivity : AppCompatActivity(), SeatDelegate {
 
     }
 
-    override fun onTapRemoveSeat(view: View, textView: TextView) {
-        view.background = ContextCompat.getDrawable(this,R.drawable.background_untaken_seat)
+    override fun onTapRemoveSeat(layout: View, textView: TextView) {
+        layout.background = ContextCompat.getDrawable(this,R.drawable.background_untaken_seat)
         textView.text = ""
         Toast.makeText(this,"Remove Seat", Toast.LENGTH_SHORT).show()
 

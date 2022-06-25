@@ -36,7 +36,7 @@ class WelcomeActivity : AppCompatActivity() {
         tabLayoutAuth.addOnTabSelectedListener(
             object : TabLayout.OnTabSelectedListener{
                 override fun onTabSelected(tab: TabLayout.Tab?) {
-                    vpAuthContainer.currentItem = tab!!.position
+                    viewPagerAuth.currentItem = tab!!.position
                 }
 
                 override fun onTabUnselected(tab: TabLayout.Tab?) {}
@@ -49,9 +49,9 @@ class WelcomeActivity : AppCompatActivity() {
 
     private fun setUpAuthViewPager() {
         val adapter = AuthViewPagerAdapter(this)
-        vpAuthContainer.adapter = adapter
+        viewPagerAuth.adapter = adapter
 
-        vpAuthContainer.registerOnPageChangeCallback(
+        viewPagerAuth.registerOnPageChangeCallback(
             object : ViewPager2.OnPageChangeCallback(){
                 override fun onPageSelected(position: Int) {
                     super.onPageSelected(position)

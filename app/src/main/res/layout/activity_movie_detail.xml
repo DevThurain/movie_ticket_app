@@ -13,7 +13,7 @@
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
-            android:layout_height="400dp"
+            android:layout_height="@dimen/height_movie_detail_collapsing_toolbar"
             app:collapsedTitleTextColor="@color/white"
             app:contentScrim="@color/color_primary"
             app:expandedTitleGravity="center|top"
@@ -43,8 +43,8 @@
                     android:src="@drawable/ic_baseline_chevron_left_24dp" />
 
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="@dimen/width_movie_detail_play_button"
+                    android:layout_height="@dimen/width_movie_detail_play_button"
                     android:layout_centerInParent="true"
                     android:background="@drawable/background_play_button"
                     android:padding="@dimen/margin_medium"
@@ -189,7 +189,7 @@
                 android:layout_marginStart="@dimen/margin_medium_2"
                 android:layout_marginTop="@dimen/margin_medium_2"
                 android:fontFamily="@font/poppins_regular"
-                android:text="Cast"
+                android:text="@string/lbl_cast"
                 android:textColor="@color/black"
                 android:textSize="@dimen/text_regular_2x"
                 android:textStyle="bold" />

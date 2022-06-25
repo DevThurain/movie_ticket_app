@@ -21,7 +21,6 @@ class HomeActivity : AppCompatActivity(), MovieDelegate {
     lateinit var nowShowingMovieViewPod: MovieListViewPod
     lateinit var comingSoonMovieViewPod: MovieListViewPod
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
@@ -29,7 +28,6 @@ class HomeActivity : AppCompatActivity(), MovieDelegate {
         setupStatusBar()
         setupListeners()
         setupViewPods()
-
 
     }
 
