@@ -26,10 +26,10 @@ class WelcomeActivity : AppCompatActivity() {
     }
 
     private fun setUpListeners() {
-        btnConfirm.setOnClickListener {
-            val intent = HomeActivity.getIntent(this)
-            startActivity(intent)
-        }
+//        btnConfirm.setOnClickListener {
+//            val intent = HomeActivity.getIntent(this)
+//            startActivity(intent)
+//        }
     }
 
     private fun setUpAuthTabLayout() {

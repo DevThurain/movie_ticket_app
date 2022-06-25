@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.thurainx.movieticketapp.viewpods.LoginButtonViewPod xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <com.google.android.material.button.MaterialButton
+        style="@style/Widget.Material3.Button.OutlinedButton"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_getting_start_button"
+        android:fontFamily="@font/poppins_regular"
+        android:text="@string/lbl_sign_in_with_facebook"
+        android:textAllCaps="false"
+        android:textColor="@color/color_grey"
+        android:textSize="@dimen/text_regular_2x"
+        android:textStyle="bold"
+        app:cornerRadius="@dimen/margin_medium"
+        app:icon="@drawable/ic_facebook"
+        app:iconTint="@null"
+        app:strokeColor="@color/color_grey" />
+
+    <com.google.android.material.button.MaterialButton
+        style="@style/Widget.Material3.Button.OutlinedButton"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_getting_start_button"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:fontFamily="@font/poppins_regular"
+        android:text="@string/lbl_sign_in_with_google"
+        android:textAllCaps="false"
+        android:textColor="@color/color_grey"
+        android:textSize="@dimen/text_regular_2x"
+        android:textStyle="bold"
+        app:cornerRadius="@dimen/margin_medium"
+        app:icon="@drawable/ic_google"
+        app:iconTint="@null"
+        app:strokeColor="@color/color_grey" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnConfirm"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_getting_start_button"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:fontFamily="@font/poppins_regular"
+        android:text="@string/lbl_confirm"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_regular_2x"
+        android:textStyle="bold"
+        app:cornerRadius="@dimen/margin_medium"
+        app:strokeColor="@color/white" />
+
+
+</com.thurainx.movieticketapp.viewpods.LoginButtonViewPod>

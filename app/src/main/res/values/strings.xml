@@ -64,4 +64,6 @@
     <string name="lbl_cast">Cast</string>
     <string name="lbl_next">Next</string>
     <string name="lbl_get_it_now">Get it now</string>
+    <string name="lbl_name">Name</string>
+    <string name="lbl_phone">Phone</string>
 </resources>

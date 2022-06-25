@@ -7,11 +7,69 @@
     tools:context=".fragments.SingUpFragment">
 
     <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvRegisterName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_medium_2"
+        android:layout_marginTop="@dimen/margin_medium_2"
+        android:fontFamily="@font/poppins_regular"
+        android:text="@string/lbl_name"
+        android:textColor="@color/color_grey"
+        android:textSize="@dimen/text_regular_2x" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/inputLayoutName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvRegisterName"
+        app:hintEnabled="false"
+        android:layout_marginHorizontal="@dimen/margin_medium_2">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:paddingTop="@dimen/margin_card_medium_2"
+            android:fontFamily="@font/poppins_regular"
+            android:inputType="textEmailAddress" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/inputLayoutName"
+        android:layout_marginStart="@dimen/margin_medium_2"
+        android:layout_marginTop="@dimen/margin_medium_2"
+        android:fontFamily="@font/poppins_regular"
+        android:text="@string/lbl_phone"
+        android:textColor="@color/color_grey"
+        android:textSize="@dimen/text_regular_2x" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/inputLayoutPhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvPhone"
+        app:hintEnabled="false"
+        android:layout_marginHorizontal="@dimen/margin_medium_2">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:paddingTop="@dimen/margin_card_medium_2"
+            android:fontFamily="@font/poppins_regular"
+            android:inputType="phone" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_medium_2"
         android:layout_marginTop="@dimen/margin_medium_2"
+        android:layout_below="@id/inputLayoutPhone"
         android:fontFamily="@font/poppins_regular"
         android:text="@string/lbl_email"
         android:textColor="@color/color_grey"
@@ -29,7 +87,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/white"
-            android:hint="example@gmail.com"
             android:paddingTop="@dimen/margin_card_medium_2"
             android:fontFamily="@font/poppins_regular"
             android:inputType="textEmailAddress" />
@@ -53,7 +110,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/tvPassword"
         android:layout_marginHorizontal="@dimen/margin_medium_2"
-
+        app:hintEnabled="false"
         android:backgroundTint="@color/white">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -64,6 +121,14 @@
             android:fontFamily="@font/poppins_regular"
             android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginHorizontal="@dimen/margin_medium_2"
+        android:layout_marginBottom="@dimen/margin_medium"
+        layout="@layout/viewpod_login_button" />
 
 
 

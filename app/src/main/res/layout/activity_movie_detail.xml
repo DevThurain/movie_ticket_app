@@ -123,46 +123,54 @@
                 android:textColor="@color/black"
                 android:textSize="@dimen/text_regular" />
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chipMystery"
-                style="@style/ShapeAppearanceOverlay.Material3.Chip"
-                android:layout_width="wrap_content"
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chipGroupMovieDetail"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tvMovieDetailDuration"
-                android:layout_marginStart="@dimen/margin_medium_2"
-                android:layout_marginTop="@dimen/margin_medium"
-                android:backgroundTint="@color/white"
-                android:text="Mystery"
-                android:textAppearance="@style/MovieDetailChipAppearanceStyle"
-                android:textColor="@color/black"
-                app:chipEndPadding="@dimen/margin_medium"
-                app:chipMinHeight="@dimen/height_chip"
-                app:chipStartPadding="@dimen/margin_medium"
-                app:chipStrokeColor="@color/color_grey"
-                app:chipStrokeWidth="1dp" />
+                android:layout_marginHorizontal="@dimen/margin_medium_2"
+                android:layout_marginTop="@dimen/margin_medium">
 
-            <com.google.android.material.chip.Chip
-                style="@style/ShapeAppearanceOverlay.Material3.Chip"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tvMovieDetailDuration"
-                android:layout_marginStart="@dimen/margin_medium_2"
-                android:layout_marginTop="@dimen/margin_medium"
-                android:layout_toEndOf="@id/chipMystery"
-                android:backgroundTint="@color/white"
-                android:text="Adventure"
-                android:textAppearance="@style/MovieDetailChipAppearanceStyle"
-                app:chipEndPadding="@dimen/margin_medium"
-                app:chipMinHeight="@dimen/height_chip"
-                app:chipStartPadding="@dimen/margin_medium"
-                app:chipStrokeColor="@color/color_grey"
-                app:chipStrokeWidth="1dp" />
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipMystery"
+                    style="@style/ShapeAppearanceOverlay.Material3.Chip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/white"
+                    android:text="Mystery"
+                    android:textAppearance="@style/MovieDetailChipAppearanceStyle"
+                    android:textColor="@color/black"
+                    app:chipEndPadding="@dimen/margin_medium"
+                    app:chipMinHeight="@dimen/height_chip"
+                    app:chipStartPadding="@dimen/margin_medium"
+                    app:chipStrokeColor="@color/color_grey"
+                    app:chipStrokeWidth="1dp" />
+
+                <com.google.android.material.chip.Chip
+                    style="@style/ShapeAppearanceOverlay.Material3.Chip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvMovieDetailDuration"
+                    android:layout_toEndOf="@id/chipMystery"
+                    android:backgroundTint="@color/white"
+                    android:text="Adventure"
+                    android:textAppearance="@style/MovieDetailChipAppearanceStyle"
+                    app:chipEndPadding="@dimen/margin_medium"
+                    app:chipMinHeight="@dimen/height_chip"
+                    app:chipStartPadding="@dimen/margin_medium"
+                    app:chipStrokeColor="@color/color_grey"
+                    app:chipStrokeWidth="1dp" />
+
+
+            </com.google.android.material.chip.ChipGroup>
+
+
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvPlotSummary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/chipMystery"
+                android:layout_below="@id/chipGroupMovieDetail"
                 android:layout_marginStart="@dimen/margin_medium_2"
                 android:layout_marginTop="@dimen/margin_medium_2"
                 android:fontFamily="@font/poppins_regular"

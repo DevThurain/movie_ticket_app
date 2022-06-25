@@ -31,7 +31,6 @@
             android:backgroundTint="@color/white"
             android:paddingTop="@dimen/margin_card_medium_2"
             android:fontFamily="@font/poppins_regular"
-            android:hint="example@gmail.com"
             android:inputType="textEmailAddress" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -64,6 +63,27 @@
             android:fontFamily="@font/poppins_regular"
             android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvForgetPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin_medium_2"
+        android:layout_marginTop="@dimen/margin_large"
+        android:layout_below="@id/inputLayoutPassword"
+        android:layout_alignParentEnd="true"
+        android:fontFamily="@font/poppins_regular"
+        android:text="@string/lbl_forgot_password"
+        android:textColor="@color/color_grey"
+        android:textSize="@dimen/text_regular_2x" />
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginHorizontal="@dimen/margin_medium_2"
+        android:layout_marginBottom="@dimen/margin_medium"
+        layout="@layout/viewpod_login_button" />
 
 
 </RelativeLayout>
