@@ -22,8 +22,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/ivBuySnackBack"
-        android:layout_marginTop="@dimen/margin_medium_2"
-        android:layout_marginHorizontal="@dimen/margin_medium_2" />
+        android:layout_marginHorizontal="@dimen/margin_medium_2"
+        android:layout_marginTop="@dimen/margin_medium_2" />
 
     <include
         android:id="@+id/vpComboSetL"
@@ -31,8 +31,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/vpComboSetM"
-        android:layout_marginTop="@dimen/margin_medium_2"
-        android:layout_marginHorizontal="@dimen/margin_medium_2" />
+        android:layout_marginHorizontal="@dimen/margin_medium_2"
+        android:layout_marginTop="@dimen/margin_medium_2" />
 
     <include
         android:id="@+id/vpComboSet2"
@@ -40,8 +40,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/vpComboSetL"
-        android:layout_marginTop="@dimen/margin_medium_2"
-        android:layout_marginHorizontal="@dimen/margin_medium_2" />
+        android:layout_marginHorizontal="@dimen/margin_medium_2"
+        android:layout_marginTop="@dimen/margin_medium_2" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/inputPromoCode"

@@ -2,13 +2,10 @@ package com.thurainx.movieticketapp.adaptors
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.FrameLayout
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.thurainx.movieticketapp.R
 import com.thurainx.movieticketapp.delegates.TimeDelegate
 import com.thurainx.movieticketapp.models.CinemaData
-import com.thurainx.movieticketapp.utils.GridSpacingItemDecoration
 import com.thurainx.movieticketapp.viewholders.CinemaListViewHolder
 import kotlinx.android.synthetic.main.viewholder_cinema.view.*
 
@@ -23,10 +20,10 @@ class CinemaListAdapter(val cinemaDataList: List<CinemaData>,val timeDelegate: T
         holder.itemView.tvCinemaName.text = cinemaDataList[position].name
         mTimeListAdapter = TimeListAdapter(cinemaData = cinemaDataList[position], timeDelegate = timeDelegate)
         holder.itemView.rvTimeList.adapter = mTimeListAdapter
-        val spanCount = 3 // 3 columns
-        val spacing = 45 // 50px
-        val includeEdge = true
-        holder.itemView.rvTimeList.addItemDecoration(GridSpacingItemDecoration(spanCount, spacing, includeEdge))
+//        val spanCount = 3 // 3 columns
+//        val spacing = 45 // 50px
+//        val includeEdge = true
+//        holder.itemView.rvTimeList.addItemDecoration(GridSpacingItemDecoration(spanCount, spacing, includeEdge))
 
 
     }

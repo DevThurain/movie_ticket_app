@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.BuyTicketActivity">
+    tools:context=".activities.ChooseSeatActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/ivBuyTicketBack"
+            android:id="@+id/ivChooseSeatBack"
             android:layout_width="@dimen/margin_xlarge"
             android:layout_height="@dimen/margin_xlarge"
             android:layout_marginStart="@dimen/margin_medium_2"
@@ -22,10 +22,10 @@
             />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvBuyTicketMovieName"
+            android:id="@+id/tvChooseSeatMovieName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/ivBuyTicketBack"
+            android:layout_below="@id/ivChooseSeatBack"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
             android:fontFamily="@font/poppins_regular"
@@ -39,7 +39,7 @@
             android:id="@+id/tvCinemaName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tvBuyTicketMovieName"
+            android:layout_below="@id/tvChooseSeatMovieName"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
             android:fontFamily="@font/poppins_regular"
@@ -50,7 +50,7 @@
             android:textStyle="bold" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvBuyTicketDate"
+            android:id="@+id/tvChooseSeatDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/tvCinemaName"
@@ -66,31 +66,28 @@
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tvBuyTicketDate"
+            android:layout_below="@id/tvChooseSeatDate"
             android:layout_marginTop="@dimen/margin_medium_3"
             android:src="@drawable/ic_green_line" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvSeatRowList"
+            android:id="@+id/rvChooseSeat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tvBuyTicketDate"
+            android:layout_below="@id/tvChooseSeatDate"
+            android:layout_marginHorizontal="@dimen/margin_medium"
             android:layout_marginTop="@dimen/margin_xxlarge"
-            android:orientation="vertical"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:itemCount="8"
-            tools:listitem="@layout/view_holder_seat_row" />
+            android:orientation="vertical" />
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/ivAvailableCircle"
             android:layout_width="@dimen/margin_medium_3"
             android:layout_height="@dimen/margin_medium_3"
-            android:background="@color/color_light_grey"
-            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
-            android:layout_below="@id/rvSeatRowList"
-            android:layout_marginTop="@dimen/margin_large"
+            android:layout_below="@id/rvChooseSeat"
             android:layout_marginStart="@dimen/margin_medium_3"
-            />
+            android:layout_marginTop="@dimen/margin_large"
+            android:background="@color/color_light_grey"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvAvailableLabel"
@@ -108,7 +105,7 @@
             android:layout_height="@dimen/margin_medium_3"
             android:background="@color/color_dark_grey"
             app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
-            android:layout_below="@id/rvSeatRowList"
+            android:layout_below="@id/rvChooseSeat"
             android:layout_marginTop="@dimen/margin_large"
             android:layout_marginStart="@dimen/margin_medium_3"
             android:layout_toEndOf="@id/tvAvailableLabel"
@@ -130,7 +127,7 @@
             android:layout_height="@dimen/margin_medium_3"
             android:background="@color/color_primary"
             app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
-            android:layout_below="@id/rvSeatRowList"
+            android:layout_below="@id/rvChooseSeat"
             android:layout_marginTop="@dimen/margin_large"
             android:layout_marginStart="@dimen/margin_medium_3"
             android:layout_toEndOf="@id/tvReservedLabel"

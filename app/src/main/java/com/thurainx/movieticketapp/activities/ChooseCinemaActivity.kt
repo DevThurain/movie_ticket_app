@@ -14,7 +14,6 @@ import com.thurainx.movieticketapp.delegates.DateDelegate
 import com.thurainx.movieticketapp.delegates.TimeDelegate
 import com.thurainx.movieticketapp.models.CinemaData
 import com.thurainx.movieticketapp.models.Dummy
-import com.thurainx.movieticketapp.utils.GridSpacingItemDecoration
 import kotlinx.android.synthetic.main.activity_choose_cinema.*
 
 
@@ -52,7 +51,7 @@ class ChooseCinemaActivity : AppCompatActivity(), DateDelegate, TimeDelegate {
         }
 
         btnChooseCinemaNext.setOnClickListener {
-            val intent = BuyTicketActivity.getIntent(this)
+            val intent = ChooseSeatActivity.getIntent(this)
             startActivity(intent)
         }
     }
