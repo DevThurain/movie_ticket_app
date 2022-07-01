@@ -4,6 +4,8 @@
     android:background="@drawable/background_radio_regular"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:layout_marginHorizontal="@dimen/margin_medium"
+    android:layout_marginVertical="@dimen/margin_medium"
     android:layout_height="50dp">
 
     <TextView
