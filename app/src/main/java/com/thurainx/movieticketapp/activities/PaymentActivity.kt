@@ -34,6 +34,12 @@ class PaymentActivity : AppCompatActivity() {
             val intent = ReceiptActivity.getIntent(this)
             startActivity(intent)
         }
+
+        tvAddNewCard.setOnClickListener {
+            val intent = AddCardActivity.getIntent(this)
+            startActivity(intent)
+        }
+
     }
 
     private fun setupCarousel() {

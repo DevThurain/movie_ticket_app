@@ -66,4 +66,5 @@
     <string name="lbl_get_it_now">Get it now</string>
     <string name="lbl_name">Name</string>
     <string name="lbl_phone">Phone</string>
+    <string name="lbl_add_card">Add Card</string>
 </resources>

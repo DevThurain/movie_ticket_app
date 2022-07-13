@@ -1,268 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.BuySnackActivity">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/ivBuySnackBack"
-        android:layout_width="@dimen/margin_xlarge"
-        android:layout_height="@dimen/margin_xlarge"
-        android:layout_marginStart="@dimen/margin_medium_2"
-        android:layout_marginTop="@dimen/margin_large"
-        android:background="@android:color/transparent"
-        android:src="@drawable/ic_baseline_chevron_left_24dp"
-        android:tint="@color/black" />
 
-    <include
-        android:id="@+id/vpComboSetM"
-        layout="@layout/viewpod_combo_set"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/ivBuySnackBack"
-        android:layout_marginHorizontal="@dimen/margin_medium_2"
-        android:layout_marginTop="@dimen/margin_medium_2" />
-
-    <include
-        android:id="@+id/vpComboSetL"
-        layout="@layout/viewpod_combo_set"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/vpComboSetM"
-        android:layout_marginHorizontal="@dimen/margin_medium_2"
-        android:layout_marginTop="@dimen/margin_medium_2" />
-
-    <include
-        android:id="@+id/vpComboSet2"
-        layout="@layout/viewpod_combo_set"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/vpComboSetL"
-        android:layout_marginHorizontal="@dimen/margin_medium_2"
-        android:layout_marginTop="@dimen/margin_medium_2" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/inputPromoCode"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/vpComboSet2"
-        app:hintEnabled="false"
-        android:layout_marginTop="@dimen/margin_medium_2"
-        android:layout_marginHorizontal="@dimen/margin_medium_2">
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/white"
-        android:fontFamily="@font/poppins_regular"
-        android:hint="@string/lbl_enter_promo_code"
-        android:textColorHint="@color/color_grey"
-        android:paddingStart="0dp"
-        android:inputType="textEmailAddress" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <TextView
-        android:id="@+id/lblDontHavePromoCode"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/inputPromoCode"
-        android:layout_marginStart="@dimen/margin_medium_2"
-        android:layout_marginTop="@dimen/margin_medium"
-        android:fontFamily="@font/poppins_regular"
-        android:textColor="@color/color_grey"
-        android:text="@string/lbl_dont_have_any_promo_code" />
-
-    <TextView
-        android:id="@+id/lblGetItNow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/lbl_get_it_now"
-        android:layout_below="@id/inputPromoCode"
-        android:layout_marginTop="@dimen/margin_medium"
-        android:fontFamily="@font/poppins_regular"
-        android:textColor="@color/black"
-        android:layout_toEndOf="@id/lblDontHavePromoCode"
-        android:layout_marginStart="@dimen/margin_medium"
-        />
-
-    <TextView
-        android:id="@+id/tvSubTotal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/lblDontHavePromoCode"
-        android:layout_marginStart="@dimen/margin_medium_2"
-        android:layout_marginTop="@dimen/margin_medium"
-        android:fontFamily="@font/poppins_regular"
-        android:text="Sub total : 40$"
-        android:textColor="@color/color_green" />
-
-    <TextView
-        android:id="@+id/lblPaymentMethod"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tvSubTotal"
-        android:layout_marginStart="@dimen/margin_medium_2"
-        android:layout_marginTop="@dimen/margin_medium_2"
-        android:fontFamily="@font/poppins_regular"
-        android:text="@string/lbl_payment_method"
-        android:textSize="@dimen/text_regular_2x"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        />
-
-    <LinearLayout
-        android:id="@+id/llCreditCard"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_below="@id/lblPaymentMethod"
-        android:layout_marginStart="@dimen/margin_medium_2"
-        android:layout_marginTop="@dimen/margin_medium"
-
-        >
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/ivCreditCard"
-            android:layout_width="@dimen/margin_xlarge"
-            android:layout_height="@dimen/margin_xlarge"
-            android:layout_gravity="center"
-            app:srcCompat="@drawable/ic_visa_card" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_medium_2"
-            android:orientation="vertical">
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/lblCreditCard"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_regular"
-                android:text="@string/lbl_credit_card"
-                android:textColor="@color/black"
-                android:textSize="@dimen/text_regular" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/lblCreditCardDetail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_regular"
-                android:text="@string/lbl_visa_master_card_jcb"
-                android:textColor="@color/color_grey"
-                android:textSize="@dimen/text_small" />
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/llAtmCard"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_below="@id/llCreditCard"
-        android:layout_marginStart="@dimen/margin_medium_2"
-        android:layout_marginTop="@dimen/margin_medium"
-
-        >
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/ivAtmCard"
-            android:layout_width="@dimen/margin_xlarge"
-            android:layout_height="@dimen/margin_xlarge"
-            android:layout_gravity="center"
-            app:srcCompat="@drawable/ic_bank_card" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_medium_2"
-            android:orientation="vertical">
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/lblAtmCard"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_regular"
-                android:text="@string/lbl_internet_banking_atm_card"
-                android:textColor="@color/black"
-                android:textSize="@dimen/text_regular" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/lblAtmCardDetail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_regular"
-                android:text="@string/lbl_visa_master_card_jcb"
-                android:textColor="@color/color_grey"
-                android:textSize="@dimen/text_small" />
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/llWallet"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/llAtmCard"
-        android:layout_marginStart="@dimen/margin_medium_2"
-        android:layout_marginTop="@dimen/margin_medium"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content">
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/ivWallet"
+            android:id="@+id/ivBuySnackBack"
             android:layout_width="@dimen/margin_xlarge"
             android:layout_height="@dimen/margin_xlarge"
-            android:layout_gravity="center"
-            app:srcCompat="@drawable/ic_wallet" />
+            android:layout_marginStart="@dimen/margin_medium_2"
+            android:layout_marginTop="@dimen/margin_large"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_baseline_chevron_left_24dp"
+            android:tint="@color/black" />
 
-        <LinearLayout
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvComboSet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ivBuySnackBack"
+            tools:itemCount="3"
+            tools:listitem="@layout/viewholder_combo_set"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputPromoCode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rvComboSet"
+            app:hintEnabled="false"
+            android:layout_marginTop="@dimen/margin_medium_2"
+            android:layout_marginHorizontal="@dimen/margin_medium_2">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:fontFamily="@font/poppins_regular"
+                android:hint="@string/lbl_enter_promo_code"
+                android:textColorHint="@color/color_grey"
+                android:paddingStart="0dp"
+                android:inputType="textEmailAddress" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/lblDontHavePromoCode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/inputPromoCode"
             android:layout_marginStart="@dimen/margin_medium_2"
-            android:orientation="vertical">
+            android:layout_marginTop="@dimen/margin_medium"
+            android:fontFamily="@font/poppins_regular"
+            android:textColor="@color/color_grey"
+            android:text="@string/lbl_dont_have_any_promo_code" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/lblWallet"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_regular"
-                android:text="@string/lbl_e_wallet"
-                android:textColor="@color/black"
-                android:textSize="@dimen/text_regular" />
+        <TextView
+            android:id="@+id/lblGetItNow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/lbl_get_it_now"
+            android:layout_below="@id/inputPromoCode"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:fontFamily="@font/poppins_regular"
+            android:textColor="@color/black"
+            android:layout_toEndOf="@id/lblDontHavePromoCode"
+            android:layout_marginStart="@dimen/margin_medium"
+            />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/lblWalletDetail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_regular"
-                android:text="@string/lbl_paypal"
-                android:textColor="@color/color_grey"
-                android:textSize="@dimen/text_small" />
+        <TextView
+            android:id="@+id/tvSubTotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/lblDontHavePromoCode"
+            android:layout_marginStart="@dimen/margin_medium_2"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:fontFamily="@font/poppins_regular"
+            android:text="Sub total : 40$"
+            android:textColor="@color/color_green" />
 
-        </LinearLayout>
+        <TextView
+            android:id="@+id/lblPaymentMethod"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvSubTotal"
+            android:layout_marginStart="@dimen/margin_medium_2"
+            android:layout_marginTop="@dimen/margin_medium_2"
+            android:fontFamily="@font/poppins_regular"
+            android:text="@string/lbl_payment_method"
+            android:textSize="@dimen/text_regular_2x"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            />
 
-    </LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvPaymentMethod"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/lblPaymentMethod"
+            tools:listitem="@layout/viewholder_payment_method"
+            tools:itemCount="3"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnPaySnack"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/height_getting_start_button"
-        android:layout_alignParentBottom="true"
-        android:layout_centerInParent="true"
-        android:layout_marginHorizontal="@dimen/margin_medium_3"
-        android:layout_marginBottom="@dimen/margin_medium"
-        android:fontFamily="@font/poppins_regular"
-        android:text="Pay $40.00"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="@dimen/text_regular_2x"
-        android:textStyle="bold"
-        app:cornerRadius="@dimen/margin_medium"
-        app:strokeColor="@color/white" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnPaySnack"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_getting_start_button"
+            android:layout_below="@id/rvPaymentMethod"
+            android:layout_centerInParent="true"
+            android:layout_marginHorizontal="@dimen/margin_medium_3"
+            android:layout_marginTop="@dimen/margin_medium_2"
+            android:layout_marginBottom="@dimen/margin_medium"
+            android:fontFamily="@font/poppins_regular"
+            android:text="Pay $40.00"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_regular_2x"
+            android:textStyle="bold"
+            app:cornerRadius="@dimen/margin_medium"
+            app:strokeColor="@color/white" />
+    </RelativeLayout>
 
 
-</RelativeLayout>
+
+
+</androidx.core.widget.NestedScrollView>

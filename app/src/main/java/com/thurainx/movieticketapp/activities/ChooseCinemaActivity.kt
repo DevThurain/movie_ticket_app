@@ -51,7 +51,7 @@ class ChooseCinemaActivity : AppCompatActivity(), DateDelegate, TimeDelegate {
         }
 
         btnChooseCinemaNext.setOnClickListener {
-            val intent = ChooseSeatActivity.getIntent(this)
+            val intent = BuySnackActivity.getIntent(this)
             startActivity(intent)
         }
     }

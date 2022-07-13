@@ -5,6 +5,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.thurainx.movieticketapp.R
+import com.thurainx.movieticketapp.adaptors.ComboSetListAdapter
+import com.thurainx.movieticketapp.adaptors.PaymentMethodListAdapter
 import com.thurainx.movieticketapp.viewpods.ComboSetViewpod
 import kotlinx.android.synthetic.main.activity_buy_snack.*
 
@@ -14,8 +16,9 @@ class BuySnackActivity : AppCompatActivity() {
             return Intent(context,BuySnackActivity::class.java)
         }
     }
-    lateinit var comboSetLViewpod: ComboSetViewpod
-    lateinit var comboSet2Viewpod: ComboSetViewpod
+
+    lateinit var mComboSetListAdapter: ComboSetListAdapter
+    lateinit var mPaymentMethodListAdapter: PaymentMethodListAdapter
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,22 +26,17 @@ class BuySnackActivity : AppCompatActivity() {
         setContentView(R.layout.activity_buy_snack)
 
         setupListeners()
-        setupViewpods()
+        setupRecyclerView()
     }
 
-    private fun setupViewpods() {
-        comboSetLViewpod = vpComboSetL as ComboSetViewpod
-        comboSetLViewpod.setTitleAndDetail(
-            title = "Combo Set L",
-            detail = "Combo Set M 32oz. Coke (x1)\nand large popcorn (x1)"
-        )
+    private fun setupRecyclerView() {
+        mComboSetListAdapter = ComboSetListAdapter()
+        rvComboSet.adapter = mComboSetListAdapter
 
-        comboSet2Viewpod = vpComboSet2 as ComboSetViewpod
-        comboSet2Viewpod.setTitleAndDetail(
-            title = "Combo Set 2",
-            detail = "Combo Set 2 32oz. Coke (x2)\nand large popcorn (x1)"
-        )
+        mPaymentMethodListAdapter = PaymentMethodListAdapter()
+        rvPaymentMethod.adapter = mPaymentMethodListAdapter
     }
+
 
     private fun setupListeners() {
         ivBuySnackBack.setOnClickListener {
