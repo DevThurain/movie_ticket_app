@@ -37,7 +37,7 @@ class ChooseSeatActivity : AppCompatActivity() {
             super.onBackPressed()
         }
         btnBuyTicket.setOnClickListener {
-            val intent = PaymentActivity.getIntent(this)
+            val intent = BuySnackActivity.getIntent(this)
             startActivity(intent)
         }
     }

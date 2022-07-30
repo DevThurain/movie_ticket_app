@@ -48,4 +48,8 @@ dependencies {
     implementation 'com.github.alirezat775:carousel-view:1.1.1'
     implementation 'com.vipulasri:ticketview:1.1.2'
     implementation 'com.google.zxing:core:3.3.0'
-    implementation 'com.journeyapps:zxing-android-embedded:3.2.0@aar'}
+    implementation 'com.journeyapps:zxing-android-embedded:3.2.0@aar'
+
+
+    implementation 'com.google.code.gson:gson:2.9.0'
+}
