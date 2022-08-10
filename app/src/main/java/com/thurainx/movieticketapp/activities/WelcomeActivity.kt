@@ -4,13 +4,15 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.thurainx.movieticketapp.R
 import com.thurainx.movieticketapp.adaptors.AuthViewPagerAdapter
+import com.thurainx.movieticketapp.delegates.AuthDelegate
 import kotlinx.android.synthetic.main.activity_welcome.*
 
-class WelcomeActivity : AppCompatActivity() {
+class WelcomeActivity : AppCompatActivity(), AuthDelegate {
     companion object{
         fun getIntent(context: Context) : Intent{
             return Intent(context,WelcomeActivity::class.java)
@@ -59,5 +61,24 @@ class WelcomeActivity : AppCompatActivity() {
                 }
             }
         )
+    }
+
+    override fun onTapRegister(name: String, email: String, phone: String, password: String) {
+        Toast.makeText(this,"$name -- $phone", Toast.LENGTH_SHORT).show()
+        val intent = HomeActivity.getIntent(this)
+        startActivity(intent)    }
+
+    override fun onTapLogin(email: String, password: String) {
+        Toast.makeText(this,"$email -- $password", Toast.LENGTH_SHORT).show()
+        val intent = HomeActivity.getIntent(this)
+        startActivity(intent)
+    }
+
+    override fun onTapFacebook() {
+        TODO("Not yet implemented")
+    }
+
+    override fun onTapGoogle() {
+        TODO("Not yet implemented")
     }
 }

@@ -4,7 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.thurainx.movieticketapp.fragments.LoginFragment
-import com.thurainx.movieticketapp.fragments.SingUpFragment
+import com.thurainx.movieticketapp.fragments.RegisterFragment
 
 class AuthViewPagerAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity) {
     override fun getItemCount(): Int {
@@ -14,7 +14,7 @@ class AuthViewPagerAdapter(fragmentActivity: FragmentActivity) : FragmentStateAd
     override fun createFragment(position: Int): Fragment {
         return when(position){
             0 -> LoginFragment()
-            else -> SingUpFragment()
+            else -> RegisterFragment()
         }
     }
 }

@@ -12,12 +12,13 @@ import com.thurainx.movieticketapp.delegates.AuthDelegate
 import com.thurainx.movieticketapp.viewpods.AuthButtonViewPod
 import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_login.view.*
+import kotlinx.android.synthetic.main.fragment_register.*
+import kotlinx.android.synthetic.main.fragment_register.view.*
 
-
-class LoginFragment : Fragment() {
+class RegisterFragment : Fragment() {
 
     lateinit var mAuthDelegate : AuthDelegate
-    private lateinit var mLoginButtonViewPod: AuthButtonViewPod
+    private lateinit var mRegisterButtonViewPod: AuthButtonViewPod
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -33,19 +34,21 @@ class LoginFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_login, container, false)
+        return inflater.inflate(R.layout.fragment_register, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        mLoginButtonViewPod = view.viewPodLoginButton as AuthButtonViewPod
-        mLoginButtonViewPod.setDelegate(mAuthDelegate)
-        mLoginButtonViewPod.setupLogin()
+        mRegisterButtonViewPod = view.viewPodRegisterButton as AuthButtonViewPod
+        mRegisterButtonViewPod.setDelegate(mAuthDelegate)
+        mRegisterButtonViewPod.setupRegister()
 
-        edtLoginEmail.doOnTextChanged { text, start, before, count ->  mLoginButtonViewPod.email = text.toString() }
-        edtLoginPassword.doOnTextChanged { text, start, before, count -> mLoginButtonViewPod.password = text.toString() }
+        edtRegisterName.doOnTextChanged { text, start, before, count -> mRegisterButtonViewPod.name = text.toString() }
+        edtRegisterPhone.doOnTextChanged { text, start, before, count -> mRegisterButtonViewPod.phone = text.toString() }
+        edtRegisterEmail.doOnTextChanged { text, start, before, count ->  mRegisterButtonViewPod.email = text.toString() }
+        edtRegisterPassword.doOnTextChanged { text, start, before, count -> mRegisterButtonViewPod.password = text.toString() }
+
 
     }
-
 
 }
