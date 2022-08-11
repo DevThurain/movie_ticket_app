@@ -24,13 +24,14 @@
         android:layout_marginTop="@dimen/margin_medium_2"
         android:fontFamily="@font/poppins_regular"
         android:text="Enola Holms"
+        android:maxLines="2"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="@dimen/text_regular"
         android:textStyle="bold" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/rbMovieRating"
+        android:id="@+id/tvGenreAndDuration"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/tvMovieName"

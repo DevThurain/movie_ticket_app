@@ -11,18 +11,18 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_medium_2"
         android:layout_marginTop="@dimen/margin_medium_2"
-        android:text="@string/lbl_now_showing"
         android:fontFamily="@font/poppins_regular"
+        android:text="@string/lbl_now_showing"
+        android:textColor="@color/black"
         android:textSize="@dimen/text_regular_2x"
-        android:textStyle="bold"
-        android:textColor="@color/black" />
+        android:textStyle="bold" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvMovieList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/tvTitle"
-        android:layout_marginTop="@dimen/margin_medium_2"
+        android:layout_marginTop="@dimen/margin_card_medium_2"
         android:paddingEnd="@dimen/margin_medium_2"
         android:clipToPadding="false"
         tools:listitem="@layout/view_holder_movie"

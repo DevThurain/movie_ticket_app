@@ -1,11 +1,11 @@
-package com.thurainx.movieticketapp.network.dataAgents
+package com.thurainx.movieticketapp.data.models
 
 import com.thurainx.movieticketapp.data.vos.ActorVO
 import com.thurainx.movieticketapp.data.vos.GenreVO
 import com.thurainx.movieticketapp.data.vos.MovieVO
-import java.sql.ClientInfoStatus
 
-interface MovieTicketDataAgent {
+interface MovieTicketModel {
+
     fun registerWithEmail(name: String, phone: String, email: String,password: String)
     fun loginWithEmail(email: String, password: String)
 
@@ -15,13 +15,9 @@ interface MovieTicketDataAgent {
         onFail : (String) -> Unit
     )
 
-
     fun getMovieDetailById(
         id: String,
         onSuccess : (MovieVO) -> Unit,
         onFail : (String) -> Unit
     )
-
-
-
 }

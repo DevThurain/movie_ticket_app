@@ -12,6 +12,7 @@
 
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/toolBarLayoutMovieDetail"
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_movie_detail_collapsing_toolbar"
             app:collapsedTitleTextColor="@color/white"
@@ -22,6 +23,7 @@
             app:title="Enola Holmes">
 
             <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivMovieDetailCover"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
@@ -131,39 +133,38 @@
                 android:layout_marginHorizontal="@dimen/margin_medium_2"
                 android:layout_marginTop="@dimen/margin_medium">
 
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chipMystery"
-                    style="@style/ShapeAppearanceOverlay.Material3.Chip"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/white"
-                    android:text="Mystery"
-                    android:textAppearance="@style/MovieDetailChipAppearanceStyle"
-                    android:textColor="@color/black"
-                    app:chipEndPadding="@dimen/margin_medium"
-                    app:chipMinHeight="@dimen/height_chip"
-                    app:chipStartPadding="@dimen/margin_medium"
-                    app:chipStrokeColor="@color/color_grey"
-                    app:chipStrokeWidth="1dp" />
+<!--                <com.google.android.material.chip.Chip-->
+<!--                    android:id="@+id/chipMystery"-->
+<!--                    style="@style/ShapeAppearanceOverlay.Material3.Chip"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:backgroundTint="@color/white"-->
+<!--                    android:text="Mystery"-->
+<!--                    android:textAppearance="@style/MovieDetailChipAppearanceStyle"-->
+<!--                    android:textColor="@color/black"-->
+<!--                    app:chipEndPadding="@dimen/margin_medium"-->
+<!--                    app:chipMinHeight="@dimen/height_chip"-->
+<!--                    app:chipStartPadding="@dimen/margin_medium"-->
+<!--                    app:chipStrokeColor="@color/color_grey"-->
+<!--                    app:chipStrokeWidth="1dp" />-->
 
-                <com.google.android.material.chip.Chip
-                    style="@style/ShapeAppearanceOverlay.Material3.Chip"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/tvMovieDetailDuration"
-                    android:layout_toEndOf="@id/chipMystery"
-                    android:backgroundTint="@color/white"
-                    android:text="Adventure"
-                    android:textAppearance="@style/MovieDetailChipAppearanceStyle"
-                    app:chipEndPadding="@dimen/margin_medium"
-                    app:chipMinHeight="@dimen/height_chip"
-                    app:chipStartPadding="@dimen/margin_medium"
-                    app:chipStrokeColor="@color/color_grey"
-                    app:chipStrokeWidth="1dp" />
+<!--                <com.google.android.material.chip.Chip-->
+<!--                    style="@style/ShapeAppearanceOverlay.Material3.Chip"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_below="@id/tvMovieDetailDuration"-->
+<!--                    android:layout_toEndOf="@id/chipMystery"-->
+<!--                    android:backgroundTint="@color/white"-->
+<!--                    android:text="Adventure"-->
+<!--                    android:textAppearance="@style/MovieDetailChipAppearanceStyle"-->
+<!--                    app:chipEndPadding="@dimen/margin_medium"-->
+<!--                    app:chipMinHeight="@dimen/height_chip"-->
+<!--                    app:chipStartPadding="@dimen/margin_medium"-->
+<!--                    app:chipStrokeColor="@color/color_grey"-->
+<!--                    app:chipStrokeWidth="1dp" />-->
 
 
             </com.google.android.material.chip.ChipGroup>
-
 
 
             <androidx.appcompat.widget.AppCompatTextView

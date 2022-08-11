@@ -1,10 +1,32 @@
 package com.thurainx.movieticketapp.data
 
+import com.google.gson.annotations.SerializedName
+
 const val SEAT_TYPE_AVAILABLE = "available"
 const val SEAT_TYPE_TAKEN = "taken"
 const val SEAT_TYPE_EMPTY = "empty"
 const val SEAT_TYPE_TEXT = "text"
-class MovieSeatVO(val title: String = "",private val type: String = "") {
+class MovieSeatVO(
+
+
+    @SerializedName("id")
+    val id: Int? = 0,
+
+    @SerializedName("type")
+    val type: String?,
+
+    @SerializedName("seat_name")
+    val seatName: String? = "",
+
+    @SerializedName("symbol")
+    val symbol: String? = "",
+
+    @SerializedName("price")
+    val price: Int? = 0,
+
+
+
+) {
 
     fun isMovieSeatAvailable() : Boolean{
         return type == SEAT_TYPE_AVAILABLE

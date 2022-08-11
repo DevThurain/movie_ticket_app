@@ -17,7 +17,7 @@ class MovieSeatListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView
 
             movieSeatVO.isMovieSeatText() ->{
                 itemView.tvSeatTitle.visibility = View.VISIBLE
-                itemView.tvSeatTitle.text = movieSeatVO.title
+                itemView.tvSeatTitle.text = movieSeatVO.symbol
                 itemView.background = ContextCompat.getDrawable(itemView.context, R.drawable.background_seat_text)
             }
 

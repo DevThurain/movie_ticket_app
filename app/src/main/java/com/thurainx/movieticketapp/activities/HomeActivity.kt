@@ -5,8 +5,10 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.thurainx.movieticketapp.R
+import com.thurainx.movieticketapp.data.models.MovieTicketModelImpl
 import com.thurainx.movieticketapp.delegates.MovieDelegate
 import com.thurainx.movieticketapp.viewpods.MovieListViewPod
 import kotlinx.android.synthetic.main.activity_home.*
@@ -21,6 +23,8 @@ class HomeActivity : AppCompatActivity(), MovieDelegate {
     lateinit var nowShowingMovieViewPod: MovieListViewPod
     lateinit var comingSoonMovieViewPod: MovieListViewPod
 
+    val mMovieTicketModel = MovieTicketModelImpl
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
@@ -28,6 +32,32 @@ class HomeActivity : AppCompatActivity(), MovieDelegate {
         setupStatusBar()
         setupListeners()
         setupViewPods()
+        fetchData()
+
+    }
+
+
+    private fun fetchData(){
+
+        mMovieTicketModel.getMovieListByStatus(
+            status = "current",
+            onSuccess = { movieList ->
+                nowShowingMovieViewPod.setData(movieList = movieList)
+            },
+            onFail = { errorMessage ->
+                Toast.makeText(this,errorMessage,Toast.LENGTH_SHORT).show()
+            }
+        )
+
+        mMovieTicketModel.getMovieListByStatus(
+            status = "comingsoon",
+            onSuccess = { movieList ->
+                comingSoonMovieViewPod.setData(movieList = movieList)
+            },
+            onFail = { errorMessage ->
+                Toast.makeText(this,errorMessage,Toast.LENGTH_SHORT).show()
+            }
+        )
 
     }
 
@@ -57,8 +87,10 @@ class HomeActivity : AppCompatActivity(), MovieDelegate {
         }
     }
 
-    override fun onTapMovie() {
-        val intent = MovieDetailActivity.getIntent(this)
+    override fun onTapMovie(movieId: Int?) {
+        val intent = MovieDetailActivity.getIntent(this,movieId)
         startActivity(intent)
     }
+
+
 }
