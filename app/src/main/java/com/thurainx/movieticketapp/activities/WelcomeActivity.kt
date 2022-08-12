@@ -9,15 +9,18 @@ import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.thurainx.movieticketapp.R
 import com.thurainx.movieticketapp.adaptors.AuthViewPagerAdapter
+import com.thurainx.movieticketapp.data.models.MovieTicketModelImpl
 import com.thurainx.movieticketapp.delegates.AuthDelegate
 import kotlinx.android.synthetic.main.activity_welcome.*
 
 class WelcomeActivity : AppCompatActivity(), AuthDelegate {
-    companion object{
-        fun getIntent(context: Context) : Intent{
-            return Intent(context,WelcomeActivity::class.java)
+    companion object {
+        fun getIntent(context: Context): Intent {
+            return Intent(context, WelcomeActivity::class.java)
         }
     }
+
+    val mMovieTicketModel = MovieTicketModelImpl
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_welcome)
@@ -36,7 +39,7 @@ class WelcomeActivity : AppCompatActivity(), AuthDelegate {
 
     private fun setUpAuthTabLayout() {
         tabLayoutAuth.addOnTabSelectedListener(
-            object : TabLayout.OnTabSelectedListener{
+            object : TabLayout.OnTabSelectedListener {
                 override fun onTabSelected(tab: TabLayout.Tab?) {
                     viewPagerAuth.currentItem = tab!!.position
                 }
@@ -54,7 +57,7 @@ class WelcomeActivity : AppCompatActivity(), AuthDelegate {
         viewPagerAuth.adapter = adapter
 
         viewPagerAuth.registerOnPageChangeCallback(
-            object : ViewPager2.OnPageChangeCallback(){
+            object : ViewPager2.OnPageChangeCallback() {
                 override fun onPageSelected(position: Int) {
                     super.onPageSelected(position)
                     tabLayoutAuth.getTabAt(position)?.select()
@@ -64,14 +67,47 @@ class WelcomeActivity : AppCompatActivity(), AuthDelegate {
     }
 
     override fun onTapRegister(name: String, email: String, phone: String, password: String) {
-        Toast.makeText(this,"$name -- $phone", Toast.LENGTH_SHORT).show()
-        val intent = HomeActivity.getIntent(this)
-        startActivity(intent)    }
+
+        if(email.isNotEmpty() && password.isNotEmpty() && phone.isNotEmpty() && password.isNotEmpty()){
+            mMovieTicketModel.registerWithEmail(
+                name = name,
+                email = email,
+                password = password,
+                phone = phone,
+                onSuccess = { tokenResponse ->
+                    mMovieTicketModel.token = tokenResponse.token ?: ""
+                    Toast.makeText(this, "${tokenResponse.token}", Toast.LENGTH_SHORT).show()
+                    val intent = HomeActivity.getIntent(this)
+                    startActivity(intent)
+                },
+                onFail = { errorMessage ->
+                    Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
+                }
+            )
+        }else{
+            Toast.makeText(this, "Credentials cannot be empty.", Toast.LENGTH_SHORT).show()
+        }
+    }
 
     override fun onTapLogin(email: String, password: String) {
-        Toast.makeText(this,"$email -- $password", Toast.LENGTH_SHORT).show()
-        val intent = HomeActivity.getIntent(this)
-        startActivity(intent)
+
+        if(email.isNotEmpty() && password.isNotEmpty()){
+            mMovieTicketModel.loginWithEmail(
+                email = email,
+                password = password,
+                onSuccess = { tokenResponse ->
+                    mMovieTicketModel.token = tokenResponse.token ?: ""
+                    Toast.makeText(this, "${tokenResponse.token}", Toast.LENGTH_SHORT).show()
+                    val intent = HomeActivity.getIntent(this)
+                    startActivity(intent)
+                },
+                onFail = { errorMessage ->
+                    Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
+                }
+            )
+        }else{
+            Toast.makeText(this, "Credentials cannot be empty.", Toast.LENGTH_SHORT).show()
+        }
     }
 
     override fun onTapFacebook() {

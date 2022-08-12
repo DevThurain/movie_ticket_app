@@ -7,10 +7,7 @@ import com.thurainx.movieticketapp.data.vos.MovieVO
 import com.thurainx.movieticketapp.network.BASED_URL
 import com.thurainx.movieticketapp.network.MOVIE_BASED_URL
 import com.thurainx.movieticketapp.network.TheMovieTicketApi
-import com.thurainx.movieticketapp.network.response.CreditListByMovieResponse
-import com.thurainx.movieticketapp.network.response.GenreListResponse
-import com.thurainx.movieticketapp.network.response.MovieDetailResponse
-import com.thurainx.movieticketapp.network.response.MovieListResponse
+import com.thurainx.movieticketapp.network.response.*
 import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Callback
@@ -40,13 +37,67 @@ object RetrofitDataAgentImpl : MovieTicketDataAgent {
 
 
     }
-    override fun registerWithEmail(name: String, phone: String, email: String, password: String) {
-        TODO("Not yet implemented")
+    override fun registerWithEmail(name: String, phone: String, email: String, password: String,onSuccess: (TokenResponse) -> Unit, onFail: (String) -> Unit) {
+        mTheMovieTicketApi?.registerWithEmail(name = name, email = email, phone = phone, password = password)?.enqueue(
+            object : Callback<TokenResponse> {
+                override fun onResponse(
+                    call: Call<TokenResponse>,
+                    response: Response<TokenResponse>
+                ) {
+
+                    if(response.isSuccessful){
+                        if(response.body()?.code == 201){
+                            Log.d("api_register",response.toString())
+                            response.body()?.let(onSuccess)
+                        }else{
+                            onFail(response.body()?.message ?: "unknown error")
+                        }
+
+                    }
+
+                }
+
+                override fun onFailure(call: Call<TokenResponse>, t: Throwable) {
+                    t.printStackTrace()
+                    onFail(t.message ?: "unknown error")
+                }
+
+            }
+        )
     }
 
-    override fun loginWithEmail(email: String, password: String) {
-        TODO("Not yet implemented")
-    }
+    override fun loginWithEmail(
+        email: String,
+        password: String,
+        onSuccess: (TokenResponse) -> Unit,
+        onFail: (String) -> Unit
+    ) {
+        mTheMovieTicketApi?.loginWithEmail(email = email, password = password)?.enqueue(
+            object : Callback<TokenResponse> {
+                override fun onResponse(
+                    call: Call<TokenResponse>,
+                    response: Response<TokenResponse>
+                ) {
+
+                    if(response.isSuccessful){
+                        if(response.body()?.code == 200){
+                            Log.d("api_login",response.toString())
+                            response.body()?.let(onSuccess)
+                        }else{
+                            onFail(response.body()?.message ?: "unknown error")
+                        }
+
+                    }
+
+                }
+
+                override fun onFailure(call: Call<TokenResponse>, t: Throwable) {
+                    t.printStackTrace()
+                    onFail(t.message ?: "unknown error")
+                }
+
+            }
+        )    }
 
     override fun getMovieListByStatus(status: String,onSuccess: (List<MovieVO>) -> Unit, onFail: (String) -> Unit) {
         mTheMovieTicketApi?.getMovieListByStatus(status = status)?.enqueue(

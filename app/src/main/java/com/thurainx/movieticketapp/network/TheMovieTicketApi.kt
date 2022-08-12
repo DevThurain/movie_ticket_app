@@ -1,17 +1,27 @@
 package com.thurainx.movieticketapp.network
 
 import com.thurainx.movieticketapp.data.vos.MovieVO
-import com.thurainx.movieticketapp.network.response.CreditListByMovieResponse
-import com.thurainx.movieticketapp.network.response.GenreListResponse
-import com.thurainx.movieticketapp.network.response.MovieDetailResponse
-import com.thurainx.movieticketapp.network.response.MovieListResponse
+import com.thurainx.movieticketapp.network.response.*
 import retrofit2.Call
-import retrofit2.http.GET
-import retrofit2.http.Path
-import retrofit2.http.Query
-import retrofit2.http.Url
+import retrofit2.http.*
 
 interface TheMovieTicketApi {
+
+    @POST(API_REGISTER_WITH_EMAIL)
+    @FormUrlEncoded
+    fun registerWithEmail(
+        @Field(PARAM_NAME) name: String,
+        @Field(PARAM_EMAIL) email: String,
+        @Field(PARAM_PHONE) phone: String,
+        @Field(PARAM_PASSWORD) password: String,
+        ) : Call<TokenResponse>
+
+    @POST(API_LOGIN_WITH_EMAIL)
+    @FormUrlEncoded
+    fun loginWithEmail(
+        @Field(PARAM_EMAIL) email: String,
+        @Field(PARAM_PASSWORD) password: String,
+    ) : Call<TokenResponse>
 
     @GET(API_GET_MOVIE_LIST)
     fun getMovieListByStatus(
@@ -25,6 +35,8 @@ interface TheMovieTicketApi {
         @Path("movie_id") movieId: String,
         @Query(PARAM_API_KEY) apiKey: String = MOVIE_API_KEY,
     ) : Call<MovieDetailResponse>
+
+
 
 
 }

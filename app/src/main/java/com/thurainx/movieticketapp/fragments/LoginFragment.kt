@@ -9,6 +9,8 @@ import android.view.ViewGroup
 import androidx.core.widget.doOnTextChanged
 import com.thurainx.movieticketapp.R
 import com.thurainx.movieticketapp.delegates.AuthDelegate
+import com.thurainx.movieticketapp.utils.validateEmail
+import com.thurainx.movieticketapp.utils.validateEmpty
 import com.thurainx.movieticketapp.viewpods.AuthButtonViewPod
 import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_login.view.*
@@ -42,8 +44,15 @@ class LoginFragment : Fragment() {
         mLoginButtonViewPod.setDelegate(mAuthDelegate)
         mLoginButtonViewPod.setupLogin()
 
-        edtLoginEmail.doOnTextChanged { text, start, before, count ->  mLoginButtonViewPod.email = text.toString() }
-        edtLoginPassword.doOnTextChanged { text, start, before, count -> mLoginButtonViewPod.password = text.toString() }
+        edtLoginEmail.doOnTextChanged { text, start, before, count ->
+            mLoginButtonViewPod.email = text.toString()
+            edtLoginEmail.validateEmail(text.toString())
+
+        }
+        edtLoginPassword.doOnTextChanged { text, start, before, count ->
+            mLoginButtonViewPod.password = text.toString()
+            edtLoginPassword.validateEmpty(text = text.toString(), message = "password cannot be empty")
+        }
 
     }
 

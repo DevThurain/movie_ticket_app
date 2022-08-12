@@ -9,6 +9,9 @@ import android.view.ViewGroup
 import androidx.core.widget.doOnTextChanged
 import com.thurainx.movieticketapp.R
 import com.thurainx.movieticketapp.delegates.AuthDelegate
+import com.thurainx.movieticketapp.utils.validateEmail
+import com.thurainx.movieticketapp.utils.validateEmpty
+import com.thurainx.movieticketapp.utils.validatePhone
 import com.thurainx.movieticketapp.viewpods.AuthButtonViewPod
 import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_login.view.*
@@ -43,10 +46,24 @@ class RegisterFragment : Fragment() {
         mRegisterButtonViewPod.setDelegate(mAuthDelegate)
         mRegisterButtonViewPod.setupRegister()
 
-        edtRegisterName.doOnTextChanged { text, start, before, count -> mRegisterButtonViewPod.name = text.toString() }
-        edtRegisterPhone.doOnTextChanged { text, start, before, count -> mRegisterButtonViewPod.phone = text.toString() }
-        edtRegisterEmail.doOnTextChanged { text, start, before, count ->  mRegisterButtonViewPod.email = text.toString() }
-        edtRegisterPassword.doOnTextChanged { text, start, before, count -> mRegisterButtonViewPod.password = text.toString() }
+        edtRegisterName.doOnTextChanged { text, start, before, count ->
+            mRegisterButtonViewPod.name = text.toString()
+            edtRegisterName.validateEmpty(text = text.toString(), message = "name cannot be empty")
+        }
+        edtRegisterPhone.doOnTextChanged { text, start, before, count ->
+            mRegisterButtonViewPod.phone = text.toString()
+            edtRegisterPhone.validatePhone(text = text.toString())
+        }
+        edtRegisterEmail.doOnTextChanged { text, start, before, count ->
+            mRegisterButtonViewPod.email = text.toString()
+            edtRegisterEmail.validateEmail(text = text.toString())
+
+        }
+        edtRegisterPassword.doOnTextChanged { text, start, before, count ->
+            mRegisterButtonViewPod.password = text.toString()
+            edtRegisterPassword.validateEmpty(text = text.toString(), message = "password cannot be empty")
+
+        }
 
 
     }
