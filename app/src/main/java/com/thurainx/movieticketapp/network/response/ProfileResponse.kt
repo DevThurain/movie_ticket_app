@@ -6,7 +6,7 @@ import com.thurainx.movieticketapp.data.vos.MovieVO
 import com.thurainx.movieticketapp.data.vos.ProfileVO
 import com.thurainx.movieticketapp.data.vos.SnackVO
 
-data class ProfileListResponse(
+data class ProfileResponse(
     @SerializedName("code")
     val code: Int?,
 

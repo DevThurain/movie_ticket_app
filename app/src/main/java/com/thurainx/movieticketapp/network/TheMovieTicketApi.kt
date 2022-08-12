@@ -1,6 +1,5 @@
 package com.thurainx.movieticketapp.network
 
-import com.thurainx.movieticketapp.data.vos.MovieVO
 import com.thurainx.movieticketapp.network.response.*
 import retrofit2.Call
 import retrofit2.http.*
@@ -22,6 +21,11 @@ interface TheMovieTicketApi {
         @Field(PARAM_EMAIL) email: String,
         @Field(PARAM_PASSWORD) password: String,
     ) : Call<TokenResponse>
+
+    @GET(API_GET_PROFILE)
+    fun getProfile(
+        @Header(PARAM_AUTHORIZATION) token: String,
+    ) : Call<ProfileResponse>
 
     @GET(API_GET_MOVIE_LIST)
     fun getMovieListByStatus(

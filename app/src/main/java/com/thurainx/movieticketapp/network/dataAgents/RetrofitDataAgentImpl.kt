@@ -4,6 +4,7 @@ import android.util.Log
 import com.thurainx.movieticketapp.data.vos.ActorVO
 import com.thurainx.movieticketapp.data.vos.GenreVO
 import com.thurainx.movieticketapp.data.vos.MovieVO
+import com.thurainx.movieticketapp.data.vos.ProfileVO
 import com.thurainx.movieticketapp.network.BASED_URL
 import com.thurainx.movieticketapp.network.MOVIE_BASED_URL
 import com.thurainx.movieticketapp.network.TheMovieTicketApi
@@ -97,7 +98,46 @@ object RetrofitDataAgentImpl : MovieTicketDataAgent {
                 }
 
             }
-        )    }
+        )
+    }
+
+    override fun getProfile(
+        token: String,
+        onSuccess: (ProfileVO) -> Unit,
+        onFail: (String) -> Unit
+    ) {
+        mTheMovieTicketApi?.getProfile(token = token)?.enqueue(
+            object : Callback<ProfileResponse> {
+                override fun onResponse(
+                    call: Call<ProfileResponse>,
+                    response: Response<ProfileResponse>
+                ) {
+
+                    if(response.isSuccessful){
+                        if(response.body()?.code == 200){
+                            Log.d("api_profile",response.toString())
+                            val responseBody = response.body()
+                            responseBody?.data?.let(onSuccess)
+                        }else{
+                            Log.d("api_profile","status code error")
+                            onFail(response.body()?.message ?: "unknown error")
+                        }
+
+                    }else{
+                        Log.d("api_profile",response.body().toString())
+
+                    }
+
+                }
+
+                override fun onFailure(call: Call<ProfileResponse>, t: Throwable) {
+                    t.printStackTrace()
+                    Log.d("api_profile",t.message.toString())
+                    onFail(t.message ?: "unknown error")
+                }
+
+            }
+        )      }
 
     override fun getMovieListByStatus(status: String,onSuccess: (List<MovieVO>) -> Unit, onFail: (String) -> Unit) {
         mTheMovieTicketApi?.getMovieListByStatus(status = status)?.enqueue(

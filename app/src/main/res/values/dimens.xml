@@ -49,5 +49,6 @@
     <dimen name="width_drawer">300dp</dimen>
     <dimen name="height_movie_detail_collapsing_toolbar">400dp</dimen>
     <dimen name="width_movie_detail_play_button">50dp</dimen>
+    <dimen name="dimen_date_width">45dp</dimen>
 
 </resources>

@@ -11,11 +11,12 @@ const val API_GET_MOVIE_LIST = "/api/v1/movies"
 const val API_GET_MOVIE_DETAIL = "/api/v1/movies"
 const val API_REGISTER_WITH_EMAIL = "/api/v1/register"
 const val API_LOGIN_WITH_EMAIL = "/api/v1/email-login"
+const val API_GET_PROFILE = "/api/v1/profile"
 
 
 const val PARAM_PAGE = "page"
 const val PARAM_API_KEY = "api_key"
-const val PARAM_LANGUAGE = "language"
+const val PARAM_AUTHORIZATION = "AUTHORIZATION"
 const val PARAM_STATUS = "status"
 const val PARAM_TAKE = "take"
 const val PARAM_NAME = "name"

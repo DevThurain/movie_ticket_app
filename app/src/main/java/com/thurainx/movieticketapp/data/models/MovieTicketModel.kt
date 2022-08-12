@@ -3,6 +3,7 @@ package com.thurainx.movieticketapp.data.models
 import com.thurainx.movieticketapp.data.vos.ActorVO
 import com.thurainx.movieticketapp.data.vos.GenreVO
 import com.thurainx.movieticketapp.data.vos.MovieVO
+import com.thurainx.movieticketapp.data.vos.ProfileVO
 import com.thurainx.movieticketapp.network.response.TokenResponse
 
 interface MovieTicketModel {
@@ -22,6 +23,11 @@ interface MovieTicketModel {
         onFail : (String) -> Unit
     )
 
+    fun getProfile(
+        token: String,
+        onSuccess : (ProfileVO) -> Unit,
+        onFail : (String) -> Unit
+    )
 
     fun getMovieListByStatus(
         status: String,

@@ -3,6 +3,8 @@ package com.thurainx.movieticketapp.network.dataAgents
 import com.thurainx.movieticketapp.data.vos.ActorVO
 import com.thurainx.movieticketapp.data.vos.GenreVO
 import com.thurainx.movieticketapp.data.vos.MovieVO
+import com.thurainx.movieticketapp.data.vos.ProfileVO
+import com.thurainx.movieticketapp.network.response.ProfileResponse
 import com.thurainx.movieticketapp.network.response.TokenResponse
 import java.sql.ClientInfoStatus
 
@@ -19,6 +21,12 @@ interface MovieTicketDataAgent {
         email: String,
         password: String,
         onSuccess : (TokenResponse) -> Unit,
+        onFail : (String) -> Unit
+    )
+
+    fun getProfile(
+        token: String,
+        onSuccess : (ProfileVO) -> Unit,
         onFail : (String) -> Unit
     )
 

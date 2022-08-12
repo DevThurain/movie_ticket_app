@@ -50,17 +50,16 @@
                 android:id="@+id/tvGreeting"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@id/ivProfile"
                 android:layout_alignTop="@id/ivProfile"
                 android:layout_alignBottom="@id/ivProfile"
                 android:layout_marginStart="@dimen/margin_medium_2"
-                android:text="Hi Lily!"
-                android:gravity="center"
-                android:textStyle="bold"
+                android:layout_toEndOf="@id/ivProfile"
                 android:fontFamily="@font/poppins_regular"
+                android:gravity="center"
+                android:text="Hi Lily!"
                 android:textColor="@color/black"
                 android:textSize="@dimen/text_regular_3x"
-                />
+                android:textStyle="bold" />
 
             <include
                 android:id="@+id/vpNowShowing"

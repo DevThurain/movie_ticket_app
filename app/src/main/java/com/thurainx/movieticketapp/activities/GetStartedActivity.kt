@@ -5,7 +5,8 @@ import android.os.Bundle
 import com.thurainx.movieticketapp.R
 import kotlinx.android.synthetic.main.activity_get_started.*
 
-class GetStartedActivity : AppCompatActivity() {
+class
+GetStartedActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_get_started)
@@ -16,6 +17,7 @@ class GetStartedActivity : AppCompatActivity() {
     private fun setupListeners() {
         btnGetStarted.setOnClickListener {
             val intent = WelcomeActivity.getIntent(this)
+//            finish()
             startActivity(intent)
         }
     }

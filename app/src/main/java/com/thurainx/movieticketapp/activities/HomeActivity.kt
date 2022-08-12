@@ -7,11 +7,15 @@ import android.os.Bundle
 import android.view.Gravity
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import com.bumptech.glide.Glide
 import com.thurainx.movieticketapp.R
 import com.thurainx.movieticketapp.data.models.MovieTicketModelImpl
+import com.thurainx.movieticketapp.data.vos.ProfileVO
 import com.thurainx.movieticketapp.delegates.MovieDelegate
+import com.thurainx.movieticketapp.network.BASED_URL
 import com.thurainx.movieticketapp.viewpods.MovieListViewPod
 import kotlinx.android.synthetic.main.activity_home.*
+import kotlinx.android.synthetic.main.view_drawer.*
 
 class HomeActivity : AppCompatActivity(), MovieDelegate {
     companion object{
@@ -59,6 +63,31 @@ class HomeActivity : AppCompatActivity(), MovieDelegate {
             }
         )
 
+        mMovieTicketModel.getProfile(
+            token = mMovieTicketModel.token ?: "",
+            onSuccess = { profile ->
+                bindProfile(profile)
+            },
+            onFail = { errorMessage ->
+                Toast.makeText(this,errorMessage,Toast.LENGTH_SHORT).show()
+            }
+        )
+
+    }
+
+    private fun bindProfile(profile: ProfileVO) {
+        Glide.with(this)
+            .load(BASED_URL+profile.profileImage)
+            .into(ivProfile)
+
+        Glide.with(this)
+            .load(BASED_URL+profile.profileImage)
+            .centerCrop()
+            .into(ivDrawerProfile)
+
+        tvGreeting.text = "Hi ${profile.name}!"
+        tvDrawerName.text = profile.name
+        tvDrawerEmail.text = profile.email
     }
 
     private fun setupViewPods(){
