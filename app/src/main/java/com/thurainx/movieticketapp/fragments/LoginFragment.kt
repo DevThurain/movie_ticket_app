@@ -45,13 +45,13 @@ class LoginFragment : Fragment() {
         mLoginButtonViewPod.setupLogin()
 
         edtLoginEmail.doOnTextChanged { text, start, before, count ->
-            mLoginButtonViewPod.email = text.toString()
+            mLoginButtonViewPod.emailLogin = text.toString()
             edtLoginEmail.validateEmail(text.toString())
 
         }
         edtLoginPassword.doOnTextChanged { text, start, before, count ->
-            mLoginButtonViewPod.password = text.toString()
-            edtLoginPassword.validateEmpty(text = text.toString(), message = "password cannot be empty")
+            mLoginButtonViewPod.passwordLogin = text.toString()
+            edtLoginPassword.validateEmpty(text = text.toString(), message = context?.getString(R.string.lbl_empty_password) ?: "")
         }
 
     }

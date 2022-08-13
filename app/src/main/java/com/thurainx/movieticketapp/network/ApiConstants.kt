@@ -12,9 +12,11 @@ const val API_GET_MOVIE_DETAIL = "/api/v1/movies"
 const val API_REGISTER_WITH_EMAIL = "/api/v1/register"
 const val API_LOGIN_WITH_EMAIL = "/api/v1/email-login"
 const val API_GET_PROFILE = "/api/v1/profile"
+const val API_GET_CINEMA_LIST = "/api/v1/cinema-day-timeslots"
 
 
-const val PARAM_PAGE = "page"
+const val PARAM_DATE = "date"
+const val PARAM_MOVIE_ID = "movie_id"
 const val PARAM_API_KEY = "api_key"
 const val PARAM_AUTHORIZATION = "AUTHORIZATION"
 const val PARAM_STATUS = "status"
@@ -23,3 +25,7 @@ const val PARAM_NAME = "name"
 const val PARAM_EMAIL = "email"
 const val PARAM_PHONE = "phone"
 const val PARAM_PASSWORD = "password"
+
+
+const val STATUS_CURRENT = "current"
+const val STATUS_COMING_SOON = "comingsoon"

@@ -13,6 +13,8 @@ import com.thurainx.movieticketapp.data.models.MovieTicketModelImpl
 import com.thurainx.movieticketapp.data.vos.ProfileVO
 import com.thurainx.movieticketapp.delegates.MovieDelegate
 import com.thurainx.movieticketapp.network.BASED_URL
+import com.thurainx.movieticketapp.network.STATUS_COMING_SOON
+import com.thurainx.movieticketapp.network.STATUS_CURRENT
 import com.thurainx.movieticketapp.viewpods.MovieListViewPod
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.view_drawer.*
@@ -44,7 +46,7 @@ class HomeActivity : AppCompatActivity(), MovieDelegate {
     private fun fetchData(){
 
         mMovieTicketModel.getMovieListByStatus(
-            status = "current",
+            status = STATUS_CURRENT,
             onSuccess = { movieList ->
                 nowShowingMovieViewPod.setData(movieList = movieList)
             },
@@ -54,7 +56,7 @@ class HomeActivity : AppCompatActivity(), MovieDelegate {
         )
 
         mMovieTicketModel.getMovieListByStatus(
-            status = "comingsoon",
+            status = STATUS_COMING_SOON,
             onSuccess = { movieList ->
                 comingSoonMovieViewPod.setData(movieList = movieList)
             },
@@ -92,10 +94,10 @@ class HomeActivity : AppCompatActivity(), MovieDelegate {
 
     private fun setupViewPods(){
         nowShowingMovieViewPod = vpNowShowing as MovieListViewPod
-        nowShowingMovieViewPod.setUpMovieListViewPod(title = "Now Showing", delegate = this)
+        nowShowingMovieViewPod.setUpMovieListViewPod(title = getString(R.string.lbl_now_showing), delegate = this)
 
         comingSoonMovieViewPod = vpComingSoon as MovieListViewPod
-        comingSoonMovieViewPod.setUpMovieListViewPod(title = "Coming Soon", delegate = this)
+        comingSoonMovieViewPod.setUpMovieListViewPod(title = getString(R.string.lbl_coming_soon), delegate = this)
     }
 
     private fun setupListeners() {

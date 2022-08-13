@@ -48,20 +48,20 @@ class RegisterFragment : Fragment() {
 
         edtRegisterName.doOnTextChanged { text, start, before, count ->
             mRegisterButtonViewPod.name = text.toString()
-            edtRegisterName.validateEmpty(text = text.toString(), message = "name cannot be empty")
+            edtRegisterName.validateEmpty(text = text.toString(), message = context?.getString(R.string.lbl_empty_name) ?: "")
         }
         edtRegisterPhone.doOnTextChanged { text, start, before, count ->
             mRegisterButtonViewPod.phone = text.toString()
             edtRegisterPhone.validatePhone(text = text.toString())
         }
         edtRegisterEmail.doOnTextChanged { text, start, before, count ->
-            mRegisterButtonViewPod.email = text.toString()
+            mRegisterButtonViewPod.emailRegister = text.toString()
             edtRegisterEmail.validateEmail(text = text.toString())
 
         }
         edtRegisterPassword.doOnTextChanged { text, start, before, count ->
-            mRegisterButtonViewPod.password = text.toString()
-            edtRegisterPassword.validateEmpty(text = text.toString(), message = "password cannot be empty")
+            mRegisterButtonViewPod.passwordRegister = text.toString()
+            edtRegisterPassword.validateEmpty(text = text.toString(), message =  context?.getString(R.string.lbl_empty_password) ?: "")
 
         }
 

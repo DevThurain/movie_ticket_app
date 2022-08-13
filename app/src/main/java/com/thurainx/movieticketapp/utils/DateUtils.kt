@@ -1,10 +1,8 @@
 package com.thurainx.movieticketapp.utils
 
-import android.util.Log
 import com.thurainx.movieticketapp.data.vos.DayVO
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.ArrayList
 
 
 class DateUtils {
@@ -35,4 +33,15 @@ class DateUtils {
 
         return dayList.toList()
     }
+
+}
+
+fun String.toApiDateFormat() : String{
+    val formatter = SimpleDateFormat("EE MMM dd HH:mm:ss z yyyy",Locale.ENGLISH)
+
+    val parsedDate: Date = formatter.parse(this)
+    val print = SimpleDateFormat("yyyy-MM-dd")
+
+    return print.format(parsedDate)
+
 }

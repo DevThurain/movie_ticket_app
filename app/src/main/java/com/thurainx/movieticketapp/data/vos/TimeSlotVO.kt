@@ -6,8 +6,8 @@ data class TimeSlotVO(
     @SerializedName("cinema_timeslot_id")
     val cinemaTimeSlotId: Int?,
 
-    @SerializedName("movie_time")
-    val movieTime: String?,
+    @SerializedName("start_time")
+    val startTime: String?,
 
 
     )

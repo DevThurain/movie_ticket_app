@@ -4,34 +4,30 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.thurainx.movieticketapp.R
-import com.thurainx.movieticketapp.delegates.TimeDelegate
+import com.thurainx.movieticketapp.data.vos.CinemaVO
+import com.thurainx.movieticketapp.delegates.TimeSlotDelegate
 import com.thurainx.movieticketapp.models.CinemaData
 import com.thurainx.movieticketapp.viewholders.CinemaListViewHolder
-import kotlinx.android.synthetic.main.viewholder_cinema.view.*
 
-class CinemaListAdapter(val cinemaDataList: List<CinemaData>,val timeDelegate: TimeDelegate) : RecyclerView.Adapter<CinemaListViewHolder>(){
-    lateinit var mTimeListAdapter : TimeListAdapter
+class CinemaListAdapter(val timeSlotDelegate: TimeSlotDelegate) : RecyclerView.Adapter<CinemaListViewHolder>(){
+    var mCinemaList: List<CinemaVO> = listOf()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CinemaListViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.viewholder_cinema,parent,false)
-        return CinemaListViewHolder(view)
+        return CinemaListViewHolder(view, timeSlotDelegate)
     }
 
     override fun onBindViewHolder(holder: CinemaListViewHolder, position: Int) {
-        holder.itemView.tvCinemaName.text = cinemaDataList[position].name
-        mTimeListAdapter = TimeListAdapter(cinemaData = cinemaDataList[position], timeDelegate = timeDelegate)
-        holder.itemView.rvTimeList.adapter = mTimeListAdapter
-//        val spanCount = 3 // 3 columns
-//        val spacing = 45 // 50px
-//        val includeEdge = true
-//        holder.itemView.rvTimeList.addItemDecoration(GridSpacingItemDecoration(spanCount, spacing, includeEdge))
-
-
+        holder.bind(cinema = mCinemaList[position])
     }
 
     override fun getItemCount(): Int {
-        return cinemaDataList.size
+        return mCinemaList.size
     }
 
+    fun setNewData(cinemaList: List<CinemaVO>){
+        mCinemaList = cinemaList
+        notifyDataSetChanged()
+    }
 
 
 }

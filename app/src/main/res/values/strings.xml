@@ -13,6 +13,7 @@
     <string name="lbl_forgot_password">Forgot Password?</string>
     <string name="lbl_confirm">Confirm</string>
     <string name="lbl_now_showing">Now Showing</string>
+    <string name="lbl_coming_soon">Coming Soon</string>
     <string name="lbl_edit">Edit</string>
     <string name="lbl_promotion_code">Promotion Code</string>
     <string name="lbl_select_a_language">Select a language</string>
@@ -67,4 +68,8 @@
     <string name="lbl_name">Name</string>
     <string name="lbl_phone">Phone</string>
     <string name="lbl_add_card">Add Card</string>
+    <string name="lbl_empty_name">name cannot be empty</string>
+    <string name="lbl_empty_password">password cannot be empty</string>
+
+
 </resources>

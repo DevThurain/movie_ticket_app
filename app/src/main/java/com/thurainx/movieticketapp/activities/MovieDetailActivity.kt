@@ -22,7 +22,7 @@ import kotlinx.android.synthetic.main.view_holder_movie.*
 import kotlinx.android.synthetic.main.view_ticket_sheet.*
 import kotlin.time.Duration
 
-val MOVIE_ID : String = "MOVIE_ID"
+const val MOVIE_ID : String = "MOVIE_ID"
 class MovieDetailActivity : AppCompatActivity() {
     companion object{
         fun getIntent(context: Context, movieId: Int?) : Intent {
@@ -33,6 +33,7 @@ class MovieDetailActivity : AppCompatActivity() {
     }
     lateinit var mCastListAdapter: CastListAdapter
     val mMovieTicketModel = MovieTicketModelImpl
+    var mMovieId: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,8 +42,8 @@ class MovieDetailActivity : AppCompatActivity() {
         setUpCastRecyclerView()
         setUpListeners()
 
-        val movieId = intent.getIntExtra(MOVIE_ID,0)
-        fetchData(movieId)
+        mMovieId = intent.getIntExtra(MOVIE_ID,0)
+        fetchData(mMovieId)
     }
 
     private fun fetchData(movieId: Int){
@@ -55,8 +56,6 @@ class MovieDetailActivity : AppCompatActivity() {
                 Toast.makeText(this,errorMessage, Toast.LENGTH_SHORT).show()
             }
         )
-
-
 
     }
 
@@ -80,8 +79,9 @@ class MovieDetailActivity : AppCompatActivity() {
     }
 
     private fun setUpListeners() {
+
         btnGetTicket.setOnClickListener {
-            val intent = ChooseCinemaActivity.getIntent(this)
+            val intent = ChooseCinemaActivity.getIntent(this,mMovieId)
             startActivity(intent)
         }
         ivMovieDetailBack.setOnClickListener {

@@ -35,6 +35,8 @@
             android:name=".activities.ChooseCinemaActivity"
             android:exported="true"
             android:theme="@style/Theme.MovieTicketApp">
+
+
            
         </activity>
         <activity

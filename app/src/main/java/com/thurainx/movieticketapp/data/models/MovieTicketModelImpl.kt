@@ -1,9 +1,6 @@
 package com.thurainx.movieticketapp.data.models
 
-import com.thurainx.movieticketapp.data.vos.ActorVO
-import com.thurainx.movieticketapp.data.vos.GenreVO
-import com.thurainx.movieticketapp.data.vos.MovieVO
-import com.thurainx.movieticketapp.data.vos.ProfileVO
+import com.thurainx.movieticketapp.data.vos.*
 import com.thurainx.movieticketapp.network.dataAgents.MovieTicketDataAgent
 import com.thurainx.movieticketapp.network.dataAgents.RetrofitDataAgentImpl
 import com.thurainx.movieticketapp.network.response.TokenResponse
@@ -59,6 +56,15 @@ object MovieTicketModelImpl : MovieTicketModel {
         mMovieTicketDataAgent.getMovieDetailById(id = id,onSuccess= onSuccess, onFail= onFail)
     }
 
+    override fun getCinemaList(
+        token: String,
+        movieId: String,
+        date: String,
+        onSuccess: (List<CinemaVO>) -> Unit,
+        onFail: (String) -> Unit
+    ) {
+        mMovieTicketDataAgent.getCinemaList(token = token,movieId = movieId, date = date,onSuccess= onSuccess, onFail= onFail)
+    }
 
 
 }

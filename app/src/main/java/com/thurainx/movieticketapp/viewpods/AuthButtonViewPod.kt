@@ -14,8 +14,11 @@ class AuthButtonViewPod @JvmOverloads constructor(
     lateinit var mAuthDelegate: AuthDelegate
     var name: String = ""
     var phone: String = ""
-    var email: String = ""
-    var password: String = ""
+    var emailLogin: String = ""
+    var emailRegister: String = ""
+    var passwordLogin: String = ""
+    var passwordRegister: String = ""
+
 
     override fun onFinishInflate() {
         super.onFinishInflate()
@@ -27,13 +30,13 @@ class AuthButtonViewPod @JvmOverloads constructor(
 
     fun setupRegister() {
         btnConfirm.setOnClickListener {
-            mAuthDelegate.onTapRegister(name = name, phone = phone, email = email, password = password)
+            mAuthDelegate.onTapRegister(name = name, phone = phone, email = emailRegister, password = passwordRegister)
         }
     }
 
     fun setupLogin(){
         btnConfirm.setOnClickListener {
-            mAuthDelegate.onTapLogin(email = email, password = password)
+            mAuthDelegate.onTapLogin(email = emailLogin, password = passwordLogin)
         }
     }
 

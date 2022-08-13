@@ -1,5 +1,6 @@
 package com.thurainx.movieticketapp.network
 
+import com.thurainx.movieticketapp.activities.MOVIE_ID
 import com.thurainx.movieticketapp.network.response.*
 import retrofit2.Call
 import retrofit2.http.*
@@ -13,34 +14,39 @@ interface TheMovieTicketApi {
         @Field(PARAM_EMAIL) email: String,
         @Field(PARAM_PHONE) phone: String,
         @Field(PARAM_PASSWORD) password: String,
-        ) : Call<TokenResponse>
+    ): Call<TokenResponse>
 
     @POST(API_LOGIN_WITH_EMAIL)
     @FormUrlEncoded
     fun loginWithEmail(
         @Field(PARAM_EMAIL) email: String,
         @Field(PARAM_PASSWORD) password: String,
-    ) : Call<TokenResponse>
+    ): Call<TokenResponse>
 
     @GET(API_GET_PROFILE)
     fun getProfile(
         @Header(PARAM_AUTHORIZATION) token: String,
-    ) : Call<ProfileResponse>
+    ): Call<ProfileResponse>
 
     @GET(API_GET_MOVIE_LIST)
     fun getMovieListByStatus(
         @Query(PARAM_STATUS) status: String,
         @Query(PARAM_TAKE) take: Int = 10,
-    ) : Call<MovieListResponse>
+    ): Call<MovieListResponse>
 
 
-    @GET(API_GET_MOVIE_DETAIL+"/{movie_id}")
+    @GET(API_GET_MOVIE_DETAIL + "/{movie_id}")
     fun getMovieDetailById(
         @Path("movie_id") movieId: String,
         @Query(PARAM_API_KEY) apiKey: String = MOVIE_API_KEY,
-    ) : Call<MovieDetailResponse>
+    ): Call<MovieDetailResponse>
 
-
+    @GET(API_GET_CINEMA_LIST)
+    fun getCinemaList(
+        @Header(PARAM_AUTHORIZATION) token: String,
+        @Query(PARAM_MOVIE_ID) movieId: String,
+        @Query(PARAM_DATE) date: String,
+    ): Call<CinemaListResponse>
 
 
 }

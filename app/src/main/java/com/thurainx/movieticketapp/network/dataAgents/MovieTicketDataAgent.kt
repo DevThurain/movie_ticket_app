@@ -1,9 +1,6 @@
 package com.thurainx.movieticketapp.network.dataAgents
 
-import com.thurainx.movieticketapp.data.vos.ActorVO
-import com.thurainx.movieticketapp.data.vos.GenreVO
-import com.thurainx.movieticketapp.data.vos.MovieVO
-import com.thurainx.movieticketapp.data.vos.ProfileVO
+import com.thurainx.movieticketapp.data.vos.*
 import com.thurainx.movieticketapp.network.response.ProfileResponse
 import com.thurainx.movieticketapp.network.response.TokenResponse
 import java.sql.ClientInfoStatus
@@ -36,11 +33,17 @@ interface MovieTicketDataAgent {
         onFail : (String) -> Unit
     )
 
-
-
     fun getMovieDetailById(
         id: String,
         onSuccess : (MovieVO) -> Unit,
+        onFail : (String) -> Unit
+    )
+
+    fun getCinemaList(
+        token: String,
+        movieId: String,
+        date: String,
+        onSuccess : (List<CinemaVO>) -> Unit,
         onFail : (String) -> Unit
     )
 

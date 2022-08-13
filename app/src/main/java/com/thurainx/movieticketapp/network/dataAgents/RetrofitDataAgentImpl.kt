@@ -1,10 +1,7 @@
 package com.thurainx.movieticketapp.network.dataAgents
 
 import android.util.Log
-import com.thurainx.movieticketapp.data.vos.ActorVO
-import com.thurainx.movieticketapp.data.vos.GenreVO
-import com.thurainx.movieticketapp.data.vos.MovieVO
-import com.thurainx.movieticketapp.data.vos.ProfileVO
+import com.thurainx.movieticketapp.data.vos.*
 import com.thurainx.movieticketapp.network.BASED_URL
 import com.thurainx.movieticketapp.network.MOVIE_BASED_URL
 import com.thurainx.movieticketapp.network.TheMovieTicketApi
@@ -19,7 +16,6 @@ import java.util.concurrent.TimeUnit
 
 object RetrofitDataAgentImpl : MovieTicketDataAgent {
     private var mTheMovieTicketApi: TheMovieTicketApi? = null
-    private var mTheMovieApi: TheMovieTicketApi? = null
 
     init {
         val okHttpClient = OkHttpClient.Builder()
@@ -36,21 +32,33 @@ object RetrofitDataAgentImpl : MovieTicketDataAgent {
         mTheMovieTicketApi = retrofitClient.create(TheMovieTicketApi::class.java)
 
 
-
     }
-    override fun registerWithEmail(name: String, phone: String, email: String, password: String,onSuccess: (TokenResponse) -> Unit, onFail: (String) -> Unit) {
-        mTheMovieTicketApi?.registerWithEmail(name = name, email = email, phone = phone, password = password)?.enqueue(
+
+    override fun registerWithEmail(
+        name: String,
+        phone: String,
+        email: String,
+        password: String,
+        onSuccess: (TokenResponse) -> Unit,
+        onFail: (String) -> Unit
+    ) {
+        mTheMovieTicketApi?.registerWithEmail(
+            name = name,
+            email = email,
+            phone = phone,
+            password = password
+        )?.enqueue(
             object : Callback<TokenResponse> {
                 override fun onResponse(
                     call: Call<TokenResponse>,
                     response: Response<TokenResponse>
                 ) {
 
-                    if(response.isSuccessful){
-                        if(response.body()?.code == 201){
-                            Log.d("api_register",response.toString())
+                    if (response.isSuccessful) {
+                        if (response.body()?.code == 201) {
+                            Log.d("api_register", response.toString())
                             response.body()?.let(onSuccess)
-                        }else{
+                        } else {
                             onFail(response.body()?.message ?: "unknown error")
                         }
 
@@ -80,11 +88,11 @@ object RetrofitDataAgentImpl : MovieTicketDataAgent {
                     response: Response<TokenResponse>
                 ) {
 
-                    if(response.isSuccessful){
-                        if(response.body()?.code == 200){
-                            Log.d("api_login",response.toString())
+                    if (response.isSuccessful) {
+                        if (response.body()?.code == 200) {
+                            Log.d("api_login", response.toString())
                             response.body()?.let(onSuccess)
-                        }else{
+                        } else {
                             onFail(response.body()?.message ?: "unknown error")
                         }
 
@@ -113,18 +121,15 @@ object RetrofitDataAgentImpl : MovieTicketDataAgent {
                     response: Response<ProfileResponse>
                 ) {
 
-                    if(response.isSuccessful){
-                        if(response.body()?.code == 200){
-                            Log.d("api_profile",response.toString())
+                    if (response.isSuccessful) {
+                        if (response.body()?.code == 200) {
+                            Log.d("api_profile", response.toString())
                             val responseBody = response.body()
                             responseBody?.data?.let(onSuccess)
-                        }else{
-                            Log.d("api_profile","status code error")
+                        } else {
+                            Log.d("api_profile", "status code error")
                             onFail(response.body()?.message ?: "unknown error")
                         }
-
-                    }else{
-                        Log.d("api_profile",response.body().toString())
 
                     }
 
@@ -132,14 +137,19 @@ object RetrofitDataAgentImpl : MovieTicketDataAgent {
 
                 override fun onFailure(call: Call<ProfileResponse>, t: Throwable) {
                     t.printStackTrace()
-                    Log.d("api_profile",t.message.toString())
+                    Log.d("api_profile", t.message.toString())
                     onFail(t.message ?: "unknown error")
                 }
 
             }
-        )      }
+        )
+    }
 
-    override fun getMovieListByStatus(status: String,onSuccess: (List<MovieVO>) -> Unit, onFail: (String) -> Unit) {
+    override fun getMovieListByStatus(
+        status: String,
+        onSuccess: (List<MovieVO>) -> Unit,
+        onFail: (String) -> Unit
+    ) {
         mTheMovieTicketApi?.getMovieListByStatus(status = status)?.enqueue(
             object : Callback<MovieListResponse> {
                 override fun onResponse(
@@ -147,9 +157,9 @@ object RetrofitDataAgentImpl : MovieTicketDataAgent {
                     response: Response<MovieListResponse>
                 ) {
 
-                    if(response.isSuccessful){
+                    if (response.isSuccessful) {
                         val movieList = response.body()?.data ?: listOf()
-                        Log.d("movies",movieList.toString())
+                        Log.d("movies", movieList.toString())
                         onSuccess(movieList)
                     }
 
@@ -177,9 +187,9 @@ object RetrofitDataAgentImpl : MovieTicketDataAgent {
                     response: Response<MovieDetailResponse>
                 ) {
 
-                    if(response.isSuccessful){
+                    if (response.isSuccessful) {
                         val movie = response.body()?.data
-                        Log.d("movieDetail",movie.toString())
+                        Log.d("movieDetail", movie.toString())
                         movie?.let(onSuccess)
                     }
 
@@ -197,6 +207,42 @@ object RetrofitDataAgentImpl : MovieTicketDataAgent {
 
     }
 
+    override fun getCinemaList(
+        token: String,
+        movieId: String,
+        date: String,
+        onSuccess: (List<CinemaVO>) -> Unit,
+        onFail: (String) -> Unit
+    ) {
+        mTheMovieTicketApi?.getCinemaList(
+            token = token,
+            movieId = movieId,
+            date = date
+        )?.enqueue(
+            object : Callback<CinemaListResponse> {
+                override fun onResponse(
+                    call: Call<CinemaListResponse>,
+                    response: Response<CinemaListResponse>
+                ) {
+
+                    if (response.isSuccessful) {
+                        if (response.body()?.code == 200) {
+                            Log.d("api_cinema", response.toString())
+                            val responseBody = response.body()
+                            responseBody?.data?.let(onSuccess)
+                        }
+                    }
+
+                }
+
+                override fun onFailure(call: Call<CinemaListResponse>, t: Throwable) {
+                    t.printStackTrace()
+                    onFail(t.message ?: "unknown error")
+                }
+
+            }
+        )
+    }
 
 
 }
