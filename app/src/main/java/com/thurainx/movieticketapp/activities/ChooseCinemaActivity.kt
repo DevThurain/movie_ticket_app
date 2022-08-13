@@ -9,6 +9,7 @@ import com.thurainx.movieticketapp.R
 import com.thurainx.movieticketapp.adaptors.CinemaListAdapter
 import com.thurainx.movieticketapp.adaptors.DateListAdapter
 import com.thurainx.movieticketapp.data.models.MovieTicketModelImpl
+import com.thurainx.movieticketapp.data.vos.CinemaVO
 import com.thurainx.movieticketapp.data.vos.DayVO
 import com.thurainx.movieticketapp.data.vos.TimeSlotVO
 import com.thurainx.movieticketapp.delegates.DayDelegate
@@ -32,6 +33,7 @@ class ChooseCinemaActivity : AppCompatActivity(), DayDelegate, TimeSlotDelegate 
     lateinit var mCinemaListAdapter: CinemaListAdapter
     val mMovieTicketModel = MovieTicketModelImpl
     var mDayList: List<DayVO> = listOf()
+    var mCinemaList: List<CinemaVO> = listOf()
     var mMovieId: Int? = null
 
 
@@ -63,6 +65,8 @@ class ChooseCinemaActivity : AppCompatActivity(), DayDelegate, TimeSlotDelegate 
             movieId = mMovieId.toString(),
             date = date,
             onSuccess = { cinemaList ->
+                mCinemaList = cinemaList
+                mCinemaList.first().timeslots?.first()?.isSelected = true
                 mCinemaListAdapter.setNewData(cinemaList = cinemaList)
             },
             onFail = { errorMessage ->
@@ -72,7 +76,8 @@ class ChooseCinemaActivity : AppCompatActivity(), DayDelegate, TimeSlotDelegate 
     }
 
     private fun setupRecyclerView() {
-        mDateListAdapter = DateListAdapter(dayDelegate = this, context = this)
+        mDayList.first().isSelected = true
+        mDateListAdapter = DateListAdapter(dayDelegate = this, context = this, dayList = mDayList)
         rvDateList.adapter = mDateListAdapter
 
         mCinemaListAdapter = CinemaListAdapter(timeSlotDelegate = this)
@@ -92,20 +97,28 @@ class ChooseCinemaActivity : AppCompatActivity(), DayDelegate, TimeSlotDelegate 
     }
 
     override fun onTapDay(day: DayVO) {
-        var mIndex = 0
+        var newDayList = DateUtils().getNextTwoWeekDates()
 
-        mDayList.forEachIndexed { index, dayVO ->
+        newDayList.forEachIndexed { index, dayVO ->
             if (dayVO.formatDay == day.formatDay) {
-                mIndex = index
+                dayVO.isSelected = true
             }
         }
-        mDateListAdapter.updateData(mIndex)
+        mDateListAdapter.updateData(newDayList)
         getCinemaListByDate(date = day.rawDate?.toApiDateFormat() ?: "")
-
-
     }
 
     override fun onTapTimeSlot(timeSlotVO: TimeSlotVO) {
+
+        mCinemaList.forEach {
+            it.timeslots?.forEach { timeVO ->
+                timeVO.isSelected = timeVO.cinemaDayTimeSlotId == timeSlotVO.cinemaDayTimeSlotId
+            }
+        }
+
+        mCinemaListAdapter.setNewData(mCinemaList)
+
+
 
     }
 

@@ -8,7 +8,8 @@ import com.thurainx.movieticketapp.network.response.TokenResponse
 object MovieTicketModelImpl : MovieTicketModel {
 
     private val mMovieTicketDataAgent : MovieTicketDataAgent = RetrofitDataAgentImpl
-    var token: String? = null
+//    var token: String? = null
+    var token: String? = "Bearer 7055|5gwn2zkRRiolmyNXCmedYmiUug8fKp0l8myA6SJ1"
 
     override fun registerWithEmail(
         name: String,

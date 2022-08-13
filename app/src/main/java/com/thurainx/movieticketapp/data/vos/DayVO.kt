@@ -6,5 +6,6 @@ data class DayVO(
     val rawDate: String?,
     val formatDay: String?,
     val day: String?,
+    var isSelected: Boolean = false
 
 )

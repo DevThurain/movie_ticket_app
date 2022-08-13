@@ -17,15 +17,14 @@ class DateListViewHolder(itemView: View,mDelegate: DayDelegate) : RecyclerView.V
             mDay?.let {
                 mDelegate.onTapDay(it)
             }
-
         }
     }
 
 
-    fun bind(day: DayVO, isSelected: Boolean){
+    fun bind(day: DayVO){
         itemView.tvDate.text = day.formatDay
         mDay = day
-        if(isSelected){
+        if(day.isSelected){
             itemView.tvDate.setTextSize(TypedValue.COMPLEX_UNIT_PX, itemView.context.resources.getDimension(R.dimen.text_regular_2x_medium))
             itemView.tvDate.setTextColor(Color.WHITE)
         }else{
