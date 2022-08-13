@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.core.widget.doOnTextChanged
 import com.thurainx.movieticketapp.R
 import com.thurainx.movieticketapp.delegates.AuthDelegate
+import com.thurainx.movieticketapp.delegates.ConfirmDelegate
 import com.thurainx.movieticketapp.utils.validateEmail
 import com.thurainx.movieticketapp.utils.validateEmpty
 import com.thurainx.movieticketapp.utils.validatePhone
@@ -18,7 +19,7 @@ import kotlinx.android.synthetic.main.fragment_login.view.*
 import kotlinx.android.synthetic.main.fragment_register.*
 import kotlinx.android.synthetic.main.fragment_register.view.*
 
-class RegisterFragment : Fragment() {
+class RegisterFragment : Fragment(), ConfirmDelegate{
 
     lateinit var mAuthDelegate : AuthDelegate
     private lateinit var mRegisterButtonViewPod: AuthButtonViewPod
@@ -43,29 +44,23 @@ class RegisterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         mRegisterButtonViewPod = view.viewPodRegisterButton as AuthButtonViewPod
-        mRegisterButtonViewPod.setDelegate(mAuthDelegate)
-        mRegisterButtonViewPod.setupRegister()
+        mRegisterButtonViewPod.setupAuthButtonViewPod(this)
 
-        edtRegisterName.doOnTextChanged { text, start, before, count ->
-            mRegisterButtonViewPod.name = text.toString()
-            edtRegisterName.validateEmpty(text = text.toString(), message = context?.getString(R.string.lbl_empty_name) ?: "")
+    }
+
+    override fun onTapConfirm() {
+        val validEmail = edtRegisterEmail.validateEmail(edtRegisterEmail.text.toString())
+        val validPassword = edtRegisterPassword.validateEmpty(text = edtRegisterPassword.text.toString(), message = context?.getString(R.string.lbl_empty_password) ?: "")
+        val validName = edtRegisterName.validateEmpty(text = edtRegisterName.text.toString(), message = context?.getString(R.string.lbl_empty_name) ?: "")
+        val validPhone = edtRegisterPhone.validatePhone(edtRegisterPhone.text.toString())
+        if(validEmail && validPassword && validName && validPhone){
+            mAuthDelegate.onTapRegister(
+                email = edtRegisterEmail.text.toString(),
+                password = edtRegisterPassword.text.toString(),
+                name = edtRegisterName.text.toString(),
+                phone = edtRegisterPhone.text.toString()
+            )
         }
-        edtRegisterPhone.doOnTextChanged { text, start, before, count ->
-            mRegisterButtonViewPod.phone = text.toString()
-            edtRegisterPhone.validatePhone(text = text.toString())
-        }
-        edtRegisterEmail.doOnTextChanged { text, start, before, count ->
-            mRegisterButtonViewPod.emailRegister = text.toString()
-            edtRegisterEmail.validateEmail(text = text.toString())
-
-        }
-        edtRegisterPassword.doOnTextChanged { text, start, before, count ->
-            mRegisterButtonViewPod.passwordRegister = text.toString()
-            edtRegisterPassword.validateEmpty(text = text.toString(), message =  context?.getString(R.string.lbl_empty_password) ?: "")
-
-        }
-
-
     }
 
 }

@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.core.widget.doOnTextChanged
 import com.thurainx.movieticketapp.R
 import com.thurainx.movieticketapp.delegates.AuthDelegate
+import com.thurainx.movieticketapp.delegates.ConfirmDelegate
 import com.thurainx.movieticketapp.utils.validateEmail
 import com.thurainx.movieticketapp.utils.validateEmpty
 import com.thurainx.movieticketapp.viewpods.AuthButtonViewPod
@@ -16,7 +17,7 @@ import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_login.view.*
 
 
-class LoginFragment : Fragment() {
+class LoginFragment : Fragment(),ConfirmDelegate {
 
     lateinit var mAuthDelegate : AuthDelegate
     private lateinit var mLoginButtonViewPod: AuthButtonViewPod
@@ -41,19 +42,17 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         mLoginButtonViewPod = view.viewPodLoginButton as AuthButtonViewPod
-        mLoginButtonViewPod.setDelegate(mAuthDelegate)
-        mLoginButtonViewPod.setupLogin()
+        mLoginButtonViewPod.setupAuthButtonViewPod(this)
 
-        edtLoginEmail.doOnTextChanged { text, start, before, count ->
-            mLoginButtonViewPod.emailLogin = text.toString()
-            edtLoginEmail.validateEmail(text.toString())
 
-        }
-        edtLoginPassword.doOnTextChanged { text, start, before, count ->
-            mLoginButtonViewPod.passwordLogin = text.toString()
-            edtLoginPassword.validateEmpty(text = text.toString(), message = context?.getString(R.string.lbl_empty_password) ?: "")
-        }
+    }
 
+    override fun onTapConfirm() {
+        val validEmail = edtLoginEmail.validateEmail(edtLoginEmail.text.toString())
+        val validPassword = edtLoginPassword.validateEmpty(text = edtLoginPassword.text.toString(), message = context?.getString(R.string.lbl_empty_password) ?: "")
+       if(validEmail && validPassword){
+           mAuthDelegate.onTapLogin(email = edtLoginEmail.text.toString(), password = edtLoginPassword.text.toString())
+       }
     }
 
 

@@ -5,39 +5,32 @@ import android.util.AttributeSet
 import android.widget.LinearLayout
 import com.thurainx.movieticketapp.activities.HomeActivity
 import com.thurainx.movieticketapp.delegates.AuthDelegate
+import com.thurainx.movieticketapp.delegates.ConfirmDelegate
 import kotlinx.android.synthetic.main.viewpod_login_button.view.*
 
 class AuthButtonViewPod @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null
 ) : LinearLayout(context, attrs) {
 
-    lateinit var mAuthDelegate: AuthDelegate
-    var name: String = ""
-    var phone: String = ""
-    var emailLogin: String = ""
-    var emailRegister: String = ""
-    var passwordLogin: String = ""
-    var passwordRegister: String = ""
-
+    lateinit var mConfirmDelegate: ConfirmDelegate
 
     override fun onFinishInflate() {
         super.onFinishInflate()
     }
 
-    fun setDelegate(delegate: AuthDelegate){
-        mAuthDelegate = delegate
+    fun setupAuthButtonViewPod(delegate: ConfirmDelegate){
+        mConfirmDelegate = delegate
+        setupListeners()
     }
 
-    fun setupRegister() {
+    private fun setupListeners() {
         btnConfirm.setOnClickListener {
-            mAuthDelegate.onTapRegister(name = name, phone = phone, email = emailRegister, password = passwordRegister)
+            mConfirmDelegate.onTapConfirm()
         }
     }
 
-    fun setupLogin(){
-        btnConfirm.setOnClickListener {
-            mAuthDelegate.onTapLogin(email = emailLogin, password = passwordLogin)
-        }
-    }
+
+
+
 
 }
