@@ -6,7 +6,7 @@ const val SEAT_TYPE_AVAILABLE = "available"
 const val SEAT_TYPE_TAKEN = "taken"
 const val SEAT_TYPE_EMPTY = "empty"
 const val SEAT_TYPE_TEXT = "text"
-class MovieSeatVO(
+data class MovieSeatVO(
 
 
     @SerializedName("id")
@@ -23,6 +23,8 @@ class MovieSeatVO(
 
     @SerializedName("price")
     val price: Int? = 0,
+
+    var isSelected: Boolean = false
 
 
 

@@ -26,5 +26,5 @@ data class SeatingPlanVO(
     val movieDate: String?,
 
     @SerializedName("seats")
-    val seats: List<List<MovieSeatVO>?>?,
+    val seats: List<List<MovieSeatVO>>?,
     )

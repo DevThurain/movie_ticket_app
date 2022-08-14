@@ -8,6 +8,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.thurainx.movieticketapp.R
 import com.thurainx.movieticketapp.adaptors.CinemaListAdapter
 import com.thurainx.movieticketapp.adaptors.DateListAdapter
+import com.thurainx.movieticketapp.data.EXTRA_MOVIE_ID
+import com.thurainx.movieticketapp.data.EXTRA_MOVIE_NAME
 import com.thurainx.movieticketapp.data.models.MovieTicketModelImpl
 import com.thurainx.movieticketapp.data.vos.CinemaVO
 import com.thurainx.movieticketapp.data.vos.DayVO
@@ -22,9 +24,10 @@ import kotlinx.android.synthetic.main.activity_choose_cinema.*
 
 class ChooseCinemaActivity : AppCompatActivity(), DayDelegate, TimeSlotDelegate {
     companion object {
-        fun getIntent(context: Context, movieId: Int): Intent {
+        fun getIntent(context: Context, movieId: Int, movieName: String): Intent {
             val intent = Intent(context, ChooseCinemaActivity::class.java)
-            intent.putExtra(MOVIE_ID, movieId)
+            intent.putExtra(EXTRA_MOVIE_ID, movieId)
+            intent.putExtra(EXTRA_MOVIE_NAME, movieName)
             return intent
         }
     }
@@ -34,7 +37,10 @@ class ChooseCinemaActivity : AppCompatActivity(), DayDelegate, TimeSlotDelegate 
     val mMovieTicketModel = MovieTicketModelImpl
     var mDayList: List<DayVO> = listOf()
     var mCinemaList: List<CinemaVO> = listOf()
-    var mMovieId: Int? = null
+    var mMovieId: Int? = 0
+    var selectedDate = ""
+    var selectedTime = ""
+    var selectedCinemaName = ""
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,7 +48,7 @@ class ChooseCinemaActivity : AppCompatActivity(), DayDelegate, TimeSlotDelegate 
         setContentView(R.layout.activity_choose_cinema)
 
         mDayList = ArrayList(DateUtils().getNextTwoWeekDates())
-        mMovieId = intent.getIntExtra(MOVIE_ID, 0)
+        mMovieId = intent.getIntExtra(EXTRA_MOVIE_ID, 0)
 
         setupListeners()
         setupRecyclerView()
@@ -61,12 +67,13 @@ class ChooseCinemaActivity : AppCompatActivity(), DayDelegate, TimeSlotDelegate 
 
 
         mMovieTicketModel.getCinemaList(
-            token = mMovieTicketModel.token ?: "",
             movieId = mMovieId.toString(),
             date = date,
             onSuccess = { cinemaList ->
                 mCinemaList = cinemaList
                 mCinemaList.first().timeslots?.first()?.isSelected = true
+                selectedCinemaName = mCinemaList.first().cinema.toString()
+                selectedTime = mCinemaList.first().timeslots?.first()?.startTime.toString()
                 mCinemaListAdapter.setNewData(cinemaList = cinemaList)
             },
             onFail = { errorMessage ->
@@ -77,6 +84,7 @@ class ChooseCinemaActivity : AppCompatActivity(), DayDelegate, TimeSlotDelegate 
 
     private fun setupRecyclerView() {
         mDayList.first().isSelected = true
+        selectedDate = mDayList.first().rawDate.toString()
         mDateListAdapter = DateListAdapter(dayDelegate = this, context = this, dayList = mDayList)
         rvDateList.adapter = mDateListAdapter
 
@@ -91,7 +99,13 @@ class ChooseCinemaActivity : AppCompatActivity(), DayDelegate, TimeSlotDelegate 
         }
 
         btnChooseCinemaNext.setOnClickListener {
-            val intent = ChooseSeatActivity.getIntent(this)
+            val intent = ChooseSeatActivity.getIntent(
+                context = this,
+                movieName =  intent.getStringExtra(EXTRA_MOVIE_NAME) ?: "",
+                rawDate = selectedDate,
+                time = selectedTime,
+                cinemaName = selectedCinemaName,
+            )
             startActivity(intent)
         }
     }
@@ -102,6 +116,7 @@ class ChooseCinemaActivity : AppCompatActivity(), DayDelegate, TimeSlotDelegate 
         newDayList.forEachIndexed { index, dayVO ->
             if (dayVO.formatDay == day.formatDay) {
                 dayVO.isSelected = true
+                selectedDate = day.rawDate.toString()
             }
         }
         mDateListAdapter.updateData(newDayList)
@@ -113,10 +128,15 @@ class ChooseCinemaActivity : AppCompatActivity(), DayDelegate, TimeSlotDelegate 
         mCinemaList.forEach {
             it.timeslots?.forEach { timeVO ->
                 timeVO.isSelected = timeVO.cinemaDayTimeSlotId == timeSlotVO.cinemaDayTimeSlotId
+                if(timeVO.cinemaDayTimeSlotId == timeSlotVO.cinemaDayTimeSlotId){
+                    selectedTime = timeVO.startTime.toString()
+                    selectedCinemaName = it.cinema.toString()
+                }
             }
         }
 
         mCinemaListAdapter.setNewData(mCinemaList)
+
 
 
 

@@ -1,6 +1,7 @@
 package com.thurainx.movieticketapp.network.dataAgents
 
 import android.util.Log
+import com.thurainx.movieticketapp.data.MovieSeatVO
 import com.thurainx.movieticketapp.data.vos.*
 import com.thurainx.movieticketapp.network.BASED_URL
 import com.thurainx.movieticketapp.network.MOVIE_BASED_URL
@@ -243,6 +244,42 @@ object RetrofitDataAgentImpl : MovieTicketDataAgent {
             }
         )
     }
+
+    override fun getSeatingPlan(
+        token: String,
+        timeSlotId: String,
+        bookingDate: String,
+        onSuccess: (List<List<MovieSeatVO>>) -> Unit,
+        onFail: (String) -> Unit
+    ) {
+        mTheMovieTicketApi?.getSeatingPlan(
+            token = token,
+            timeSlotId = timeSlotId,
+            bookingDate = bookingDate
+        )?.enqueue(
+            object : Callback<SeatingPlanResponse> {
+                override fun onResponse(
+                    call: Call<SeatingPlanResponse>,
+                    response: Response<SeatingPlanResponse>
+                ) {
+
+                    if (response.isSuccessful) {
+                        if (response.body()?.code == 200) {
+                            Log.d("api_seating_plan", response.toString())
+                            val responseBody = response.body()
+                            responseBody?.data?.let(onSuccess)
+                        }
+                    }
+
+                }
+
+                override fun onFailure(call: Call<SeatingPlanResponse>, t: Throwable) {
+                    t.printStackTrace()
+                    onFail(t.message ?: "unknown error")
+                }
+
+            }
+        )    }
 
 
 }

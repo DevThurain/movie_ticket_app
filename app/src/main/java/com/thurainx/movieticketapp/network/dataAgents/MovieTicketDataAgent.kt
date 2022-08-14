@@ -1,5 +1,6 @@
 package com.thurainx.movieticketapp.network.dataAgents
 
+import com.thurainx.movieticketapp.data.MovieSeatVO
 import com.thurainx.movieticketapp.data.vos.*
 import com.thurainx.movieticketapp.network.response.ProfileResponse
 import com.thurainx.movieticketapp.network.response.TokenResponse
@@ -44,6 +45,14 @@ interface MovieTicketDataAgent {
         movieId: String,
         date: String,
         onSuccess : (List<CinemaVO>) -> Unit,
+        onFail : (String) -> Unit
+    )
+
+    fun getSeatingPlan(
+        token: String,
+        timeSlotId: String,
+        bookingDate: String,
+        onSuccess : (List<List<MovieSeatVO>>) -> Unit,
         onFail : (String) -> Unit
     )
 

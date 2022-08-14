@@ -74,11 +74,8 @@ class WelcomeActivity : AppCompatActivity(), AuthDelegate {
                 email = email,
                 password = password,
                 phone = phone,
-                onSuccess = { tokenResponse ->
-                     tokenResponse.token?.let {
-                         mMovieTicketModel.token = "Bearer ".plus(it)
-                     }
-                    Toast.makeText(this, "${tokenResponse.token}", Toast.LENGTH_SHORT).show()
+                onSuccess = { profileVO ->
+
                     val intent = HomeActivity.getIntent(this)
                     startActivity(intent)
                 },
@@ -97,11 +94,9 @@ class WelcomeActivity : AppCompatActivity(), AuthDelegate {
             mMovieTicketModel.loginWithEmail(
                 email = email,
                 password = password,
-                onSuccess = { tokenResponse ->
-                    tokenResponse.token?.let {
-                        mMovieTicketModel.token = "Bearer ".plus(it)
-                    }
-                    Toast.makeText(this, "${tokenResponse.token}", Toast.LENGTH_SHORT).show()
+                onSuccess = { profileVO ->
+
+//                    Toast.makeText(this, "${tokenResponse.token}", Toast.LENGTH_SHORT).show()
                     val intent = HomeActivity.getIntent(this)
                     startActivity(intent)
                 },

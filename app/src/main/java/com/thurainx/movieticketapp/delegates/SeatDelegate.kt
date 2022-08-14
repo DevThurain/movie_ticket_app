@@ -2,9 +2,8 @@ package com.thurainx.movieticketapp.delegates
 
 import android.view.View
 import android.widget.TextView
+import com.thurainx.movieticketapp.data.MovieSeatVO
 
 interface SeatDelegate {
-    fun onTapAddSeat(layout: View, textView: TextView, number: String)
-    fun onTapRemoveSeat(layout: View, textView: TextView)
-    fun onTapUnAvailableSeat()
+    fun onTapSeat(seatVO: MovieSeatVO)
 }

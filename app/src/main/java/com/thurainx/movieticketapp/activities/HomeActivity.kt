@@ -66,7 +66,6 @@ class HomeActivity : AppCompatActivity(), MovieDelegate {
         )
 
         mMovieTicketModel.getProfile(
-            token = mMovieTicketModel.token ?: "",
             onSuccess = { profile ->
                 bindProfile(profile)
             },
@@ -78,6 +77,7 @@ class HomeActivity : AppCompatActivity(), MovieDelegate {
     }
 
     private fun bindProfile(profile: ProfileVO) {
+
         Glide.with(this)
             .load(BASED_URL+profile.profileImage)
             .into(ivProfile)

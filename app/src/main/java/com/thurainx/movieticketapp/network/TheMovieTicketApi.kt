@@ -1,6 +1,5 @@
 package com.thurainx.movieticketapp.network
 
-import com.thurainx.movieticketapp.activities.MOVIE_ID
 import com.thurainx.movieticketapp.network.response.*
 import retrofit2.Call
 import retrofit2.http.*
@@ -47,6 +46,14 @@ interface TheMovieTicketApi {
         @Query(PARAM_MOVIE_ID) movieId: String,
         @Query(PARAM_DATE) date: String,
     ): Call<CinemaListResponse>
+
+    @GET(API_GET_SEATING_PLAN)
+    fun getSeatingPlan(
+        @Header(PARAM_AUTHORIZATION) token: String,
+        @Query(PARAM_TIME_SLOT_ID) timeSlotId: String,
+        @Query(PARAM_BOOKING_DATE) bookingDate: String,
+    ): Call<SeatingPlanResponse>
+
 
 
 }

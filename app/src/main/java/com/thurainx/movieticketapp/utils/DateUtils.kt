@@ -45,3 +45,13 @@ fun String.toApiDateFormat() : String{
     return print.format(parsedDate)
 
 }
+
+fun String.toCinemaDisplayDateFormat() : String{
+    val formatter = SimpleDateFormat("EE MMM dd HH:mm:ss z yyyy",Locale.ENGLISH)
+
+    val parsedDate: Date = formatter.parse(this)
+    val print = SimpleDateFormat("E, dd MMMM yyyy")
+
+    return print.format(parsedDate)
+
+}

@@ -12,6 +12,7 @@ import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.thurainx.movieticketapp.R
 import com.thurainx.movieticketapp.adaptors.CastListAdapter
+import com.thurainx.movieticketapp.data.EXTRA_MOVIE_ID
 import com.thurainx.movieticketapp.data.models.MovieTicketModelImpl
 import com.thurainx.movieticketapp.data.vos.MovieVO
 import com.thurainx.movieticketapp.network.IMAGE_BASED_URL
@@ -22,18 +23,19 @@ import kotlinx.android.synthetic.main.view_holder_movie.*
 import kotlinx.android.synthetic.main.view_ticket_sheet.*
 import kotlin.time.Duration
 
-const val MOVIE_ID : String = "MOVIE_ID"
 class MovieDetailActivity : AppCompatActivity() {
-    companion object{
-        fun getIntent(context: Context, movieId: Int?) : Intent {
-            val intent = Intent(context,MovieDetailActivity::class.java)
-            intent.putExtra(MOVIE_ID,movieId)
+    companion object {
+        fun getIntent(context: Context, movieId: Int?): Intent {
+            val intent = Intent(context, MovieDetailActivity::class.java)
+            intent.putExtra(EXTRA_MOVIE_ID, movieId)
             return intent
         }
     }
+
     lateinit var mCastListAdapter: CastListAdapter
     val mMovieTicketModel = MovieTicketModelImpl
     var mMovieId: Int = 0
+    var movieName: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,24 +44,25 @@ class MovieDetailActivity : AppCompatActivity() {
         setUpCastRecyclerView()
         setUpListeners()
 
-        mMovieId = intent.getIntExtra(MOVIE_ID,0)
+        mMovieId = intent.getIntExtra(EXTRA_MOVIE_ID, 0)
         fetchData(mMovieId)
     }
 
-    private fun fetchData(movieId: Int){
+    private fun fetchData(movieId: Int) {
         mMovieTicketModel.getMovieDetailById(
             id = movieId.toString(),
             onSuccess = { movie ->
                 bindData(movie)
             },
             onFail = { errorMessage ->
-                Toast.makeText(this,errorMessage, Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
             }
         )
 
     }
 
-    private fun bindData(movie: MovieVO){
+    private fun bindData(movie: MovieVO) {
+        movieName = movie.originalTitle.toString()
         toolBarLayoutMovieDetail.title = movie.originalTitle
         Glide.with(this)
             .load(IMAGE_BASED_URL.plus(movie.posterPath))
@@ -70,9 +73,9 @@ class MovieDetailActivity : AppCompatActivity() {
         mCastListAdapter.setNewData(actorList = movie.casts ?: listOf())
 
         tvMovieDetailDuration.text = movie.runtime.toString()
-                rbMovieDetail.rating = movie.getVotingBasedOnFiveStars()
+        rbMovieDetail.rating = movie.getVotingBasedOnFiveStars()
         movie.genres?.forEach { genre ->
-        chipGroupMovieDetail.addChip(this, genre)
+            chipGroupMovieDetail.addChip(this, genre)
         }
         tvPlot.text = movie.overview
 
@@ -81,7 +84,11 @@ class MovieDetailActivity : AppCompatActivity() {
     private fun setUpListeners() {
 
         btnGetTicket.setOnClickListener {
-            val intent = ChooseCinemaActivity.getIntent(this,mMovieId)
+            val intent = ChooseCinemaActivity.getIntent(
+                context = this,
+                movieId = mMovieId,
+                movieName = movieName
+            )
             startActivity(intent)
         }
         ivMovieDetailBack.setOnClickListener {
@@ -94,7 +101,7 @@ class MovieDetailActivity : AppCompatActivity() {
         rvCastList.adapter = mCastListAdapter
     }
 
-    fun ChipGroup.addChip(context: Context, label: String){
+    fun ChipGroup.addChip(context: Context, label: String) {
         Chip(context).apply {
             id = View.generateViewId()
             text = label

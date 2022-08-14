@@ -13,6 +13,7 @@ const val API_REGISTER_WITH_EMAIL = "/api/v1/register"
 const val API_LOGIN_WITH_EMAIL = "/api/v1/email-login"
 const val API_GET_PROFILE = "/api/v1/profile"
 const val API_GET_CINEMA_LIST = "/api/v1/cinema-day-timeslots"
+const val API_GET_SEATING_PLAN = "/api/v1/seat-plan"
 
 
 const val PARAM_DATE = "date"
@@ -25,6 +26,8 @@ const val PARAM_NAME = "name"
 const val PARAM_EMAIL = "email"
 const val PARAM_PHONE = "phone"
 const val PARAM_PASSWORD = "password"
+const val PARAM_TIME_SLOT_ID = "cinema_day_timeslot_id"
+const val PARAM_BOOKING_DATE = "booking_date"
 
 
 const val STATUS_CURRENT = "current"

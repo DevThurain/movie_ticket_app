@@ -21,7 +21,9 @@
         <activity
             android:name=".activities.ChooseSeatActivity"
             android:exported="true"
-            android:theme="@style/Theme.MovieTicketApp.TransparentDarkStatusBar" />
+            android:theme="@style/Theme.MovieTicketApp.TransparentDarkStatusBar" >
+
+        </activity>
         <activity
             android:name=".activities.ReceiptActivity"
             android:exported="true"
@@ -51,7 +53,11 @@
         <activity
             android:name=".activities.HomeActivity"
             android:exported="true"
-            android:theme="@style/Theme.MovieTicketApp.TransparentDarkFitStatusBar" />
+            android:theme="@style/Theme.MovieTicketApp.TransparentDarkFitStatusBar">
+
+
+
+        </activity>
         <activity
             android:name=".activities.WelcomeActivity"
             android:exported="false"
@@ -61,11 +67,13 @@
             android:name=".activities.GetStartedActivity"
             android:exported="true">
 
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
 
         </activity>
         <activity
