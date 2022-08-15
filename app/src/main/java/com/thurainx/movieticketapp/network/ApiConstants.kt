@@ -14,6 +14,8 @@ const val API_LOGIN_WITH_EMAIL = "/api/v1/email-login"
 const val API_GET_PROFILE = "/api/v1/profile"
 const val API_GET_CINEMA_LIST = "/api/v1/cinema-day-timeslots"
 const val API_GET_SEATING_PLAN = "/api/v1/seat-plan"
+const val API_GET_SNACK_LIST = "/api/v1/snacks"
+const val API_GET_PAYMENT_METHOD_LIST = "/api/v1/payment-methods"
 
 
 const val PARAM_DATE = "date"

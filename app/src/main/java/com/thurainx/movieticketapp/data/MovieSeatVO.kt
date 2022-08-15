@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 const val SEAT_TYPE_AVAILABLE = "available"
 const val SEAT_TYPE_TAKEN = "taken"
-const val SEAT_TYPE_EMPTY = "empty"
+const val SEAT_TYPE_EMPTY = "space"
 const val SEAT_TYPE_TEXT = "text"
 data class MovieSeatVO(
 

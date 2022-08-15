@@ -7,6 +7,7 @@
     android:layout_height="wrap_content"
     android:layout_below="@id/lblPaymentMethod"
     android:layout_marginStart="@dimen/margin_medium_2"
+    android:layout_marginEnd="@dimen/margin_medium_2"
     android:layout_marginTop="@dimen/margin_medium"
     android:orientation="horizontal">
 
@@ -33,7 +34,7 @@
             android:textSize="@dimen/text_regular" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/vPaymentMethodDetail"
+            android:id="@+id/tvPaymentMethodDetail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_regular"
@@ -42,6 +43,24 @@
             android:textSize="@dimen/text_small" />
 
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="end">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivPaymentMethodSelected"
+            android:layout_width="@dimen/margin_xlarge"
+            android:layout_height="@dimen/margin_xlarge"
+            android:layout_gravity="center"
+            app:tint="@color/color_primary"
+            app:srcCompat="@drawable/ic_check_24" />
+
+    </LinearLayout>
+
+
 
 </LinearLayout>
 

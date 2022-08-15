@@ -24,5 +24,7 @@ data class SnackVO(
     @SerializedName("image")
     val image: String?,
 
+    var count: Int = 0
+
 
 )

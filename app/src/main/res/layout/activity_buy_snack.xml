@@ -26,10 +26,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/ivBuySnackBack"
-            tools:itemCount="3"
-            tools:listitem="@layout/viewholder_combo_set"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            />
+            tools:itemCount="3"
+            tools:listitem="@layout/viewholder_combo_set" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/inputPromoCode"
@@ -84,7 +83,7 @@
             android:layout_marginStart="@dimen/margin_medium_2"
             android:layout_marginTop="@dimen/margin_medium"
             android:fontFamily="@font/poppins_regular"
-            android:text="Sub total : 40$"
+            android:text="Sub total : 0$"
             android:textColor="@color/color_green" />
 
         <TextView

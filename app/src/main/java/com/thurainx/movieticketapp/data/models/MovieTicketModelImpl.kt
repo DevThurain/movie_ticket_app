@@ -11,8 +11,8 @@ object MovieTicketModelImpl : MovieTicketModel {
 
     private val mMovieTicketDataAgent: MovieTicketDataAgent = RetrofitDataAgentImpl
 
-    var token: String? = null
-//    private var token: String? = "Bearer 7175|iN8cxfmLwuNSIeriHeEKpyztaHDwAk7XCO4WtPqP"
+    //    var token: String? = null
+    private var token: String? = "Bearer 7347|Kz8YzSCzMY7StU7H8gPxkTQ1YDHMpkbeZUtKfg1I"
 
     override fun registerWithEmail(
         name: String,
@@ -113,13 +113,30 @@ object MovieTicketModelImpl : MovieTicketModel {
                 timeSlotId = timeSlotId,
                 bookingDate = bookingDate,
                 onSuccess = { seatList ->
-                     val movieSeatList = seatList.flatten()
-                     onSuccess(movieSeatList)
+                    val movieSeatList = seatList.flatten()
+                    onSuccess(movieSeatList)
                 },
                 onFail = onFail
             )
         }
     }
+
+    override fun getSnackList(
+        onSuccess: (List<SnackVO>) -> Unit,
+        onFail: (String) -> Unit
+    ) {
+        MovieTicketModelImpl.token?.let {
+            mMovieTicketDataAgent.getSnackList(it, onSuccess, onFail)
+        }
+    }
+
+    override fun getPaymentMethodList(
+        onSuccess: (List<PaymentMethodVO>) -> Unit,
+        onFail: (String) -> Unit
+    ) {
+        MovieTicketModelImpl.token?.let {
+            mMovieTicketDataAgent.getPaymentMethodList(it, onSuccess, onFail)
+        }    }
 
     private fun saveToken(value: String) {
         token = "Bearer ".plus(value)

@@ -51,4 +51,14 @@ interface MovieTicketModel {
         onSuccess : (List<MovieSeatVO>) -> Unit,
         onFail : (String) -> Unit
     )
+
+    fun getSnackList(
+        onSuccess : (List<SnackVO>) -> Unit,
+        onFail : (String) -> Unit
+    )
+
+    fun getPaymentMethodList(
+        onSuccess : (List<PaymentMethodVO>) -> Unit,
+        onFail : (String) -> Unit
+    )
 }

@@ -26,7 +26,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvSnackDetail"
-            android:layout_width="wrap_content"
+            android:layout_width="240dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_regular"
             android:text="Combo Set M 22oz. Coke (x1)\nand medium popcorn (x1)"
@@ -40,16 +40,16 @@
         android:layout_height="match_parent">
 
         <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvComboSetPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_above="@id/llSnackCount"
             android:layout_alignStart="@id/llSnackCount"
             android:layout_alignEnd="@id/llSnackCount"
-            android:layout_above="@id/llSnackCount"
+            android:fontFamily="@font/poppins_regular"
             android:text="15$"
             android:textAlignment="center"
-            android:textColor="@color/black"
-            android:fontFamily="@font/poppins_regular"
-            />
+            android:textColor="@color/black" />
 
         <LinearLayout
             android:id="@+id/llSnackCount"

@@ -54,6 +54,16 @@ interface TheMovieTicketApi {
         @Query(PARAM_BOOKING_DATE) bookingDate: String,
     ): Call<SeatingPlanResponse>
 
+    @GET(API_GET_SNACK_LIST)
+    fun getSnackList(
+        @Header(PARAM_AUTHORIZATION) token: String,
+    ): Call<SnackListResponse>
+
+    @GET(API_GET_PAYMENT_METHOD_LIST)
+    fun getPaymentMethodList(
+        @Header(PARAM_AUTHORIZATION) token: String,
+    ): Call<PaymentMethodListResponse>
+
 
 
 }

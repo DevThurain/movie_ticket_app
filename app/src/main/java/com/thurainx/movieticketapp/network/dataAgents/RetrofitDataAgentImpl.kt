@@ -160,7 +160,7 @@ object RetrofitDataAgentImpl : MovieTicketDataAgent {
 
                     if (response.isSuccessful) {
                         val movieList = response.body()?.data ?: listOf()
-                        Log.d("movies", movieList.toString())
+                        Log.d("api_movie_list", movieList.toString())
                         onSuccess(movieList)
                     }
 
@@ -190,7 +190,7 @@ object RetrofitDataAgentImpl : MovieTicketDataAgent {
 
                     if (response.isSuccessful) {
                         val movie = response.body()?.data
-                        Log.d("movieDetail", movie.toString())
+                        Log.d("api_movie_detail", movie.toString())
                         movie?.let(onSuccess)
                     }
 
@@ -228,7 +228,7 @@ object RetrofitDataAgentImpl : MovieTicketDataAgent {
 
                     if (response.isSuccessful) {
                         if (response.body()?.code == 200) {
-                            Log.d("api_cinema", response.toString())
+                            Log.d("api_cinema_list", response.toString())
                             val responseBody = response.body()
                             responseBody?.data?.let(onSuccess)
                         }
@@ -279,7 +279,71 @@ object RetrofitDataAgentImpl : MovieTicketDataAgent {
                 }
 
             }
-        )    }
+        )
+    }
+
+    override fun getSnackList(token: String, onSuccess: (List<SnackVO>) -> Unit, onFail: (String) -> Unit) {
+        mTheMovieTicketApi?.getSnackList(
+            token = token,
+        )?.enqueue(
+            object : Callback<SnackListResponse> {
+                override fun onResponse(
+                    call: Call<SnackListResponse>,
+                    response: Response<SnackListResponse>
+                ) {
+
+                    if (response.isSuccessful) {
+                        if (response.body()?.code == 200) {
+                            Log.d("api_snack_list", response.toString())
+                            val responseBody = response.body()
+                            responseBody?.data?.let(onSuccess)
+                        }
+                    }
+
+                }
+
+                override fun onFailure(call: Call<SnackListResponse>, t: Throwable) {
+                    t.printStackTrace()
+                    onFail(t.message ?: "unknown error")
+                }
+
+            }
+        )
+    }
+
+    override fun getPaymentMethodList(
+        token: String,
+        onSuccess: (List<PaymentMethodVO>) -> Unit,
+        onFail: (String) -> Unit
+    ) {
+        mTheMovieTicketApi?.getPaymentMethodList(
+            token = token,
+
+        )?.enqueue(
+            object : Callback<PaymentMethodListResponse> {
+                override fun onResponse(
+                    call: Call<PaymentMethodListResponse>,
+                    response: Response<PaymentMethodListResponse>
+                ) {
+
+                    if (response.isSuccessful) {
+                        if (response.body()?.code == 200) {
+                            Log.d("api_payment_method_list", response.toString())
+                            val responseBody = response.body()
+                            responseBody?.data?.let(onSuccess)
+                        }
+                    }
+
+                }
+
+                override fun onFailure(call: Call<PaymentMethodListResponse>, t: Throwable) {
+                    t.printStackTrace()
+                    onFail(t.message ?: "unknown error")
+                }
+
+            }
+        )
+    }
 
 
 }

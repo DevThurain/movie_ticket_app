@@ -56,6 +56,18 @@ interface MovieTicketDataAgent {
         onFail : (String) -> Unit
     )
 
+    fun getSnackList(
+        token: String,
+        onSuccess : (List<SnackVO>) -> Unit,
+        onFail : (String) -> Unit
+    )
+
+    fun getPaymentMethodList(
+        token: String,
+        onSuccess : (List<PaymentMethodVO>) -> Unit,
+        onFail : (String) -> Unit
+    )
+
 
 
 }
