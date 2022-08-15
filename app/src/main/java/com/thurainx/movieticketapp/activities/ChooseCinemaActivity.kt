@@ -40,7 +40,10 @@ class ChooseCinemaActivity : AppCompatActivity(), DayDelegate, TimeSlotDelegate 
     var mMovieId: Int? = 0
     var selectedDate = ""
     var selectedTime = ""
+    var selectedTimeSlotId = 0
     var selectedCinemaName = ""
+    var selectedCinemaId = 0
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -73,7 +76,9 @@ class ChooseCinemaActivity : AppCompatActivity(), DayDelegate, TimeSlotDelegate 
                 mCinemaList = cinemaList
                 mCinemaList.first().timeslots?.first()?.isSelected = true
                 selectedCinemaName = mCinemaList.first().cinema.toString()
+                selectedCinemaId = mCinemaList.first().cinemaId ?: 0
                 selectedTime = mCinemaList.first().timeslots?.first()?.startTime.toString()
+                selectedTimeSlotId = mCinemaList.first().timeslots?.first()?.cinemaDayTimeSlotId ?: 0
                 mCinemaListAdapter.setNewData(cinemaList = cinemaList)
             },
             onFail = { errorMessage ->
@@ -105,6 +110,9 @@ class ChooseCinemaActivity : AppCompatActivity(), DayDelegate, TimeSlotDelegate 
                 rawDate = selectedDate,
                 time = selectedTime,
                 cinemaName = selectedCinemaName,
+                movieId = intent.getIntExtra(EXTRA_MOVIE_ID, 0),
+                timeSlotId = selectedTimeSlotId,
+                cinemaId = selectedCinemaId
             )
             startActivity(intent)
         }
@@ -130,7 +138,9 @@ class ChooseCinemaActivity : AppCompatActivity(), DayDelegate, TimeSlotDelegate 
                 timeVO.isSelected = timeVO.cinemaDayTimeSlotId == timeSlotVO.cinemaDayTimeSlotId
                 if(timeVO.cinemaDayTimeSlotId == timeSlotVO.cinemaDayTimeSlotId){
                     selectedTime = timeVO.startTime.toString()
+                    selectedTimeSlotId = timeVO.cinemaDayTimeSlotId ?: 0
                     selectedCinemaName = it.cinema.toString()
+                    selectedCinemaId = it.cinemaId ?: 0
                 }
             }
         }

@@ -4,26 +4,33 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
+import com.google.gson.Gson
 import com.thurainx.movieticketapp.R
 import com.thurainx.movieticketapp.adaptors.MovieSeatListAdapter
 import com.thurainx.movieticketapp.data.*
 import com.thurainx.movieticketapp.data.models.MovieTicketModelImpl
+import com.thurainx.movieticketapp.data.vos.CheckOutVO
 import com.thurainx.movieticketapp.data.vos.DayVO
 import com.thurainx.movieticketapp.delegates.SeatDelegate
 import com.thurainx.movieticketapp.models.Dummy
+import com.thurainx.movieticketapp.utils.toApiDateFormat
 import com.thurainx.movieticketapp.utils.toCinemaDisplayDateFormat
 import kotlinx.android.synthetic.main.activity_choose_seat.*
 
 class ChooseSeatActivity : AppCompatActivity(), SeatDelegate{
     companion object{
-        fun getIntent(context: Context,movieName: String,rawDate: String,time: String,cinemaName: String) : Intent {
+        fun getIntent(context: Context,movieId: Int,movieName: String,rawDate: String,time: String,cinemaName: String,cinemaId: Int,timeSlotId: Int) : Intent {
             val intent = Intent(context,ChooseSeatActivity::class.java)
+            intent.putExtra(EXTRA_MOVIE_ID,movieId)
             intent.putExtra(EXTRA_MOVIE_NAME,movieName)
             intent.putExtra(EXTRA_CINEMA_NAME, cinemaName)
+            intent.putExtra(EXTRA_CINEMA_ID, cinemaId)
             intent.putExtra(EXTRA_DATE, rawDate)
             intent.putExtra(EXTRA_TIME, time)
+            intent.putExtra(EXTRA_TIME_SLOT_ID, timeSlotId)
 
             return intent
         }
@@ -53,8 +60,8 @@ class ChooseSeatActivity : AppCompatActivity(), SeatDelegate{
 
     private fun fetchData() {
         mMovieTicketModel.getSeatingPlan(
-            timeSlotId = "1",
-            bookingDate = "2021-6-28",
+            timeSlotId = intent.getIntExtra(EXTRA_TIME_SLOT_ID,0).toString(),
+            bookingDate = intent.getStringExtra(EXTRA_DATE)?.toApiDateFormat() ?: "",
             onSuccess = { movieSeatList ->
                 allSeatList = movieSeatList
                 mMovieSeatListAdapter.setNewData(movieSeatList)
@@ -77,7 +84,19 @@ class ChooseSeatActivity : AppCompatActivity(), SeatDelegate{
             super.onBackPressed()
         }
         btnBuyTicket.setOnClickListener {
-            val intent = BuySnackActivity.getIntent(this)
+
+            val checkOutVO = CheckOutVO()
+            checkOutVO.cinema_day_timeslot_id = intent.getIntExtra(EXTRA_TIME_SLOT_ID, 0)
+            checkOutVO.row = selectedSeatList.map { it.symbol }.toList().joinToString(separator = ", ")
+            checkOutVO.seat_number = selectedSeatList.map { it.seatName }.toList().joinToString(separator = ", ")
+            checkOutVO.booking_date = intent.getStringExtra(EXTRA_DATE)?.toApiDateFormat().toString()
+            checkOutVO.total_price = selectedSeatList.sumOf { it.price ?: 0 }
+            checkOutVO.cinema_id = intent.getIntExtra(EXTRA_CINEMA_ID, 0)
+            checkOutVO.movie_id = intent.getIntExtra(EXTRA_MOVIE_ID, 0)
+
+            val checkOutString = Gson().toJson(checkOutVO)
+            Log.d("check_out",checkOutString)
+            val intent = BuySnackActivity.getIntent(this,checkOutString)
             startActivity(intent)
         }
     }
