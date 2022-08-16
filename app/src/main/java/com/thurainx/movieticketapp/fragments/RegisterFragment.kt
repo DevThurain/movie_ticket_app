@@ -49,10 +49,10 @@ class RegisterFragment : Fragment(), ConfirmDelegate{
     }
 
     override fun onTapConfirm() {
-        val validEmail = edtRegisterEmail.validateEmail(edtRegisterEmail.text.toString())
-        val validPassword = edtRegisterPassword.validateEmpty(text = edtRegisterPassword.text.toString(), message = context?.getString(R.string.lbl_empty_password) ?: "")
-        val validName = edtRegisterName.validateEmpty(text = edtRegisterName.text.toString(), message = context?.getString(R.string.lbl_empty_name) ?: "")
-        val validPhone = edtRegisterPhone.validatePhone(edtRegisterPhone.text.toString())
+        val validEmail = edtRegisterEmail.validateEmail()
+        val validPassword = edtRegisterPassword.validateEmpty(errorMessage = context?.getString(R.string.lbl_empty_password) ?: "")
+        val validName = edtRegisterName.validateEmpty(errorMessage = context?.getString(R.string.lbl_empty_name) ?: "")
+        val validPhone = edtRegisterPhone.validatePhone()
         if(validEmail && validPassword && validName && validPhone){
             mAuthDelegate.onTapRegister(
                 email = edtRegisterEmail.text.toString(),

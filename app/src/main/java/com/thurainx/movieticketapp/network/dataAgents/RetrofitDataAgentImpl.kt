@@ -282,6 +282,46 @@ object RetrofitDataAgentImpl : MovieTicketDataAgent {
         )
     }
 
+    override fun createCard(
+        token: String,
+        cardNumber: String,
+        cardHolder: String,
+        expirationDate: String,
+        cvc: String,
+        onSuccess: (List<CardVO>) -> Unit,
+        onFail: (String) -> Unit
+    ) {
+        mTheMovieTicketApi?.createCard(
+            token = token,
+            cardNumber = cardNumber,
+            cardHolder = cardHolder,
+            expirationDate = expirationDate,
+            cvc = cvc
+        )?.enqueue(
+            object : Callback<CreateCardResponse> {
+                override fun onResponse(
+                    call: Call<CreateCardResponse>,
+                    response: Response<CreateCardResponse>
+                ) {
+
+                    if (response.isSuccessful) {
+                        if (response.body()?.code == 200) {
+                            Log.d("api_create_card", response.toString())
+                            val responseBody = response.body()
+                            responseBody?.data?.let(onSuccess)
+                        }
+                    }
+
+                }
+
+                override fun onFailure(call: Call<CreateCardResponse>, t: Throwable) {
+                    t.printStackTrace()
+                    onFail(t.message ?: "unknown error")
+                }
+
+            }
+        )    }
+
     override fun getSnackList(token: String, onSuccess: (List<SnackVO>) -> Unit, onFail: (String) -> Unit) {
         mTheMovieTicketApi?.getSnackList(
             token = token,

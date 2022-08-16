@@ -9,6 +9,8 @@ const val EXTRA_CINEMA_NAME : String = "EXTRA_CINEMA_NAME"
 const val EXTRA_CINEMA_ID : String = "EXTRA_CINEMA_ID"
 const val EXTRA_CHECKOUT_STRING : String = "EXTRA_CHECKOUT_STRING"
 const val EXTRA_TOTAL_PRICE : String = "EXTRA_TOTAL_PRICE"
+const val EXTRA_CARD_VO : String = "EXTRA_CARD_VO"
+
 
 
 

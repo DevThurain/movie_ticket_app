@@ -20,4 +20,7 @@ data class CardVO(
     
     @SerializedName("amount")
     val amount: String?,
+
+    @SerializedName("expiration_date")
+    val expirationDate: String = "",
     )

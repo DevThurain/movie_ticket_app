@@ -36,43 +36,13 @@
 
 
         <TextView
+            android:id="@+id/tvCreditCardNumber"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
             android:letterSpacing="0.2"
             android:text="****"
-            android:textColor="@color/white"
-            android:textSize="@dimen/text_regular_3x" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:letterSpacing="0.2"
-            android:text="****"
-            android:textColor="@color/white"
-            android:textSize="@dimen/text_regular_3x" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:letterSpacing="0.2"
-            android:text="****"
-            android:textColor="@color/white"
-            android:textSize="@dimen/text_regular_3x" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:fontFamily="@font/poppins_regular"
-            android:letterSpacing="0.1"
-            android:text="8014"
-            android:textAlignment="textEnd"
             android:textColor="@color/white"
             android:textSize="@dimen/text_regular_3x" />
 
@@ -100,6 +70,7 @@
             />
 
         <TextView
+            android:id="@+id/tvCreditCardHolder"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/text_regular_2x"
@@ -133,6 +104,7 @@
             />
 
         <TextView
+            android:id="@+id/tvCreditCardExpireDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="@dimen/text_regular_2x"

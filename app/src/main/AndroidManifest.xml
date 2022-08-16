@@ -32,7 +32,9 @@
             android:name=".activities.PaymentActivity"
             android:exported="true"
             android:theme="@style/Theme.MovieTicketApp.TransparentDarkStatusBar"
-            android:windowSoftInputMode="adjustPan" />
+            android:windowSoftInputMode="adjustPan">
+
+        </activity>
         <activity
             android:name=".activities.ChooseCinemaActivity"
             android:exported="true"
@@ -68,6 +70,7 @@
         <activity
             android:name=".activities.GetStartedActivity"
             android:exported="true">
+
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

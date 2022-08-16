@@ -64,6 +64,15 @@ interface TheMovieTicketApi {
         @Header(PARAM_AUTHORIZATION) token: String,
     ): Call<PaymentMethodListResponse>
 
+    @POST(API_CREATE_CARD)
+    @FormUrlEncoded
+    fun createCard(
+        @Header(PARAM_AUTHORIZATION) token: String,
+        @Field(PARAM_CARD_NUMBER) cardNumber: String,
+        @Field(PARAM_CARD_HOLDER) cardHolder: String,
+        @Field(PARAM_EXPIRATION_DATE) expirationDate: String,
+        @Field(PARAM_CVC) cvc: String,
+    ): Call<CreateCardResponse>
 
 
 }

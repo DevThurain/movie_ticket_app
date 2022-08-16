@@ -16,6 +16,8 @@ const val API_GET_CINEMA_LIST = "/api/v1/cinema-day-timeslots"
 const val API_GET_SEATING_PLAN = "/api/v1/seat-plan"
 const val API_GET_SNACK_LIST = "/api/v1/snacks"
 const val API_GET_PAYMENT_METHOD_LIST = "/api/v1/payment-methods"
+const val API_CREATE_CARD = "/api/v1/card"
+
 
 
 const val PARAM_DATE = "date"
@@ -30,6 +32,10 @@ const val PARAM_PHONE = "phone"
 const val PARAM_PASSWORD = "password"
 const val PARAM_TIME_SLOT_ID = "cinema_day_timeslot_id"
 const val PARAM_BOOKING_DATE = "booking_date"
+const val PARAM_CARD_NUMBER = "card_number"
+const val PARAM_CARD_HOLDER = "card_holder"
+const val PARAM_EXPIRATION_DATE = "expiration_date"
+const val PARAM_CVC = "cvc"
 
 
 const val STATUS_CURRENT = "current"

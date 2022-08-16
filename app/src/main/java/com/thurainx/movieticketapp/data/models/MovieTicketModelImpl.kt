@@ -136,7 +136,29 @@ object MovieTicketModelImpl : MovieTicketModel {
     ) {
         MovieTicketModelImpl.token?.let {
             mMovieTicketDataAgent.getPaymentMethodList(it, onSuccess, onFail)
-        }    }
+        }
+    }
+
+    override fun createCard(
+        cardNumber: String,
+        cardHolder: String,
+        expirationDate: String,
+        cvc: String,
+        onSuccess: (List<CardVO>) -> Unit,
+        onFail: (String) -> Unit
+    ) {
+        token?.let {
+            mMovieTicketDataAgent.createCard(
+                token = it,
+                cardNumber = cardNumber,
+                cardHolder = cardHolder,
+                expirationDate = expirationDate,
+                cvc = cvc,
+                onSuccess = onSuccess,
+                onFail = onFail
+            )
+        }
+    }
 
     private fun saveToken(value: String) {
         token = "Bearer ".plus(value)

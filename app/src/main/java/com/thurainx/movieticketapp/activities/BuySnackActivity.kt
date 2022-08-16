@@ -98,7 +98,7 @@ class BuySnackActivity : AppCompatActivity(), SnackDelegate, PaymentMethodDelega
             var checkOut = Gson().fromJson(checkOutString, CheckOutVO::class.java)
             checkOut.total_price = totalPrice + mSubTotal
             checkOut.card_id = selectedCardId
-            val intent = PaymentActivity.getIntent(this)
+            val intent = PaymentActivity.getIntent(this,Gson().toJson(checkOut))
             startActivity(intent)
         }
     }

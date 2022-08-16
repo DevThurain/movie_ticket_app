@@ -61,4 +61,13 @@ interface MovieTicketModel {
         onSuccess : (List<PaymentMethodVO>) -> Unit,
         onFail : (String) -> Unit
     )
+
+    fun createCard(
+        cardNumber: String,
+        cardHolder: String,
+        expirationDate: String,
+        cvc: String,
+        onSuccess : (List<CardVO>) -> Unit,
+        onFail : (String) -> Unit
+    )
 }

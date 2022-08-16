@@ -55,3 +55,9 @@ fun String.toCinemaDisplayDateFormat() : String{
     return print.format(parsedDate)
 
 }
+
+fun formatCard(cardNumber: String?): String? {
+    if (cardNumber == null) return null
+    val delimiter = ' '
+    return cardNumber.replace(".{4}(?!$)".toRegex(), "$0$delimiter")
+}

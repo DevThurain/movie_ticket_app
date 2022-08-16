@@ -2,6 +2,7 @@ package com.thurainx.movieticketapp.network.dataAgents
 
 import com.thurainx.movieticketapp.data.MovieSeatVO
 import com.thurainx.movieticketapp.data.vos.*
+import com.thurainx.movieticketapp.network.response.CreateCardResponse
 import com.thurainx.movieticketapp.network.response.ProfileResponse
 import com.thurainx.movieticketapp.network.response.TokenResponse
 import java.sql.ClientInfoStatus
@@ -65,6 +66,16 @@ interface MovieTicketDataAgent {
     fun getPaymentMethodList(
         token: String,
         onSuccess : (List<PaymentMethodVO>) -> Unit,
+        onFail : (String) -> Unit
+    )
+
+    fun createCard(
+        token: String,
+        cardNumber: String,
+        cardHolder: String,
+        expirationDate: String,
+        cvc: String,
+        onSuccess : (List<CardVO>) -> Unit,
         onFail : (String) -> Unit
     )
 

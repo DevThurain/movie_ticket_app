@@ -48,8 +48,8 @@ class LoginFragment : Fragment(),ConfirmDelegate {
     }
 
     override fun onTapConfirm() {
-        val validEmail = edtLoginEmail.validateEmail(edtLoginEmail.text.toString())
-        val validPassword = edtLoginPassword.validateEmpty(text = edtLoginPassword.text.toString(), message = context?.getString(R.string.lbl_empty_password) ?: "")
+        val validEmail = edtLoginEmail.validateEmail()
+        val validPassword = edtLoginPassword.validateEmpty(errorMessage = context?.getString(R.string.lbl_empty_password) ?: "")
        if(validEmail && validPassword){
            mAuthDelegate.onTapLogin(email = edtLoginEmail.text.toString(), password = edtLoginPassword.text.toString())
        }
