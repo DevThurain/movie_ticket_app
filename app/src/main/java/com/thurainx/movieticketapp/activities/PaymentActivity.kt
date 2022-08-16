@@ -1,6 +1,7 @@
 package com.thurainx.movieticketapp.activities
 
 import alirezat775.lib.carouselview.Carousel
+import alirezat775.lib.carouselview.CarouselModel
 import alirezat775.lib.carouselview.CarouselView
 import android.app.Activity
 import android.content.Context
@@ -29,6 +30,7 @@ class PaymentActivity : AppCompatActivity() {
         }
     }
     lateinit var mAdapter: CreditCardCarouselAdapter
+    lateinit var carousel: Carousel
     val mMovieTicketModel = MovieTicketModelImpl
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,7 +45,10 @@ class PaymentActivity : AppCompatActivity() {
     private fun fetchData() {
         mMovieTicketModel.getProfile(
             onSuccess = { profile ->
-                mAdapter.setNewData(profile.cards ?: listOf())
+                if(profile.cards?.isNotEmpty() == true){
+                    carousel.addAll(profile.cards.toMutableList())
+                    carousel.setCurrentPosition(0)
+                }
              },
             onFail = { errorMessage ->
                 Toast.makeText(this,errorMessage,Toast.LENGTH_SHORT).show()
@@ -75,9 +80,10 @@ class PaymentActivity : AppCompatActivity() {
 
     private fun setupCarousel() {
         mAdapter =  CreditCardCarouselAdapter()
-        val carousel = Carousel(this, carouselViewCreditCard, mAdapter)
+        carousel = Carousel(this, carouselViewCreditCard, mAdapter)
         carousel.setOrientation(CarouselView.HORIZONTAL, false)
         carousel.scaleView(true)
+
     }
 
     private val intentLauncher =
@@ -86,7 +92,10 @@ class PaymentActivity : AppCompatActivity() {
             if (result.resultCode == Activity.RESULT_OK) {
                 Log.d("data", result.data?.getStringExtra(EXTRA_CARD_VO) ?: "no data")
                 val cardList = Gson().fromJson(result.data?.getStringExtra(EXTRA_CARD_VO), Array<CardVO>::class.java)
-                mAdapter.setNewData(cardList.toList())
+                if(cardList.isNotEmpty()){
+                    carousel.addAll(cardList.toMutableList())
+                    carousel.setCurrentPosition(0)
+                }
             }
         }
 }

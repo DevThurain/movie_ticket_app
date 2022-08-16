@@ -1,5 +1,6 @@
 package com.thurainx.movieticketapp.data.vos
 
+import alirezat775.lib.carouselview.CarouselModel
 import com.google.gson.annotations.SerializedName
 
 data class CardVO(
@@ -23,4 +24,4 @@ data class CardVO(
 
     @SerializedName("expiration_date")
     val expirationDate: String = "",
-    )
+    ): CarouselModel()
