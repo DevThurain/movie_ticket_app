@@ -87,8 +87,8 @@ class ChooseSeatActivity : AppCompatActivity(), SeatDelegate{
 
             val checkOutVO = CheckOutVO()
             checkOutVO.cinema_day_timeslot_id = intent.getIntExtra(EXTRA_TIME_SLOT_ID, 0)
-            checkOutVO.row = selectedSeatList.map { it.symbol }.toList().joinToString(separator = ", ")
-            checkOutVO.seat_number = selectedSeatList.map { it.seatName }.toList().joinToString(separator = ", ")
+            checkOutVO.row = selectedSeatList.map { it.symbol }.toSet().toList().joinToString(separator = ",")
+            checkOutVO.seat_number = selectedSeatList.map { it.seatName }.toList().joinToString(separator = ",")
             checkOutVO.booking_date = intent.getStringExtra(EXTRA_DATE)?.toApiDateFormat().toString()
             checkOutVO.total_price = selectedSeatList.sumOf { it.price ?: 0 }
             checkOutVO.cinema_id = intent.getIntExtra(EXTRA_CINEMA_ID, 0)
@@ -96,7 +96,16 @@ class ChooseSeatActivity : AppCompatActivity(), SeatDelegate{
 
             val checkOutString = Gson().toJson(checkOutVO)
             Log.d("check_out",checkOutString)
-            val intent = BuySnackActivity.getIntent(this,checkOutString)
+            val time = intent.getStringExtra(EXTRA_TIME)
+            val date = intent.getStringExtra(EXTRA_DATE)
+            val cinemaName = intent.getStringExtra(EXTRA_CINEMA_NAME)
+            val intent = BuySnackActivity.getIntent(
+                this, checkOutString = checkOutString,
+                time = time.toString(),
+                date = date.toString(),
+                cinemaName = cinemaName.toString()
+            )
+
             startActivity(intent)
         }
     }

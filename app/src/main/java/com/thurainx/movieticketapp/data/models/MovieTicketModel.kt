@@ -2,6 +2,7 @@ package com.thurainx.movieticketapp.data.models
 
 import com.thurainx.movieticketapp.data.MovieSeatVO
 import com.thurainx.movieticketapp.data.vos.*
+import com.thurainx.movieticketapp.network.response.CheckoutResponse
 import com.thurainx.movieticketapp.network.response.TokenResponse
 
 interface MovieTicketModel {
@@ -68,6 +69,12 @@ interface MovieTicketModel {
         expirationDate: String,
         cvc: String,
         onSuccess : (List<CardVO>) -> Unit,
+        onFail : (String) -> Unit
+    )
+
+    fun checkout(
+        checkoutString: CheckOutVO,
+        onSuccess : (CheckoutResponse) -> Unit,
         onFail : (String) -> Unit
     )
 }

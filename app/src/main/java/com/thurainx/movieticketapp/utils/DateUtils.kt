@@ -56,6 +56,16 @@ fun String.toCinemaDisplayDateFormat() : String{
 
 }
 
+fun String.toReceiptDateFormat() : String{
+    val formatter = SimpleDateFormat("EE MMM dd HH:mm:ss z yyyy",Locale.ENGLISH)
+
+    val parsedDate: Date = formatter.parse(this)
+    val print = SimpleDateFormat("dd MMMM")
+
+    return print.format(parsedDate)
+
+}
+
 fun formatCard(cardNumber: String?): String? {
     if (cardNumber == null) return null
     val delimiter = ' '

@@ -1,5 +1,6 @@
 package com.thurainx.movieticketapp.network
 
+import com.thurainx.movieticketapp.data.vos.CheckOutVO
 import com.thurainx.movieticketapp.network.response.*
 import retrofit2.Call
 import retrofit2.http.*
@@ -73,6 +74,12 @@ interface TheMovieTicketApi {
         @Field(PARAM_EXPIRATION_DATE) expirationDate: String,
         @Field(PARAM_CVC) cvc: String,
     ): Call<CreateCardResponse>
+
+    @POST(API_CHECK_OUT)
+    fun checkout(
+        @Header(PARAM_AUTHORIZATION) token: String,
+        @Body checkoutString: CheckOutVO,
+        ): Call<CheckoutResponse>
 
 
 }

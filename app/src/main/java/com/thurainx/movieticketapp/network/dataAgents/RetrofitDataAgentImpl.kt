@@ -322,6 +322,46 @@ object RetrofitDataAgentImpl : MovieTicketDataAgent {
             }
         )    }
 
+    override fun checkOut(
+        token: String,
+        checkoutString: CheckOutVO,
+        onSuccess: (CheckoutResponse) -> Unit,
+        onFail: (String) -> Unit
+    ) {
+        mTheMovieTicketApi?.checkout(
+            token = token,
+            checkoutString = checkoutString
+        )?.enqueue(
+            object : Callback<CheckoutResponse> {
+                override fun onResponse(
+                    call: Call<CheckoutResponse>,
+                    response: Response<CheckoutResponse>
+                ) {
+
+                    if (response.isSuccessful) {
+                        if (response.body()?.code == 200) {
+                            Log.d("api_checkout", response.toString())
+                            val responseBody = response.body()
+                            responseBody?.let(onSuccess)
+                        }else{
+                            onFail(response.body()?.message.toString())
+                            Log.d("api_checkout", response.body().toString())
+                        }
+                    }
+
+                    Log.d("api_checkout",response.toString())
+
+                }
+
+                override fun onFailure(call: Call<CheckoutResponse>, t: Throwable) {
+                    t.printStackTrace()
+                    onFail(t.message ?: "unknown error")
+                }
+
+            }
+        )
+    }
+
     override fun getSnackList(token: String, onSuccess: (List<SnackVO>) -> Unit, onFail: (String) -> Unit) {
         mTheMovieTicketApi?.getSnackList(
             token = token,

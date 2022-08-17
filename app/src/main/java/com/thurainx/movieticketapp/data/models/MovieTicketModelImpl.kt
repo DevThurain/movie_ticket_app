@@ -5,6 +5,7 @@ import com.thurainx.movieticketapp.data.MovieSeatVO
 import com.thurainx.movieticketapp.data.vos.*
 import com.thurainx.movieticketapp.network.dataAgents.MovieTicketDataAgent
 import com.thurainx.movieticketapp.network.dataAgents.RetrofitDataAgentImpl
+import com.thurainx.movieticketapp.network.response.CheckoutResponse
 import com.thurainx.movieticketapp.network.response.TokenResponse
 
 object MovieTicketModelImpl : MovieTicketModel {
@@ -159,6 +160,20 @@ object MovieTicketModelImpl : MovieTicketModel {
             )
         }
     }
+
+    override fun checkout(
+        checkoutString: CheckOutVO,
+        onSuccess: (CheckoutResponse) -> Unit,
+        onFail: (String) -> Unit
+    ) {
+        token?.let {
+            mMovieTicketDataAgent.checkOut(
+                token = it,
+                checkoutString = checkoutString,
+                onSuccess = onSuccess,
+                onFail = onFail
+            )
+        }    }
 
     private fun saveToken(value: String) {
         token = "Bearer ".plus(value)

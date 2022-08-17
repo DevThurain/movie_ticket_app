@@ -2,6 +2,7 @@ package com.thurainx.movieticketapp.network.dataAgents
 
 import com.thurainx.movieticketapp.data.MovieSeatVO
 import com.thurainx.movieticketapp.data.vos.*
+import com.thurainx.movieticketapp.network.response.CheckoutResponse
 import com.thurainx.movieticketapp.network.response.CreateCardResponse
 import com.thurainx.movieticketapp.network.response.ProfileResponse
 import com.thurainx.movieticketapp.network.response.TokenResponse
@@ -76,6 +77,13 @@ interface MovieTicketDataAgent {
         expirationDate: String,
         cvc: String,
         onSuccess : (List<CardVO>) -> Unit,
+        onFail : (String) -> Unit
+    )
+
+    fun checkOut(
+        token: String,
+        checkoutString: CheckOutVO,
+        onSuccess : (CheckoutResponse) -> Unit,
         onFail : (String) -> Unit
     )
 
