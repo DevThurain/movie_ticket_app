@@ -18,6 +18,8 @@ const val API_GET_SNACK_LIST = "/api/v1/snacks"
 const val API_GET_PAYMENT_METHOD_LIST = "/api/v1/payment-methods"
 const val API_CREATE_CARD = "/api/v1/card"
 const val API_CHECK_OUT = "/api/v1/checkout"
+const val API_LOG_OUT = "/api/v1/logout"
+
 
 
 

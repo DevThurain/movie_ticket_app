@@ -87,6 +87,12 @@ interface MovieTicketDataAgent {
         onFail : (String) -> Unit
     )
 
+    fun logOut(
+        token: String,
+        onSuccess : (String) -> Unit,
+        onFail : (String) -> Unit
+    )
+
 
 
 }

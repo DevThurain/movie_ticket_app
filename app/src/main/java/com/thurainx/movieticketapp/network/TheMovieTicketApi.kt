@@ -81,5 +81,10 @@ interface TheMovieTicketApi {
         @Body checkoutString: CheckOutVO,
         ): Call<CheckoutResponse>
 
+    @POST(API_LOG_OUT)
+    fun logout(
+        @Header(PARAM_AUTHORIZATION) token: String,
+    ): Call<LogoutResponse>
+
 
 }

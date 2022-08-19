@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.Gravity
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.core.view.ContentInfoCompat
 import com.bumptech.glide.Glide
 import com.thurainx.movieticketapp.R
 import com.thurainx.movieticketapp.data.models.MovieTicketModelImpl
@@ -20,9 +21,9 @@ import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.view_drawer.*
 
 class HomeActivity : AppCompatActivity(), MovieDelegate {
-    companion object{
-        fun getIntent(context: Context) : Intent {
-            return Intent(context,HomeActivity::class.java)
+    companion object {
+        fun getIntent(context: Context): Intent {
+            return Intent(context, HomeActivity::class.java)
         }
     }
 
@@ -43,7 +44,7 @@ class HomeActivity : AppCompatActivity(), MovieDelegate {
     }
 
 
-    private fun fetchData(){
+    private fun fetchData() {
 
         mMovieTicketModel.getMovieListByStatus(
             status = STATUS_CURRENT,
@@ -51,7 +52,7 @@ class HomeActivity : AppCompatActivity(), MovieDelegate {
                 nowShowingMovieViewPod.setData(movieList = movieList)
             },
             onFail = { errorMessage ->
-                Toast.makeText(this,errorMessage,Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
             }
         )
 
@@ -61,7 +62,7 @@ class HomeActivity : AppCompatActivity(), MovieDelegate {
                 comingSoonMovieViewPod.setData(movieList = movieList)
             },
             onFail = { errorMessage ->
-                Toast.makeText(this,errorMessage,Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
             }
         )
 
@@ -70,7 +71,7 @@ class HomeActivity : AppCompatActivity(), MovieDelegate {
                 bindProfile(profile)
             },
             onFail = { errorMessage ->
-                Toast.makeText(this,errorMessage,Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
             }
         )
 
@@ -79,11 +80,11 @@ class HomeActivity : AppCompatActivity(), MovieDelegate {
     private fun bindProfile(profile: ProfileVO) {
 
         Glide.with(this)
-            .load(BASED_URL+profile.profileImage)
+            .load(BASED_URL + profile.profileImage)
             .into(ivProfile)
 
         Glide.with(this)
-            .load(BASED_URL+profile.profileImage)
+            .load(BASED_URL + profile.profileImage)
             .centerCrop()
             .into(ivDrawerProfile)
 
@@ -92,34 +93,54 @@ class HomeActivity : AppCompatActivity(), MovieDelegate {
         tvDrawerEmail.text = profile.email
     }
 
-    private fun setupViewPods(){
+    private fun setupViewPods() {
         nowShowingMovieViewPod = vpNowShowing as MovieListViewPod
-        nowShowingMovieViewPod.setUpMovieListViewPod(title = getString(R.string.lbl_now_showing), delegate = this)
+        nowShowingMovieViewPod.setUpMovieListViewPod(
+            title = getString(R.string.lbl_now_showing),
+            delegate = this
+        )
 
         comingSoonMovieViewPod = vpComingSoon as MovieListViewPod
-        comingSoonMovieViewPod.setUpMovieListViewPod(title = getString(R.string.lbl_coming_soon), delegate = this)
+        comingSoonMovieViewPod.setUpMovieListViewPod(
+            title = getString(R.string.lbl_coming_soon),
+            delegate = this
+        )
     }
 
     private fun setupListeners() {
         ivMenu.setOnClickListener {
             mDrawerLayout.openDrawer(Gravity.LEFT)
         }
+
+        llLogOut.setOnClickListener {
+            mMovieTicketModel.logOut(
+                onSuccess = { message ->
+                    Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+                    val intent = WelcomeActivity.getIntent(this)
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                    startActivity(intent)
+                },
+                onFail = { errorMessage ->
+                    Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
+                }
+            )
+        }
     }
 
     private fun setupStatusBar() {
-        mDrawerLayout.setStatusBarBackgroundColor(ContextCompat.getColor(this,R.color.white))
+        mDrawerLayout.setStatusBarBackgroundColor(ContextCompat.getColor(this, R.color.white))
     }
 
     override fun onBackPressed() {
-        if(mDrawerLayout.isDrawerOpen(Gravity.LEFT)){
+        if (mDrawerLayout.isDrawerOpen(Gravity.LEFT)) {
             mDrawerLayout.closeDrawer(Gravity.LEFT)
-        }else{
+        } else {
             super.onBackPressed()
         }
     }
 
     override fun onTapMovie(movieId: Int?) {
-        val intent = MovieDetailActivity.getIntent(this,movieId)
+        val intent = MovieDetailActivity.getIntent(this, movieId)
         startActivity(intent)
     }
 

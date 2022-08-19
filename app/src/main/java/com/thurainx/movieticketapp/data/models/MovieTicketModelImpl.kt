@@ -173,7 +173,21 @@ object MovieTicketModelImpl : MovieTicketModel {
                 onSuccess = onSuccess,
                 onFail = onFail
             )
-        }    }
+        }
+    }
+
+    override fun logOut(onSuccess: (String) -> Unit, onFail: (String) -> Unit) {
+        token?.let {
+            mMovieTicketDataAgent.logOut(
+                token = it,
+                onSuccess = {
+                    token = null
+                    onSuccess(it)
+                },
+                onFail = onFail
+            )
+        }
+    }
 
     private fun saveToken(value: String) {
         token = "Bearer ".plus(value)

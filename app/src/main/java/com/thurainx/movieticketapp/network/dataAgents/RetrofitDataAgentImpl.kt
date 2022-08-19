@@ -362,6 +362,39 @@ object RetrofitDataAgentImpl : MovieTicketDataAgent {
         )
     }
 
+    override fun logOut(token: String, onSuccess: (String) -> Unit, onFail: (String) -> Unit) {
+        mTheMovieTicketApi?.logout(
+            token = token,
+        )?.enqueue(
+            object : Callback<LogoutResponse> {
+                override fun onResponse(
+                    call: Call<LogoutResponse>,
+                    response: Response<LogoutResponse>
+                ) {
+
+                    if (response.isSuccessful) {
+                        if (response.body()?.code == 200) {
+                            Log.d("api_logout", response.body().toString())
+                            val responseBody = response.body()
+                            responseBody?.message?.let(onSuccess)
+                        }else{
+                            onFail(response.body()?.message.toString())
+                            Log.d("api_logout", response.body().toString())
+                        }
+                    }
+
+
+                }
+
+                override fun onFailure(call: Call<LogoutResponse>, t: Throwable) {
+                    t.printStackTrace()
+                    onFail(t.message ?: "unknown error")
+                }
+
+            }
+        )
+    }
+
     override fun getSnackList(token: String, onSuccess: (List<SnackVO>) -> Unit, onFail: (String) -> Unit) {
         mTheMovieTicketApi?.getSnackList(
             token = token,

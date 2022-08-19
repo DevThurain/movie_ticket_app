@@ -77,4 +77,9 @@ interface MovieTicketModel {
         onSuccess : (ReceiptVO) -> Unit,
         onFail : (String) -> Unit
     )
+
+    fun logOut(
+        onSuccess : (String) -> Unit,
+        onFail : (String) -> Unit
+    )
 }
