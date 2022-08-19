@@ -40,7 +40,7 @@
             android:exported="true"
             android:theme="@style/Theme.MovieTicketApp">
 
-           
+
         </activity>
         <activity
             android:name=".activities.BuySnackActivity"

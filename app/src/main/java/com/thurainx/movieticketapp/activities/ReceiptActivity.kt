@@ -47,7 +47,6 @@ class ReceiptActivity : AppCompatActivity() {
         val checkOut = Gson().fromJson(checkOutString, CheckOutVO::class.java)
 
         setupListeners()
-        setupQr()
         fetchData(checkOutVO = checkOut)
         bindData(checkOutVO = checkOut)
     }
@@ -64,8 +63,9 @@ class ReceiptActivity : AppCompatActivity() {
 
         mMovieTicketModel.checkout(
             checkoutString = checkOutVO,
-            onSuccess = { responseCheckOut ->
-                Toast.makeText(this, responseCheckOut.message, Toast.LENGTH_SHORT).show()
+            onSuccess = { receipt ->
+                Toast.makeText(this, receipt.bookingNo, Toast.LENGTH_SHORT).show()
+                showBarCode(receipt.bookingNo.toString())
 
             },
             onFail = { errorMessage ->
@@ -90,8 +90,7 @@ class ReceiptActivity : AppCompatActivity() {
         )
     }
 
-    private fun setupQr() {
-        val text = "GC12345678"
+    private fun showBarCode(text : String) {
         val multiFormatWriter = MultiFormatWriter()
         try {
             val bitMatrix = multiFormatWriter.encode(text, BarcodeFormat.CODE_128, 500, 100)
@@ -105,7 +104,9 @@ class ReceiptActivity : AppCompatActivity() {
 
     private fun setupListeners() {
         ivReceiptClose.setOnClickListener {
-            super.onBackPressed()
+            val intent = HomeActivity.getIntent(this)
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            startActivity(intent)
         }
     }
 }

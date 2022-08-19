@@ -74,7 +74,7 @@ interface MovieTicketModel {
 
     fun checkout(
         checkoutString: CheckOutVO,
-        onSuccess : (CheckoutResponse) -> Unit,
+        onSuccess : (ReceiptVO) -> Unit,
         onFail : (String) -> Unit
     )
 }

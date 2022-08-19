@@ -75,12 +75,13 @@ class PaymentActivity : AppCompatActivity() {
             val checkOutString: String = intent.getStringExtra(EXTRA_CHECKOUT_STRING).toString()
             var checkOut = Gson().fromJson(checkOutString, CheckOutVO::class.java)
             checkOut.card_id = mCardList[carousel.getCurrentPosition()].id ?: 0
+            Log.d("check_out",checkOut.card_id.toString())
 
             val time = intent.getStringExtra(EXTRA_TIME)
             val date = intent.getStringExtra(EXTRA_DATE)
             val cinemaName = intent.getStringExtra(EXTRA_CINEMA_NAME)
             val intent = ReceiptActivity.getIntent(
-                this, checkOutString = checkOutString,
+                this, checkOutString = Gson().toJson(checkOut, CheckOutVO::class.java),
                 time = time.toString(),
                 date = date.toString(),
                 cinemaName = cinemaName.toString()
@@ -105,6 +106,7 @@ class PaymentActivity : AppCompatActivity() {
         carousel.addCarouselListener(object : CarouselListener {
             override fun onPositionChange(position: Int) {
                 Log.d("carousel", "currentPosition : $position")
+
             }
 
             override fun onScroll(dx: Int, dy: Int) {

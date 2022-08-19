@@ -83,7 +83,7 @@ interface MovieTicketDataAgent {
     fun checkOut(
         token: String,
         checkoutString: CheckOutVO,
-        onSuccess : (CheckoutResponse) -> Unit,
+        onSuccess : (ReceiptVO) -> Unit,
         onFail : (String) -> Unit
     )
 

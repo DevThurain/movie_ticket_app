@@ -3,6 +3,7 @@ package com.thurainx.movieticketapp.network.response
 import com.google.gson.annotations.SerializedName
 import com.thurainx.movieticketapp.data.vos.DateVO
 import com.thurainx.movieticketapp.data.vos.MovieVO
+import com.thurainx.movieticketapp.data.vos.ReceiptVO
 
 data class CheckoutResponse(
     @SerializedName("code")
@@ -11,6 +12,6 @@ data class CheckoutResponse(
     @SerializedName("message")
     val message: String?,
 
-//    @SerializedName("data")
-//    val data: Dynamic,
+    @SerializedName("data")
+    val data: ReceiptVO?,
 )

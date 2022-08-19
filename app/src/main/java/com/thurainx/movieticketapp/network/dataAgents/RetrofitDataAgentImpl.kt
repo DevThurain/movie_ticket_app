@@ -325,7 +325,7 @@ object RetrofitDataAgentImpl : MovieTicketDataAgent {
     override fun checkOut(
         token: String,
         checkoutString: CheckOutVO,
-        onSuccess: (CheckoutResponse) -> Unit,
+        onSuccess: (ReceiptVO) -> Unit,
         onFail: (String) -> Unit
     ) {
         mTheMovieTicketApi?.checkout(
@@ -340,9 +340,9 @@ object RetrofitDataAgentImpl : MovieTicketDataAgent {
 
                     if (response.isSuccessful) {
                         if (response.body()?.code == 200) {
-                            Log.d("api_checkout", response.toString())
+                            Log.d("api_checkout", response.body().toString())
                             val responseBody = response.body()
-                            responseBody?.let(onSuccess)
+                            responseBody?.data?.let(onSuccess)
                         }else{
                             onFail(response.body()?.message.toString())
                             Log.d("api_checkout", response.body().toString())
