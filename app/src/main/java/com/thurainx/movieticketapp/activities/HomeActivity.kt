@@ -5,10 +5,12 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
+import android.view.Window
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.view.ContentInfoCompat
 import com.bumptech.glide.Glide
+import com.google.android.material.snackbar.Snackbar
 import com.thurainx.movieticketapp.R
 import com.thurainx.movieticketapp.data.models.MovieTicketModelImpl
 import com.thurainx.movieticketapp.data.vos.ProfileVO
@@ -115,7 +117,6 @@ class HomeActivity : AppCompatActivity(), MovieDelegate {
         llLogOut.setOnClickListener {
             mMovieTicketModel.logOut(
                 onSuccess = { message ->
-                    Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
                     val intent = WelcomeActivity.getIntent(this)
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                     startActivity(intent)
