@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/llCreditCard"
     android:layout_width="match_parent"
@@ -8,13 +9,15 @@
     android:layout_below="@id/lblPaymentMethod"
     android:layout_marginStart="@dimen/margin_medium_2"
     android:layout_marginEnd="@dimen/margin_medium_2"
-    android:layout_marginTop="@dimen/margin_medium"
+    android:paddingVertical="@dimen/margin_medium"
+    android:background="@drawable/background_payment_unchecked"
     android:orientation="horizontal">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/ivPaymentMethod"
         android:layout_width="@dimen/margin_xlarge"
         android:layout_height="@dimen/margin_xlarge"
+        android:layout_marginStart="@dimen/margin_card_medium_2"
         android:layout_gravity="center"
         app:srcCompat="@drawable/ic_visa_card" />
 
@@ -44,21 +47,6 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:gravity="end">
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/ivPaymentMethodSelected"
-            android:layout_width="@dimen/margin_xlarge"
-            android:layout_height="@dimen/margin_xlarge"
-            android:layout_gravity="center"
-            app:tint="@color/color_primary"
-            app:srcCompat="@drawable/ic_check_24" />
-
-    </LinearLayout>
 
 
 

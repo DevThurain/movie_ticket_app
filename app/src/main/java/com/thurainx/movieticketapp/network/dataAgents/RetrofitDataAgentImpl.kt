@@ -348,8 +348,8 @@ object RetrofitDataAgentImpl : MovieTicketDataAgent {
                             Log.d("api_checkout", response.body().toString())
                         }
                     }
-
-                    Log.d("api_checkout",response.toString())
+                    onFail(response.body()?.message.toString())
+                    Log.d("api_checkout", response.body()?.message.toString())
 
                 }
 

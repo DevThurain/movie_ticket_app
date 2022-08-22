@@ -13,10 +13,7 @@ import com.google.zxing.MultiFormatWriter
 import com.google.zxing.WriterException
 import com.journeyapps.barcodescanner.BarcodeEncoder
 import com.thurainx.movieticketapp.R
-import com.thurainx.movieticketapp.data.EXTRA_CHECKOUT_STRING
-import com.thurainx.movieticketapp.data.EXTRA_CINEMA_NAME
-import com.thurainx.movieticketapp.data.EXTRA_DATE
-import com.thurainx.movieticketapp.data.EXTRA_TIME
+import com.thurainx.movieticketapp.data.*
 import com.thurainx.movieticketapp.data.models.MovieTicketModelImpl
 import com.thurainx.movieticketapp.data.vos.CheckOutVO
 import com.thurainx.movieticketapp.network.IMAGE_BASED_URL
@@ -27,16 +24,17 @@ import kotlinx.android.synthetic.main.activity_receipt.*
 
 class ReceiptActivity : AppCompatActivity() {
     companion object{
-        fun getIntent(context: Context,checkOutString: String,time: String,date: String,cinemaName: String) : Intent {
+        fun getIntent(context: Context,checkOutString: String,time: String,date: String,cinemaName: String,receiptId: String) : Intent {
             val intent = Intent(context,ReceiptActivity::class.java)
             intent.putExtra(EXTRA_CHECKOUT_STRING, checkOutString)
             intent.putExtra(EXTRA_TIME, time)
             intent.putExtra(EXTRA_DATE, date)
             intent.putExtra(EXTRA_CINEMA_NAME, cinemaName)
+            intent.putExtra(EXTRA_RECEIPT_ID, receiptId)
             return intent
         }
     }
-    val mMovieTicketModel = MovieTicketModelImpl
+    private val mMovieTicketModel = MovieTicketModelImpl
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,6 +47,7 @@ class ReceiptActivity : AppCompatActivity() {
         setupListeners()
         fetchData(checkOutVO = checkOut)
         bindData(checkOutVO = checkOut)
+        showBarCode(intent.getStringExtra(EXTRA_RECEIPT_ID).toString())
     }
 
     private fun bindData(checkOutVO: CheckOutVO) {
@@ -56,22 +55,10 @@ class ReceiptActivity : AppCompatActivity() {
         tvRow.text = checkOutVO.row
         tvSeat.text = checkOutVO.seatNumber
         tvPrice.text = "\$ ${checkOutVO.totalPrice}"
+        tvBooking.text = intent.getStringExtra(EXTRA_RECEIPT_ID)
     }
 
     private fun fetchData(checkOutVO: CheckOutVO) {
-
-
-        mMovieTicketModel.checkout(
-            checkoutString = checkOutVO,
-            onSuccess = { receipt ->
-                Toast.makeText(this, receipt.bookingNo, Toast.LENGTH_SHORT).show()
-                showBarCode(receipt.bookingNo.toString())
-
-            },
-            onFail = { errorMessage ->
-                Toast.makeText(this,errorMessage, Toast.LENGTH_SHORT).show()
-            }
-        )
 
         mMovieTicketModel.getMovieDetailById(
             id = checkOutVO.movieId.toString(),

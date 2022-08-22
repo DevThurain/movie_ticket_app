@@ -85,17 +85,9 @@ class PaymentActivity : AppCompatActivity() {
             checkOut.cardId = mCardList[carousel.getCurrentPosition()].id ?: 0
             Log.d("check_out", checkOut.cardId.toString())
 
-            val time = intent.getStringExtra(EXTRA_TIME)
-            val date = intent.getStringExtra(EXTRA_DATE)
-            val cinemaName = intent.getStringExtra(EXTRA_CINEMA_NAME)
-            val intent = ReceiptActivity.getIntent(
-                this, checkOutString = Gson().toJson(checkOut, CheckOutVO::class.java),
-                time = time.toString(),
-                date = date.toString(),
-                cinemaName = cinemaName.toString()
-            )
+            makeCheckOut(checkOutVO = checkOut)
 
-            startActivity(intent)
+
         }
 
         tvAddNewCard.setOnClickListener {
@@ -103,6 +95,32 @@ class PaymentActivity : AppCompatActivity() {
             intentLauncher.launch(intent)
         }
 
+    }
+
+    private fun makeCheckOut(checkOutVO: CheckOutVO){
+        Log.d("checkout",Gson().toJson(checkOutVO))
+        mMovieTicketModel.checkout(
+            checkoutString = checkOutVO,
+            onSuccess = { receipt ->
+                Toast.makeText(this, receipt.bookingNo, Toast.LENGTH_SHORT).show()
+                val time = intent.getStringExtra(EXTRA_TIME)
+                val date = intent.getStringExtra(EXTRA_DATE)
+                val cinemaName = intent.getStringExtra(EXTRA_CINEMA_NAME)
+                val intent = ReceiptActivity.getIntent(
+                    this,
+                    checkOutString = Gson().toJson(checkOutVO, CheckOutVO::class.java),
+                    time = time.toString(),
+                    date = date.toString(),
+                    cinemaName = cinemaName.toString(),
+                    receiptId = receipt.bookingNo.toString()
+                )
+                startActivity(intent)
+
+            },
+            onFail = { errorMessage ->
+                Toast.makeText(this,errorMessage, Toast.LENGTH_SHORT).show()
+            }
+        )
     }
 
     private fun setupCarousel() {
