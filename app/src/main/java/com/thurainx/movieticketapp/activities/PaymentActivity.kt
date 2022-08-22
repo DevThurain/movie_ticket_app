@@ -22,9 +22,15 @@ import com.thurainx.movieticketapp.data.vos.CheckOutVO
 import kotlinx.android.synthetic.main.activity_payment.*
 
 class PaymentActivity : AppCompatActivity() {
-    companion object{
-        fun getIntent(context: Context,checkOutString: String,time: String,date: String,cinemaName: String) : Intent {
-            val intent = Intent(context,PaymentActivity::class.java)
+    companion object {
+        fun getIntent(
+            context: Context,
+            checkOutString: String,
+            time: String,
+            date: String,
+            cinemaName: String
+        ): Intent {
+            val intent = Intent(context, PaymentActivity::class.java)
             intent.putExtra(EXTRA_CHECKOUT_STRING, checkOutString)
             intent.putExtra(EXTRA_TIME, time)
             intent.putExtra(EXTRA_DATE, date)
@@ -32,10 +38,11 @@ class PaymentActivity : AppCompatActivity() {
             return intent
         }
     }
+
     lateinit var mAdapter: CreditCardCarouselAdapter
     lateinit var carousel: Carousel
     val mMovieTicketModel = MovieTicketModelImpl
-    var mCardList : List<CardVO> = listOf()
+    var mCardList: List<CardVO> = listOf()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_payment)
@@ -49,21 +56,22 @@ class PaymentActivity : AppCompatActivity() {
     private fun fetchData() {
         mMovieTicketModel.getProfile(
             onSuccess = { profile ->
-                if(profile.cards?.isNotEmpty() == true){
+                if (profile.cards?.isNotEmpty() == true) {
                     mCardList = profile.cards
-                    carousel.addAll(profile.cards.toMutableList())
+                    carousel.addAll(profile.cards.reversed().toMutableList())
                     carousel.setCurrentPosition(0)
                 }
-             },
+            },
             onFail = { errorMessage ->
-                Toast.makeText(this,errorMessage,Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
             }
         )
     }
 
     private fun bindData() {
-        val checkout = Gson().fromJson(intent.getStringExtra(EXTRA_CHECKOUT_STRING), CheckOutVO::class.java)
-        tvPaymentAmount.text = "\$${checkout.total_price}"
+        val checkout =
+            Gson().fromJson(intent.getStringExtra(EXTRA_CHECKOUT_STRING), CheckOutVO::class.java)
+        tvPaymentAmount.text = "\$${checkout.totalPrice}"
     }
 
     private fun setupListeners() {
@@ -74,8 +82,8 @@ class PaymentActivity : AppCompatActivity() {
         btnPaymentConfirm.setOnClickListener {
             val checkOutString: String = intent.getStringExtra(EXTRA_CHECKOUT_STRING).toString()
             var checkOut = Gson().fromJson(checkOutString, CheckOutVO::class.java)
-            checkOut.card_id = mCardList[carousel.getCurrentPosition()].id ?: 0
-            Log.d("check_out",checkOut.card_id.toString())
+            checkOut.cardId = mCardList[carousel.getCurrentPosition()].id ?: 0
+            Log.d("check_out", checkOut.cardId.toString())
 
             val time = intent.getStringExtra(EXTRA_TIME)
             val date = intent.getStringExtra(EXTRA_DATE)
@@ -98,35 +106,19 @@ class PaymentActivity : AppCompatActivity() {
     }
 
     private fun setupCarousel() {
-        mAdapter =  CreditCardCarouselAdapter()
+        mAdapter = CreditCardCarouselAdapter()
         carousel = Carousel(this, carouselViewCreditCard, mAdapter)
         carousel.setOrientation(CarouselView.HORIZONTAL, false)
         carousel.scaleView(true)
 
-        carousel.addCarouselListener(object : CarouselListener {
-            override fun onPositionChange(position: Int) {
-                Log.d("carousel", "currentPosition : $position")
-
-            }
-
-            override fun onScroll(dx: Int, dy: Int) {
-
-            }
-        })
 
     }
 
     private val intentLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-
             if (result.resultCode == Activity.RESULT_OK) {
                 Log.d("data", result.data?.getStringExtra(EXTRA_CARD_VO) ?: "no data")
-                val cardList = Gson().fromJson(result.data?.getStringExtra(EXTRA_CARD_VO), Array<CardVO>::class.java)
-                if(cardList.isNotEmpty()){
-                    mCardList = cardList.toList()
-                    carousel.addAll(cardList.toMutableList())
-                    carousel.setCurrentPosition(0)
-                }
+                fetchData()
             }
         }
 }

@@ -54,8 +54,8 @@ class ReceiptActivity : AppCompatActivity() {
     private fun bindData(checkOutVO: CheckOutVO) {
         tvShowTime.text = intent.getStringExtra(EXTRA_TIME).plus( "- ${intent.getStringExtra(EXTRA_DATE)?.toReceiptDateFormat()}")
         tvRow.text = checkOutVO.row
-        tvSeat.text = checkOutVO.seat_number
-        tvPrice.text = "\$ ${checkOutVO.total_price}"
+        tvSeat.text = checkOutVO.seatNumber
+        tvPrice.text = "\$ ${checkOutVO.totalPrice}"
     }
 
     private fun fetchData(checkOutVO: CheckOutVO) {
@@ -74,7 +74,7 @@ class ReceiptActivity : AppCompatActivity() {
         )
 
         mMovieTicketModel.getMovieDetailById(
-            id = checkOutVO.movie_id.toString(),
+            id = checkOutVO.movieId.toString(),
             onSuccess = { movieDetail ->
                 tvReceiptMoiveName.text = movieDetail.originalTitle
 

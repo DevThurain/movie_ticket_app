@@ -58,7 +58,7 @@ class BuySnackActivity : AppCompatActivity(), SnackDelegate, PaymentMethodDelega
     private fun bindData(){
         val checkOutString: String = intent.getStringExtra(EXTRA_CHECKOUT_STRING).toString()
         var checkOut = Gson().fromJson(checkOutString, CheckOutVO::class.java)
-        totalPrice = checkOut.total_price
+        totalPrice = checkOut.totalPrice
         btnPaySnack.text = "Pay \$${totalPrice + mSubTotal}"
     }
 
@@ -103,7 +103,7 @@ class BuySnackActivity : AppCompatActivity(), SnackDelegate, PaymentMethodDelega
         btnPaySnack.setOnClickListener {
             val checkOutString: String = intent.getStringExtra(EXTRA_CHECKOUT_STRING).toString()
             var checkOut = Gson().fromJson(checkOutString, CheckOutVO::class.java)
-            checkOut.total_price = totalPrice + mSubTotal
+            checkOut.totalPrice = totalPrice + mSubTotal
             checkOut.snacks = mSnackList.filter { it.count > 0 }.map {
                 CheckOutSnackVO(id = it.id, quantity = it.count)
             }.toList()
