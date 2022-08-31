@@ -2,7 +2,7 @@ package com.thurainx.movieticketapp.data.vos
 
 import com.google.gson.annotations.SerializedName
 
-data class ProductionCountryVO(
+data class ProductionCompanyAndCountryVO(
     @SerializedName("name")
     val name: String?,
 
