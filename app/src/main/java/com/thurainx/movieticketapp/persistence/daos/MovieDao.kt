@@ -1,10 +1,12 @@
 package com.thurainx.movieticketapp.persistence.daos
 
+import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.thurainx.movieticketapp.data.vos.MovieVO
 
+@Dao
 interface MovieDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

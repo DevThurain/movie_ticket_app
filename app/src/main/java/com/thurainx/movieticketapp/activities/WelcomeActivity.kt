@@ -68,14 +68,13 @@ class WelcomeActivity : AppCompatActivity(), AuthDelegate {
 
     override fun onTapRegister(name: String, email: String, phone: String, password: String) {
 
-        if(email.isNotEmpty() && password.isNotEmpty() && phone.isNotEmpty() && password.isNotEmpty()){
+        if (email.isNotEmpty() && password.isNotEmpty() && phone.isNotEmpty() && password.isNotEmpty()) {
             mMovieTicketModel.registerWithEmail(
                 name = name,
                 email = email,
                 password = password,
                 phone = phone,
-                onSuccess = { profileVO ->
-
+                onSuccess = {
                     val intent = HomeActivity.getIntent(this)
                     startActivity(intent)
                 },
@@ -83,28 +82,29 @@ class WelcomeActivity : AppCompatActivity(), AuthDelegate {
                     Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
                 }
             )
-        }else{
+        } else {
             Toast.makeText(this, "Credentials cannot be empty.", Toast.LENGTH_SHORT).show()
         }
     }
 
     override fun onTapLogin(email: String, password: String) {
 
-        if(email.isNotEmpty() && password.isNotEmpty()){
+        if (email.isNotEmpty() && password.isNotEmpty()) {
             mMovieTicketModel.loginWithEmail(
                 email = email,
                 password = password,
-                onSuccess = { profileVO ->
+                onSuccess = {
 
 //                    Toast.makeText(this, "${tokenResponse.token}", Toast.LENGTH_SHORT).show()
                     val intent = HomeActivity.getIntent(this)
                     startActivity(intent)
+                    finishAffinity()
                 },
                 onFail = { errorMessage ->
                     Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
                 }
             )
-        }else{
+        } else {
             Toast.makeText(this, "Credentials cannot be empty.", Toast.LENGTH_SHORT).show()
         }
     }

@@ -11,8 +11,8 @@ class GenreListTypeConverter {
     }
 
     @TypeConverter
-    fun toGenreList(jsonStr: String) : List<String>{
-        val type = object : TypeToken<List<String>>(){}.type
+    fun toGenreList(jsonStr: String) : List<String>?{
+        val type = object : TypeToken<List<String>?>(){}.type
         return Gson().fromJson(jsonStr, type)
     }
 }

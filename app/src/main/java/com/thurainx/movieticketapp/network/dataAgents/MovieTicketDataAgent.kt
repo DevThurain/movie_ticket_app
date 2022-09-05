@@ -2,11 +2,7 @@ package com.thurainx.movieticketapp.network.dataAgents
 
 import com.thurainx.movieticketapp.data.MovieSeatVO
 import com.thurainx.movieticketapp.data.vos.*
-import com.thurainx.movieticketapp.network.response.CheckoutResponse
-import com.thurainx.movieticketapp.network.response.CreateCardResponse
-import com.thurainx.movieticketapp.network.response.ProfileResponse
-import com.thurainx.movieticketapp.network.response.TokenResponse
-import java.sql.ClientInfoStatus
+import com.thurainx.movieticketapp.network.response.UserInfoResponse
 
 interface MovieTicketDataAgent {
     fun registerWithEmail(
@@ -14,19 +10,19 @@ interface MovieTicketDataAgent {
         phone: String,
         email: String,
         password: String,
-        onSuccess : (TokenResponse) -> Unit,
+        onSuccess : (UserInfoResponse) -> Unit,
         onFail : (String) -> Unit
     )
     fun loginWithEmail(
         email: String,
         password: String,
-        onSuccess : (TokenResponse) -> Unit,
+        onSuccess : (UserInfoResponse) -> Unit,
         onFail : (String) -> Unit
     )
 
     fun getProfile(
         token: String,
-        onSuccess : (ProfileVO) -> Unit,
+        onSuccess : (UserVO) -> Unit,
         onFail : (String) -> Unit
     )
 

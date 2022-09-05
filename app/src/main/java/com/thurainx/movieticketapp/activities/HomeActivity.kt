@@ -5,15 +5,12 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
-import android.view.Window
 import android.widget.Toast
 import androidx.core.content.ContextCompat
-import androidx.core.view.ContentInfoCompat
 import com.bumptech.glide.Glide
-import com.google.android.material.snackbar.Snackbar
 import com.thurainx.movieticketapp.R
 import com.thurainx.movieticketapp.data.models.MovieTicketModelImpl
-import com.thurainx.movieticketapp.data.vos.ProfileVO
+import com.thurainx.movieticketapp.data.vos.UserVO
 import com.thurainx.movieticketapp.delegates.MovieDelegate
 import com.thurainx.movieticketapp.network.BASED_URL
 import com.thurainx.movieticketapp.network.STATUS_COMING_SOON
@@ -42,6 +39,7 @@ class HomeActivity : AppCompatActivity(), MovieDelegate {
         setupListeners()
         setupViewPods()
         fetchData()
+        bindUserInfo()
 
     }
 
@@ -68,31 +66,28 @@ class HomeActivity : AppCompatActivity(), MovieDelegate {
             }
         )
 
-        mMovieTicketModel.getProfile(
-            onSuccess = { profile ->
-                bindProfile(profile)
-            },
-            onFail = { errorMessage ->
-                Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
-            }
-        )
 
     }
 
-    private fun bindProfile(profile: ProfileVO) {
+    private fun bindUserInfo() {
 
-        Glide.with(this)
-            .load(BASED_URL + profile.profileImage)
-            .into(ivProfile)
+        val profile = mMovieTicketModel.mMovieTicketDatabase?.userDao()?.getUser()
 
-        Glide.with(this)
-            .load(BASED_URL + profile.profileImage)
-            .centerCrop()
-            .into(ivDrawerProfile)
+        profile?.let {
+            Glide.with(this)
+                .load(BASED_URL + profile.profileImage)
+                .into(ivProfile)
 
-        tvGreeting.text = "Hi ${profile.name}!"
-        tvDrawerName.text = profile.name
-        tvDrawerEmail.text = profile.email
+            Glide.with(this)
+                .load(BASED_URL + profile.profileImage)
+                .centerCrop()
+                .into(ivDrawerProfile)
+
+            tvGreeting.text = "Hi ${profile.name}!"
+            tvDrawerName.text = profile.name
+            tvDrawerEmail.text = profile.email
+        }
+
     }
 
     private fun setupViewPods() {
@@ -118,8 +113,8 @@ class HomeActivity : AppCompatActivity(), MovieDelegate {
             mMovieTicketModel.logOut(
                 onSuccess = { message ->
                     val intent = WelcomeActivity.getIntent(this)
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                     startActivity(intent)
+                    finishAffinity()
                 },
                 onFail = { errorMessage ->
                     Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()

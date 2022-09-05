@@ -12,8 +12,8 @@ class ProductionCountryTypeConverter {
     }
 
     @TypeConverter
-    fun toProductionCountryList(jsonStr: String) : List<ProductionCompanyAndCountryVO>{
-        val type = object : TypeToken<List<ProductionCompanyAndCountryVO>>(){}.type
+    fun toProductionCountryList(jsonStr: String) : List<ProductionCompanyAndCountryVO>?{
+        val type = object : TypeToken<List<ProductionCompanyAndCountryVO>?>(){}.type
         return Gson().fromJson(jsonStr, type)
     }
 }

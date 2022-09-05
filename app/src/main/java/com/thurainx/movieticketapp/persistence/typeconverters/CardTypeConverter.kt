@@ -4,16 +4,17 @@ import androidx.room.TypeConverter
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.thurainx.movieticketapp.data.vos.ActorVO
+import com.thurainx.movieticketapp.data.vos.CardVO
 
-class ActorTypeConverter {
+class CardTypeConverter {
     @TypeConverter
-    fun toString(actorList: List<ActorVO>?): String {
-        return Gson().toJson(actorList)
+    fun toString(cardList: List<CardVO>?): String {
+        return Gson().toJson(cardList)
     }
 
     @TypeConverter
-    fun toActorList(jsonStr: String) : List<ActorVO>?{
-        val type = object : TypeToken<List<ActorVO>?>(){}.type
+    fun toCardList(jsonStr: String) : List<CardVO>?{
+        val type = object : TypeToken<List<CardVO>?>(){}.type
         return Gson().fromJson(jsonStr, type)
     }
 }

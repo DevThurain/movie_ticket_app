@@ -2,6 +2,7 @@ package com.thurainx.movieticketapp.data.vos
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
 import com.google.gson.annotations.SerializedName
 import com.thurainx.movieticketapp.persistence.typeconverters.*
@@ -27,6 +28,7 @@ data class MovieVO(
     @SerializedName("genre_ids")
     val genreIds: List<Int>?,
 
+    @PrimaryKey
     @ColumnInfo(name = "id")
     @SerializedName("id")
     val id: Int?,

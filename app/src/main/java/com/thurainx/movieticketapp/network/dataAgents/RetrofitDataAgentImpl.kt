@@ -4,7 +4,6 @@ import android.util.Log
 import com.thurainx.movieticketapp.data.MovieSeatVO
 import com.thurainx.movieticketapp.data.vos.*
 import com.thurainx.movieticketapp.network.BASED_URL
-import com.thurainx.movieticketapp.network.MOVIE_BASED_URL
 import com.thurainx.movieticketapp.network.TheMovieTicketApi
 import com.thurainx.movieticketapp.network.response.*
 import okhttp3.OkHttpClient
@@ -40,7 +39,7 @@ object RetrofitDataAgentImpl : MovieTicketDataAgent {
         phone: String,
         email: String,
         password: String,
-        onSuccess: (TokenResponse) -> Unit,
+        onSuccess: (UserInfoResponse) -> Unit,
         onFail: (String) -> Unit
     ) {
         mTheMovieTicketApi?.registerWithEmail(
@@ -49,10 +48,10 @@ object RetrofitDataAgentImpl : MovieTicketDataAgent {
             phone = phone,
             password = password
         )?.enqueue(
-            object : Callback<TokenResponse> {
+            object : Callback<UserInfoResponse> {
                 override fun onResponse(
-                    call: Call<TokenResponse>,
-                    response: Response<TokenResponse>
+                    call: Call<UserInfoResponse>,
+                    response: Response<UserInfoResponse>
                 ) {
 
                     if (response.isSuccessful) {
@@ -67,7 +66,7 @@ object RetrofitDataAgentImpl : MovieTicketDataAgent {
 
                 }
 
-                override fun onFailure(call: Call<TokenResponse>, t: Throwable) {
+                override fun onFailure(call: Call<UserInfoResponse>, t: Throwable) {
                     t.printStackTrace()
                     onFail(t.message ?: "unknown error")
                 }
@@ -79,14 +78,14 @@ object RetrofitDataAgentImpl : MovieTicketDataAgent {
     override fun loginWithEmail(
         email: String,
         password: String,
-        onSuccess: (TokenResponse) -> Unit,
+        onSuccess: (UserInfoResponse) -> Unit,
         onFail: (String) -> Unit
     ) {
         mTheMovieTicketApi?.loginWithEmail(email = email, password = password)?.enqueue(
-            object : Callback<TokenResponse> {
+            object : Callback<UserInfoResponse> {
                 override fun onResponse(
-                    call: Call<TokenResponse>,
-                    response: Response<TokenResponse>
+                    call: Call<UserInfoResponse>,
+                    response: Response<UserInfoResponse>
                 ) {
 
                     if (response.isSuccessful) {
@@ -101,7 +100,7 @@ object RetrofitDataAgentImpl : MovieTicketDataAgent {
 
                 }
 
-                override fun onFailure(call: Call<TokenResponse>, t: Throwable) {
+                override fun onFailure(call: Call<UserInfoResponse>, t: Throwable) {
                     t.printStackTrace()
                     onFail(t.message ?: "unknown error")
                 }
@@ -112,7 +111,7 @@ object RetrofitDataAgentImpl : MovieTicketDataAgent {
 
     override fun getProfile(
         token: String,
-        onSuccess: (ProfileVO) -> Unit,
+        onSuccess: (UserVO) -> Unit,
         onFail: (String) -> Unit
     ) {
         mTheMovieTicketApi?.getProfile(token = token)?.enqueue(
@@ -371,6 +370,7 @@ object RetrofitDataAgentImpl : MovieTicketDataAgent {
                     call: Call<LogoutResponse>,
                     response: Response<LogoutResponse>
                 ) {
+                    Log.d("api_logout", "reach logout")
 
                     if (response.isSuccessful) {
                         if (response.body()?.code == 200) {
@@ -382,7 +382,6 @@ object RetrofitDataAgentImpl : MovieTicketDataAgent {
                             Log.d("api_logout", response.body().toString())
                         }
                     }
-
 
                 }
 

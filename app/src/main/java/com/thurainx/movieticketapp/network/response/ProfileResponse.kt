@@ -1,10 +1,7 @@
 package com.thurainx.movieticketapp.network.response
 
 import com.google.gson.annotations.SerializedName
-import com.thurainx.movieticketapp.data.vos.DateVO
-import com.thurainx.movieticketapp.data.vos.MovieVO
-import com.thurainx.movieticketapp.data.vos.ProfileVO
-import com.thurainx.movieticketapp.data.vos.SnackVO
+import com.thurainx.movieticketapp.data.vos.UserVO
 
 data class ProfileResponse(
     @SerializedName("code")
@@ -14,5 +11,5 @@ data class ProfileResponse(
     val message: String?,
 
     @SerializedName("data")
-    val data: ProfileVO?,
+    val data: UserVO?,
 )

@@ -14,14 +14,14 @@ interface TheMovieTicketApi {
         @Field(PARAM_EMAIL) email: String,
         @Field(PARAM_PHONE) phone: String,
         @Field(PARAM_PASSWORD) password: String,
-    ): Call<TokenResponse>
+    ): Call<UserInfoResponse>
 
     @POST(API_LOGIN_WITH_EMAIL)
     @FormUrlEncoded
     fun loginWithEmail(
         @Field(PARAM_EMAIL) email: String,
         @Field(PARAM_PASSWORD) password: String,
-    ): Call<TokenResponse>
+    ): Call<UserInfoResponse>
 
     @GET(API_GET_PROFILE)
     fun getProfile(

@@ -2,8 +2,6 @@ package com.thurainx.movieticketapp.data.models
 
 import com.thurainx.movieticketapp.data.MovieSeatVO
 import com.thurainx.movieticketapp.data.vos.*
-import com.thurainx.movieticketapp.network.response.CheckoutResponse
-import com.thurainx.movieticketapp.network.response.TokenResponse
 
 interface MovieTicketModel {
 
@@ -12,18 +10,18 @@ interface MovieTicketModel {
         phone: String,
         email: String,
         password: String,
-        onSuccess: (ProfileVO) -> Unit,
+        onSuccess: () -> Unit,
         onFail : (String) -> Unit
     )
     fun loginWithEmail(
         email: String,
         password: String,
-        onSuccess: (ProfileVO) -> Unit,
+        onSuccess: () -> Unit,
         onFail : (String) -> Unit
     )
 
     fun getProfile(
-        onSuccess : (ProfileVO) -> Unit,
+        onSuccess : (UserVO) -> Unit,
         onFail : (String) -> Unit
     )
 

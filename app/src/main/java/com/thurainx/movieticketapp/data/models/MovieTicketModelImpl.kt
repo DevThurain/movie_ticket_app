@@ -1,26 +1,36 @@
 package com.thurainx.movieticketapp.data.models
 
+import android.content.Context
 import android.util.Log
 import com.thurainx.movieticketapp.data.MovieSeatVO
 import com.thurainx.movieticketapp.data.vos.*
 import com.thurainx.movieticketapp.network.dataAgents.MovieTicketDataAgent
 import com.thurainx.movieticketapp.network.dataAgents.RetrofitDataAgentImpl
-import com.thurainx.movieticketapp.network.response.CheckoutResponse
-import com.thurainx.movieticketapp.network.response.TokenResponse
+import com.thurainx.movieticketapp.persistence.MovieTicketDatabase
 
 object MovieTicketModelImpl : MovieTicketModel {
 
+    var token: String? = null
+
+    /* Data Agent */
     private val mMovieTicketDataAgent: MovieTicketDataAgent = RetrofitDataAgentImpl
 
-    //    var token: String? = null
-    private var token: String? = "Bearer 7347|Kz8YzSCzMY7StU7H8gPxkTQ1YDHMpkbeZUtKfg1I"
+    /* Database */
+    var mMovieTicketDatabase: MovieTicketDatabase? = null
+
+    fun initDatabase(context: Context) {
+        mMovieTicketDatabase = MovieTicketDatabase.getDBInstant(context)
+        Log.d("saved_token", "saved token -> $token")
+        insertToken()
+    }
+
 
     override fun registerWithEmail(
         name: String,
         phone: String,
         email: String,
         password: String,
-        onSuccess: (ProfileVO) -> Unit,
+        onSuccess: () -> Unit,
         onFail: (String) -> Unit
     ) {
         mMovieTicketDataAgent.registerWithEmail(
@@ -28,9 +38,13 @@ object MovieTicketModelImpl : MovieTicketModel {
             phone = phone,
             email = email,
             password = password,
-            onSuccess = {
-                saveToken(it.token ?: "")
-                it.data?.let(onSuccess)
+            onSuccess = { userInfoResponse ->
+                userInfoResponse.data?.let { user ->
+                    user.token = "Bearer ".plus(userInfoResponse.token)
+                    mMovieTicketDatabase?.userDao()?.insertUser(user)
+                    insertToken()
+                    onSuccess()
+                }
             },
             onFail = onFail
         )
@@ -40,22 +54,26 @@ object MovieTicketModelImpl : MovieTicketModel {
     override fun loginWithEmail(
         email: String,
         password: String,
-        onSuccess: (ProfileVO) -> Unit,
+        onSuccess: () -> Unit,
         onFail: (String) -> Unit
     ) {
         mMovieTicketDataAgent.loginWithEmail(
             email = email,
             password = password,
-            onSuccess = {
-                saveToken(it.token ?: "")
-                it.data?.let(onSuccess)
+            onSuccess = { userInfoResponse ->
+                userInfoResponse.data?.let { user ->
+                    user.token = "Bearer ".plus(userInfoResponse.token)
+                    mMovieTicketDatabase?.userDao()?.insertUser(user)
+                    insertToken()
+                    onSuccess()
+                }
             },
             onFail = onFail
         )
     }
 
     override fun getProfile(
-        onSuccess: (ProfileVO) -> Unit,
+        onSuccess: (UserVO) -> Unit,
         onFail: (String) -> Unit
     ) {
         token?.let {
@@ -177,24 +195,22 @@ object MovieTicketModelImpl : MovieTicketModel {
     }
 
     override fun logOut(onSuccess: (String) -> Unit, onFail: (String) -> Unit) {
+        Log.d("logout","token -> $token")
         token?.let {
             mMovieTicketDataAgent.logOut(
                 token = it,
-                onSuccess = {
+                onSuccess = { message ->
                     token = null
-                    onSuccess(it)
+                    mMovieTicketDatabase?.userDao()?.deleteUser()
+                    onSuccess(message)
                 },
                 onFail = onFail
             )
         }
     }
 
-    private fun saveToken(value: String) {
-        token = "Bearer ".plus(value)
-    }
-
-    fun deleteToken() {
-        token = null
+    fun insertToken(){
+        token = mMovieTicketDatabase?.userDao()?.getUser()?.token
     }
 
 
