@@ -73,13 +73,16 @@ class ChooseCinemaActivity : AppCompatActivity(), DayDelegate, TimeSlotDelegate 
             movieId = mMovieId.toString(),
             date = date,
             onSuccess = { cinemaList ->
-                mCinemaList = cinemaList
-                mCinemaList.first().timeslots?.first()?.isSelected = true
-                selectedCinemaName = mCinemaList.first().cinema.toString()
-                selectedCinemaId = mCinemaList.first().cinemaId ?: 0
-                selectedTime = mCinemaList.first().timeslots?.first()?.startTime.toString()
-                selectedTimeSlotId = mCinemaList.first().timeslots?.first()?.cinemaDayTimeSlotId ?: 0
+                if(cinemaList.isNotEmpty()){
+                    mCinemaList = cinemaList
+                    mCinemaList.first().timeslots?.first()?.isSelected = true
+                    selectedCinemaName = mCinemaList.first().cinema.toString()
+                    selectedCinemaId = mCinemaList.first().cinemaId ?: 0
+                    selectedTime = mCinemaList.first().timeslots?.first()?.startTime.toString()
+                    selectedTimeSlotId = mCinemaList.first().timeslots?.first()?.cinemaDayTimeSlotId ?: 0
+                }
                 mCinemaListAdapter.setNewData(cinemaList = cinemaList)
+
             },
             onFail = { errorMessage ->
                 Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()

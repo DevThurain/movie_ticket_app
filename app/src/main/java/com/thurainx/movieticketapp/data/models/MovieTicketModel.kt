@@ -20,8 +20,8 @@ interface MovieTicketModel {
         onFail : (String) -> Unit
     )
 
-    fun getProfile(
-        onSuccess : (UserVO) -> Unit,
+    fun getCards(
+        onSuccess : (List<CardVO>) -> Unit,
         onFail : (String) -> Unit
     )
 

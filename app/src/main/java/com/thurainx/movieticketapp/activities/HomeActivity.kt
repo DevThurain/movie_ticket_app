@@ -8,6 +8,7 @@ import android.view.Gravity
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
+import com.google.android.material.snackbar.Snackbar
 import com.thurainx.movieticketapp.R
 import com.thurainx.movieticketapp.data.models.MovieTicketModelImpl
 import com.thurainx.movieticketapp.data.vos.UserVO
@@ -52,7 +53,7 @@ class HomeActivity : AppCompatActivity(), MovieDelegate {
                 nowShowingMovieViewPod.setData(movieList = movieList)
             },
             onFail = { errorMessage ->
-                Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
+                Snackbar.make(window.decorView,errorMessage,Snackbar.LENGTH_SHORT).show()
             }
         )
 
@@ -62,7 +63,7 @@ class HomeActivity : AppCompatActivity(), MovieDelegate {
                 comingSoonMovieViewPod.setData(movieList = movieList)
             },
             onFail = { errorMessage ->
-                Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
+                Snackbar.make(window.decorView,errorMessage,Snackbar.LENGTH_SHORT).show()
             }
         )
 

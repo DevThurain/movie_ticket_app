@@ -75,9 +75,10 @@ class BuySnackActivity : AppCompatActivity(), SnackDelegate, PaymentMethodDelega
 
         mMovieTicketModel.getPaymentMethodList(
             onSuccess = { paymentMethodList ->
-                paymentMethodList.first().isChecked = true
-//                selectedCardId = paymentMethodList.first().id ?: 0
-                mPaymentMethodList = paymentMethodList
+                if(paymentMethodList.isNotEmpty()){
+                    paymentMethodList.first().isChecked = true
+                    mPaymentMethodList = paymentMethodList
+                }
                 mPaymentMethodListAdapter.setNewData(paymentMethodList)
             },
             onFail = { errorMessage ->

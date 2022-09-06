@@ -54,11 +54,11 @@ class PaymentActivity : AppCompatActivity() {
     }
 
     private fun fetchData() {
-        mMovieTicketModel.getProfile(
-            onSuccess = { profile ->
-                if (profile.cards?.isNotEmpty() == true) {
-                    mCardList = profile.cards
-                    carousel.addAll(profile.cards.reversed().toMutableList())
+        mMovieTicketModel.getCards(
+            onSuccess = { cards ->
+                if (cards?.isNotEmpty()) {
+                    mCardList = cards
+                    carousel.addAll(cards.reversed().toMutableList())
                     carousel.setCurrentPosition(0)
                 }
             },
@@ -86,7 +86,6 @@ class PaymentActivity : AppCompatActivity() {
             Log.d("check_out", checkOut.cardId.toString())
 
             makeCheckOut(checkOutVO = checkOut)
-
 
         }
 

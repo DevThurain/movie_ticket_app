@@ -72,12 +72,18 @@ object MovieTicketModelImpl : MovieTicketModel {
         )
     }
 
-    override fun getProfile(
-        onSuccess: (UserVO) -> Unit,
+    override fun getCards(
+        onSuccess: (List<CardVO>) -> Unit,
         onFail: (String) -> Unit
     ) {
         token?.let {
-            mMovieTicketDataAgent.getProfile(it, onSuccess, onFail)
+            onSuccess(mMovieTicketDatabase?.cardDao()?.getAllCards() ?: listOf())
+
+            mMovieTicketDataAgent.getProfile(it, { user ->
+                mMovieTicketDatabase?.cardDao()?.insertCardList(user.cards ?: listOf())
+                onSuccess(user.cards ?: listOf())
+
+            }, onFail)
         }
     }
 
@@ -87,9 +93,16 @@ object MovieTicketModelImpl : MovieTicketModel {
         onSuccess: (List<MovieVO>) -> Unit,
         onFail: (String) -> Unit
     ) {
+        onSuccess(mMovieTicketDatabase?.movieDao()?.getMoviesByStatus(status) ?: listOf())
         mMovieTicketDataAgent.getMovieListByStatus(
             status = status,
-            onSuccess = onSuccess,
+            onSuccess = { movieList ->
+                movieList.forEach {
+                    it.type = status
+                    mMovieTicketDatabase?.movieDao()?.insertSingleMovie(it)
+                }
+                onSuccess(movieList)
+            },
             onFail = onFail
         )
     }
@@ -99,7 +112,17 @@ object MovieTicketModelImpl : MovieTicketModel {
         onSuccess: (MovieVO) -> Unit,
         onFail: (String) -> Unit
     ) {
-        mMovieTicketDataAgent.getMovieDetailById(id = id, onSuccess = onSuccess, onFail = onFail)
+
+        val movieFromDB: MovieVO? = mMovieTicketDatabase?.movieDao()?.getMovieById(id.toInt())
+        movieFromDB?.let(onSuccess)
+
+        mMovieTicketDataAgent.getMovieDetailById(id = id, onSuccess = { movie ->
+            movieFromDB?.let {
+                movie.type = it.type
+            }
+            mMovieTicketDatabase?.movieDao()?.insertSingleMovie(movie)
+            onSuccess(movie)
+        }, onFail = onFail)
     }
 
     override fun getCinemaList(
@@ -109,11 +132,20 @@ object MovieTicketModelImpl : MovieTicketModel {
         onFail: (String) -> Unit
     ) {
         token?.let {
+            onSuccess(mMovieTicketDatabase?.cinemaDao()?.getCinemaListByDate(date) ?: listOf())
+
             mMovieTicketDataAgent.getCinemaList(
                 token = it,
                 movieId = movieId,
                 date = date,
-                onSuccess = onSuccess,
+                onSuccess = { cinemaList ->
+                    mMovieTicketDatabase?.cinemaDao()?.deleteCinemaListByDate(date = date)
+                    cinemaList.forEach { cinema ->
+                        cinema.date = date
+                    }
+                    mMovieTicketDatabase?.cinemaDao()?.insertCinemaList(cinemaList)
+                    onSuccess(cinemaList)
+                },
                 onFail = onFail
             )
         }
@@ -144,8 +176,13 @@ object MovieTicketModelImpl : MovieTicketModel {
         onSuccess: (List<SnackVO>) -> Unit,
         onFail: (String) -> Unit
     ) {
-        MovieTicketModelImpl.token?.let {
-            mMovieTicketDataAgent.getSnackList(it, onSuccess, onFail)
+        token?.let {
+            onSuccess(mMovieTicketDatabase?.snackDao()?.getAllSnacks() ?: listOf())
+            mMovieTicketDataAgent.getSnackList(it, { snackList ->
+                mMovieTicketDatabase?.snackDao()?.insertSnackList(snackList = snackList)
+                onSuccess(snackList)
+
+            }, onFail)
         }
     }
 
@@ -153,8 +190,13 @@ object MovieTicketModelImpl : MovieTicketModel {
         onSuccess: (List<PaymentMethodVO>) -> Unit,
         onFail: (String) -> Unit
     ) {
-        MovieTicketModelImpl.token?.let {
-            mMovieTicketDataAgent.getPaymentMethodList(it, onSuccess, onFail)
+        token?.let {
+            onSuccess(mMovieTicketDatabase?.paymentMethodDao()?.getAllPaymentMethods() ?: listOf())
+            mMovieTicketDataAgent.getPaymentMethodList(it, { paymentMethodList ->
+                mMovieTicketDatabase?.paymentMethodDao()?.insertPaymentMethodList(paymentMethodList)
+                onSuccess(paymentMethodList)
+
+            }, onFail)
         }
     }
 
@@ -195,7 +237,7 @@ object MovieTicketModelImpl : MovieTicketModel {
     }
 
     override fun logOut(onSuccess: (String) -> Unit, onFail: (String) -> Unit) {
-        Log.d("logout","token -> $token")
+        Log.d("logout", "token -> $token")
         token?.let {
             mMovieTicketDataAgent.logOut(
                 token = it,
@@ -209,7 +251,7 @@ object MovieTicketModelImpl : MovieTicketModel {
         }
     }
 
-    fun insertToken(){
+    private fun insertToken() {
         token = mMovieTicketDatabase?.userDao()?.getUser()?.token
     }
 

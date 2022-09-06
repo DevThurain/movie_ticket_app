@@ -10,6 +10,7 @@ import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
+import com.google.android.material.snackbar.Snackbar
 import com.thurainx.movieticketapp.R
 import com.thurainx.movieticketapp.adaptors.CastListAdapter
 import com.thurainx.movieticketapp.data.EXTRA_MOVIE_ID
@@ -55,7 +56,7 @@ class MovieDetailActivity : AppCompatActivity() {
                 bindData(movie)
             },
             onFail = { errorMessage ->
-                Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
+                Snackbar.make(window.decorView,errorMessage, Snackbar.LENGTH_SHORT).show()
             }
         )
 

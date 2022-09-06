@@ -107,7 +107,7 @@ data class MovieVO(
 
     @ColumnInfo(name = "type")
     @SerializedName("type")
-    val type: String?,
+    var type: String?,
 
     ) {
     fun getVotingBasedOnFiveStars(): Float {

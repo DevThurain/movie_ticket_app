@@ -4,12 +4,10 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.thurainx.movieticketapp.data.vos.MovieVO
-import com.thurainx.movieticketapp.data.vos.UserVO
-import com.thurainx.movieticketapp.persistence.daos.MovieDao
-import com.thurainx.movieticketapp.persistence.daos.UserDao
+import com.thurainx.movieticketapp.data.vos.*
+import com.thurainx.movieticketapp.persistence.daos.*
 
-@Database(entities = [MovieVO::class, UserVO::class], version = 1, exportSchema = false)
+@Database(entities = [MovieVO::class, UserVO::class, CinemaVO::class, SnackVO::class, PaymentMethodVO::class, CardVO::class], version = 1, exportSchema = false)
 abstract class MovieTicketDatabase : RoomDatabase() {
     companion object{
         const val DB_NAME = "THE_MOVIE_TICKET_DATABASE"
@@ -30,4 +28,8 @@ abstract class MovieTicketDatabase : RoomDatabase() {
 
     abstract fun movieDao() : MovieDao
     abstract fun userDao(): UserDao
+    abstract fun cinemaDao(): CinemaDao
+    abstract fun snackDao(): SnackDao
+    abstract fun paymentMethodDao(): PaymentMethodDao
+    abstract fun cardDao(): CardDao
 }
