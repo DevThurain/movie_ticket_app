@@ -26,4 +26,7 @@ interface MovieDao {
 
     @Query("SELECT * FROM movies WHERE type = :type")
     fun getMoviesByStatus(type: String) : List<MovieVO>
+
+//    @Query("DELETE FROM movies WHERE type = :type")
+//    fun deleteMoviesByStatus(type: String)
 }

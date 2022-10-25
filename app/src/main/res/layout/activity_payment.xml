@@ -50,7 +50,8 @@
         android:layout_below="@id/tvPaymentAmount"
         android:layout_marginTop="@dimen/margin_medium_2"
         android:clipToPadding="false"
-        android:paddingHorizontal="@dimen/margin_medium_2" />
+        android:paddingHorizontal="@dimen/margin_medium_2"
+        android:visibility="gone" />
 
 
     <androidx.appcompat.widget.AppCompatImageView

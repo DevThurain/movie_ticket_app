@@ -97,6 +97,7 @@ object MovieTicketModelImpl : MovieTicketModel {
         mMovieTicketDataAgent.getMovieListByStatus(
             status = status,
             onSuccess = { movieList ->
+
                 movieList.forEach {
                     it.type = status
                     mMovieTicketDatabase?.movieDao()?.insertSingleMovie(it)
