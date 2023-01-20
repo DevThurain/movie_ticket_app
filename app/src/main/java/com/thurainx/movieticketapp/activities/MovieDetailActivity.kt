@@ -21,7 +21,6 @@ import kotlinx.android.synthetic.main.activity_buy_snack.*
 import kotlinx.android.synthetic.main.activity_movie_detail.*
 import kotlinx.android.synthetic.main.view_holder_cast.view.*
 import kotlinx.android.synthetic.main.view_holder_movie.*
-import kotlinx.android.synthetic.main.view_ticket_sheet.*
 import kotlin.time.Duration
 
 class MovieDetailActivity : AppCompatActivity() {

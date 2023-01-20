@@ -217,14 +217,32 @@
                 android:orientation="horizontal"/>
 
             <View
+                android:id="@+id/viewCastList"
                 android:layout_width="match_parent"
                 android:layout_below="@id/rvCastList"
-                android:layout_height="@dimen/margin_bottom_movie_detail"/>
+                android:layout_height="20dp"/>
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnGetTicket"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_getting_start_button"
+                android:layout_marginHorizontal="@dimen/margin_medium_2"
+                android:fontFamily="@font/poppins_regular"
+                android:text="@string/lbl_get_your_ticket"
+                android:textAllCaps="false"
+                android:layout_below="@id/viewCastList"
+                android:layout_marginBottom="@dimen/margin_medium_2"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_regular_2x"
+                android:textStyle="bold"
+                app:cornerRadius="@dimen/margin_medium"
+                app:strokeColor="@color/white" />
 
 
         </RelativeLayout>
     </androidx.core.widget.NestedScrollView>
 
-    <include layout="@layout/view_ticket_sheet" />
+<!--    <include layout="@layout/view_ticket_sheet" />-->
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
